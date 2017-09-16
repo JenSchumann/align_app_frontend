@@ -1,0 +1,23 @@
+{
+  "name": "Align",
+  "version": "1.0.0",
+  "description": "In the state of Colorado, gifted-talented learners are supported by state funding and mandates. Mandates include the development of an advanced learning plan. Technology could better support gifted-talented youth through the existence of a tool which enables the advanced learning plan to be more student-centered. This project is inspired by that need.  This app enables learners to create a JWT enabled environment, create a learner profile, and create a success plan based off of their strengths, interests, and aspirations.  Leaners have access to an indexed history of their created success plans, and can update them at any time.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenSchumann/align_app_frontend.git"
+  },
+  "author": "Jen Schumann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenSchumann/align_app_frontend/issues"
+  },
+  "homepage": "https://github.com/JenSchumann/align_app_frontend#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
