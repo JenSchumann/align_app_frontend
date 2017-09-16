@@ -1,4 +1,4 @@
-**Align (backend)**
+**Align (frontend)**
 
 Designer: Jen Schumann
 

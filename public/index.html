@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="align_app">
+  <head>
+    <meta charset="utf-8">
+      <title>Align</title>
+
+      <!--Favicon -->
+
+
+      <!-- Styles -->
+      <!-- Fonts -->
+
+      <link rel="stylesheet" href="style.css">
+
+      <!-- scripts -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js" charset="utf-8"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="app.js"></script>
+
+  </head>
+
+  <body ng-controller="mainController as ctrl">
+
+
+      <h1 class="title">Align</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!---- Account Creation/Login Form Section ---->
+    <section id="entrance" ng-include="'./entrance.html'"></section>
+
+    <!---- User Section ---->
+    <section id="user" ng-include="'./user.html'"></section>
+
+    <!---- Success Plan Section ---->
+    <section id="plan" ng-include="'./plan.html'"></section>
+
+
+
+
+
+
+  </body>
+</html>
