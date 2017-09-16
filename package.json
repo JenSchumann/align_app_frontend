@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/JenSchumann/align_app_frontend#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "request": "^2.81.0"
   }
 }
