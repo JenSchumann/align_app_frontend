@@ -50,7 +50,7 @@ app.controller('mainController', ['$http',
     }.bind(this));
   }
 
-  //get users
+    //get users  -- comment out if admin functionality is not built in 1st version of app
     this.getUsers = function() {
       $http({
         url: this.url + '/users',
@@ -68,10 +68,84 @@ app.controller('mainController', ['$http',
       }.bind(this));
     }
 
+    this.editedUser = {};
+
+    this.updatedUser = function(username, password) {
+      // console.log(userPass);
+      console.log('trying to update user');
+      $http({
+
+        method: 'PATCH',
+        headers: {
+        Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      },
+        url: this.url + '/users/' + this.user.id,
+        data: { user: { username: username, password: password }}
+        // console.log(response.data);
+      }).then(function(response) {
+        console.log(response);
+        console.log(response.data);
+        this.user = response.data;
+        this.showAccount();
+      }.bind(this));
+    }
+
+    //delete user
+    this.deleteUser = function(userPass) {
+      console.log('trying to delete user');
+      $http({
+        method: 'DELETE',
+        url: this.url + '/users/' + this.user.id
+      }).then(function(response) {
+        console.log(response);
+        this.logout();
+      }.bind(this));
+    }
+
     //logout
     this.logout = function() {
       localStorage.clear('token');
       location.reload();
+    }
+
+    //toggle for creating success plan
+    this.showPlanForm = false;
+
+
+    //toggle create success plan modal to show
+    this.createPlan = function(){
+    this.showPlanForm = true;
+  }
+    //create success plan
+    this.addPlan = function(plan){
+      $http({
+
+        url: this.url + '/users/' + this.user.id + '/plans',
+        method: 'POST',
+        data: { plan: { affective_goal: plan.affective_goal, academic_goal: plan.academic_goal, task: plan.task, measure: plan.measure, actions: plan.actions, purpose: plan.purpose, deadline: plan.deadline, user_id: this.user.id }},
+      }).then(function(response) {
+        console.log(response);
+        this.book = response.data;
+        console.log("------------");
+        console.log(this.plan);
+
+      }),
+      this.showPlanForm = false;
+    }
+
+    //show success plan index
+    this.showPlans = function(){
+      $http({
+        url: this.url + '/users/' + this.user.id + '/plans',
+        method: 'GET',
+      }).then(function(response) {
+        console.log(response);
+        controller.planList = response.data;
+        console.log("--------------");
+        console.log("this is this.planList, which is response.data", controller.planList);
+        console.log("--------------");
+
+      })
     }
 
 

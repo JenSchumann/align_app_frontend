@@ -1,0 +1,66 @@
+<!--   User Page ------------------------------------>
+
+
+<div class="user-page" ng-show="ctrl.userPage">
+<img src="./assets/pexels-photo-210158.jpeg" alt="Dream" class="user-img img-responsive"/>
+  <!-- {{ ctrl.test }} -->
+
+  <div class="row" style="margin-bottom: 2rem" >
+
+    <section class="col-xs-7">
+      <h2 class="subtitle">Hello, {{ctrl.userPass.username}}</h2>
+    </section>
+
+  </div>
+
+  <div class="row">
+  <!--- Left Side  ---->
+
+  <!--- User Options  ---->
+  <section class="col-xs-4 col-xs-offset-4">
+    <ul>
+
+
+        <!--- Create New Success Plan  ---->
+        <li><button class="btn btn-default" ng-click="ctrl.createPlan()">Create New Success Plan</li>
+          <form ng-if="ctrl.showPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addPlan(plan)">
+            <!-- need to add column to table so that user can add a title to their plan? -->
+            <input type="text" ng-model="plan.affective_goal" placeholder="Affective Growth Focus"/>
+            <input type="text" ng-model="plan.academic_goal" placeholder="Academic Focus Area"/>
+            <input type="text" ng-model="plan.task" placeholder="What I Want To Do To Grow in Focus Area(s)"/>
+            <input type="text" ng-model="plan.measure" placeholder="How I'll Measure Progress"/>
+            <input type="text" ng-model="plan.actions" placeholder="Steps I'll Take"/>
+            <input type="text" ng-model="plan.purpose" placeholder="Why I Chose This Approach"/>
+            <input type="date" ng-model="plan.deadline" placeholder="Proposed Deadline"/>
+
+            <input type="submit"/>
+          </form>
+
+
+
+
+
+        <!--- Right Side  ---->
+
+        <!--- User Options  ---->
+        <section class="col-xs-4">
+          <ul>
+
+            <!--- Show User Info  ---->
+            <li class="btn btn-default" ng-click="ctrl.getAccount()"><span class="glyphicon glyphicon-user"></span></li>
+
+
+            <!--- Go to Success Plan Index  ---->
+            <li class="btn btn-default" ng-click="ctrl.savedPlans()"><span class="glyphicon glyphicon-list"></span></li>
+
+
+
+          </section>
+          </div>
+
+  </body>
+</html>
+
+
+
+<!--  End User Page ------------------------------------>
