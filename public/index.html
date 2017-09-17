@@ -7,17 +7,25 @@
       <!--Favicon -->
 
 
-      <!-- Styles -->
+
       <!-- Fonts -->
+
+
+
+      <!-- scripts -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script type="text/javascript" src="app.js"></script>
+      <!-- Styles -->
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
       <link rel="stylesheet" href="style.css">
 
-      <!-- scripts -->
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js" charset="utf-8"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="app.js"></script>
 
   </head>
 
@@ -26,15 +34,15 @@
   <section id="nav" ng-include="'./nav.html'"></section>
 
       <div ng-show="ctrl.home">
-        
+
       <h1 class="title">Align</h1>
 
       <img class="main-img img-responsive" src="./assets/pexels-photo-364495.jpeg"alt="..."/>
 
-      {{ ctrl.test }}
+      <!-- {{ ctrl.test }} -->
 
 
-      <p>Logged in username: {{ ctrl.user.username }}</p>
+      <!-- <p>Logged in username: {{ ctrl.user.username }}</p> -->
       <h4 ng-click="ctrl.getUsers()">Click to see secret stuff</h4>
       <div> {{ ctrl.error }} </div>
 
@@ -43,7 +51,7 @@
         <h1>{{ user.username }}</h1>
       </div>
 
-      <a href="#" ng-click="ctrl.logout()">Log Out</a>
+      <!-- <a href="#" ng-click="ctrl.logout()">Log Out</a> -->
 
 
 

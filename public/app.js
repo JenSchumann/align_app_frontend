@@ -31,13 +31,10 @@ app.controller('mainController', ['$http',
     }
 
 
-
     //do i need this to toggle login?????
     this.loggedin = false;
 
-    this.login = function(userPass) {
-      console.log(userPass);
-    }
+
 
 
     // register new user
@@ -71,7 +68,6 @@ app.controller('mainController', ['$http',
       console.log('user logged in? ', this.loggedin);
       console.log('the user is: ', this.user);
       console.log('the userPass username is: ', userPass.username);
-      // console.log('the userPass password is: ', userPass.password);
     }.bind(this));
   }
 
@@ -142,7 +138,21 @@ app.controller('mainController', ['$http',
     this.closeForm();
     }
 
-    //toggle for showing learner profile
+    //toggle for opening up login form modal after account created
+    this.toggleLogin = function(){
+      this.loginModal = !this.loginModal;
+      // this will allow me to log in, but modal stays and & logged in user does not go to their profile page
+      if(this.login(user) === true){
+        this.loginModal = false;
+      }
+      this.closeForm();
+      // this.showAccount(user);
+
+  }
+
+
+
+    //showing learner profile
     this.showAccount = function(){
     console.log('showAccount for learner please');
     console.log('loggedin learner is now: ', this.loggedin);

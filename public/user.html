@@ -3,12 +3,20 @@
 
 <div class="user-page" ng-show="ctrl.userPage">
 <img src="./assets/pexels-photo-210158.jpeg" alt="Dream" class="user-img img-responsive"/>
-  <!-- {{ ctrl.test }} -->
+  
 
   <div class="row" style="margin-bottom: 2rem" >
 
     <section class="col-xs-7">
       <h2 class="subtitle">Hello, {{ctrl.userPass.username}}</h2>
+
+      <h4>Current Grade: {{ctrl.userPass.grade}}</h4>
+
+      <h4>My Interests: {{ctrl.userPass.interests}}</h4>
+
+      <h4>My Strengths: {{ctrl.userPass.strengths}}</h4>
+
+      <h4>My Aspirations: {{ctrl.userPass.aspirations}}</h4>
     </section>
 
   </div>

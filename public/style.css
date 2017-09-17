@@ -1,6 +1,6 @@
-* {
+/** {
   border: 1px solid hotpink;
-}
+}*/
 
 body {
   height: 100%;
@@ -17,5 +17,38 @@ body {
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
+}
 
+.navbar-right, .navbar-text {
+  margin-right: 15px;
+  font-size: 3.5rem;
+}
+
+.login, .register {
+  text-align: center;
+  font-size: 4rem;
+
+
+
+}
+
+li {
+  list-style: none;
+}
+
+.title {
+  color: white;
+  font-size: 8rem;
+  margin: auto 0;
+  text-align: center;
+  top: 60px;
+}
+
+/*background images*/
+.main-img, .user-img, .plan-img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 }
