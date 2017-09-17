@@ -1,11 +1,13 @@
 <nav class="navbar navbar-inverse navbar-static-top">
 
-  <!--  Logout Form -->
-  <a href="#entrance" class="navbar-text navbar-right" ng-click="ctrl.logout()">Log Out</a>
-  <!-- Login Info -->
-  <a class="navbar-text navbar-right" ng-if='ctrl.loggedin'>{{ ctrl.userPass.username }} </a>
-  <!-- My Account Link -->
-  <a class="navbar-text navbar-right" ng-click="ctrl.showAccount()"><span class="glyphicon glyphicon-user"></span></a>
+    <!--  Logout Form -->
+    <a href="#entrance" class="navbar-text navbar-right" ng-click="ctrl.logout()">Log Out</a>
+    <!-- Login Info -->
+    <a class="navbar-text navbar-right" ng-if='ctrl.loggedin'>{{ ctrl.userPass.username }} </a>
+    <!-- My Account Link -->
+
+
+
     <!-- Login Form -->
     <a href="#entrance" class="navbar-text"  ng-click="ctrl.toggleLogin()">Log In</a>
     <!-- Register Form -->

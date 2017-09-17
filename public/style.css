@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Schoolbell', cursive;
 }
 
-.login, .register {
+.login, .register, .addPlan {
   text-align: center;
   font-size: 3.5rem;
   font-family: 'Schoolbell', cursive;
@@ -83,7 +83,7 @@ footer {
   margin: 0 auto;
   position: absolute;
   padding: 1%;
-  padding-bottom: .30%;
+  padding-bottom: 0;
 }
 
 footer span {

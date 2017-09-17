@@ -26,13 +26,14 @@ app.controller('mainController', ['$http',
     this.plans = false;
     this.account = false;
 
+
     this.closeForm = function(){
     this.show = true;
     }
 
 
     //do i need this to toggle login?????
-    this.loggedin = false;
+    // this.loggedin = false;
 
 
 
@@ -46,6 +47,9 @@ app.controller('mainController', ['$http',
      }).then(function(response) {
        console.log(response);
        this.user = response.data.user;
+       this.loggedin = true;
+       this.registerModal = !this.registerModal;
+       this.userPage = !this.userPage;
      })
    }
 
@@ -64,6 +68,8 @@ app.controller('mainController', ['$http',
         this.loggedin = false
       } else {
         this.loggedin = true;
+        this.loginModal = !this.loginModal;
+        this.userPage = !this.userPage;
       }
       console.log('user logged in? ', this.loggedin);
       console.log('the user is: ', this.user);
@@ -146,9 +152,12 @@ app.controller('mainController', ['$http',
         this.loginModal = false;
       }
       this.closeForm();
+      // !this.userPage = this.userPage;
       // this.showAccount(user);
 
   }
+
+
 
 
 
