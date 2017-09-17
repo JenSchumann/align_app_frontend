@@ -40,18 +40,20 @@ app.controller('mainController', ['$http',
 
     // register new user
   this.CreateUser = function(userPass) {
+    this.userPass = userPass;
      $http({
        url: this.url + '/users',
        method: 'POST',
        data: { user: { username: userPass.username, password: userPass.password, grade: userPass.grade, interests: userPass.interests, strengths: userPass.strengths, aspirations: userPass.aspirations, date: userPass.date }},
      }).then(function(response) {
        console.log(response);
-       this.user = response.data.user;
-       this.loggedin = true;
-       this.registerModal = !this.registerModal;
-       this.userPage = !this.userPage;
-     })
-   }
+            this.user = response.data.user;
+            this.loggedin = true;
+            this.registerModal = !this.registerModal;
+            this.userPage = !this.userPage;
+          }.bind(this));
+        }
+
 
    // login user
   this.login = function(userPass) {
@@ -138,8 +140,8 @@ app.controller('mainController', ['$http',
     //toggle for opening up registration form modal when "Create Account" clicked
     this.toggleRegister = function(){
     this.registerModal = !this.registerModal
-    if(this.loginModal === true){
-      this.loginModal = false;
+    if(this.login(user) === true){
+      this.registerModal = false;
     }
     this.closeForm();
     }
