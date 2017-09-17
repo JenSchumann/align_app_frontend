@@ -3,14 +3,14 @@
 <div class="register" ng-show="ctrl.registerModal">
 <!-- <h3>Register</h3> -->
 <form ng-submit="ctrl.CreateUser(userPass)">
-      <input type="text" ng-model="userPass.username" placeholder="Username"/> </br>
-      <input type="password" ng-model="userPass.password" placeholder="Password"/> </br>
+      <input type="text" ng-model="userPass.username" placeholder="Username"/> </br> </br>
+      <input type="password" ng-model="userPass.password" placeholder="Password"/> </br> </br>
 
-      <input type="integer" ng-model="userPass.grade" placeholder="Grade"/> </br>
-      <input type="text" ng-model="userPass.interests" placeholder="Interests"/> </br>
-      <input type="text" ng-model="userPass.strengths" placeholder="Strengths"/> </br>
-      <input type="text" ng-model="userPass.aspirations" placeholder="Aspirations"/> </br>
-      <input type="date" ng-model="userPass.date" placeholder="Date"/> </br>
+      <input type="integer" ng-model="userPass.grade" placeholder="Grade"/> </br> </br>
+      <input type="text" ng-model="userPass.interests" placeholder="Interests"/> </br> </br>
+      <input type="text" ng-model="userPass.strengths" placeholder="Strengths"/> </br> </br>
+      <input type="text" ng-model="userPass.aspirations" placeholder="Aspirations"/> </br> </br>
+      <input type="date" ng-model="userPass.date" placeholder="Date"/> </br> </br>
 
       <input type="submit" ng-click="toggleRegister()"/>
     </form>
@@ -25,8 +25,8 @@
 <div class="login" ng-show="ctrl.loginModal">
 <!-- <h3>Login</h3> -->
 <form ng-submit="ctrl.login(userPass)">
-      <input type="text" ng-model="userPass.username" placeholder="Username"/> </br>
-      <input type="password" ng-model="userPass.password" placeholder="Password"/> </br>
+      <input type="text" ng-model="userPass.username" placeholder="Username"/> </br> </br>
+      <input type="password" ng-model="userPass.password" placeholder="Password"/> </br> </br>
 
       <input type="submit" ng-click="toggleLogin()"/>
     </form>

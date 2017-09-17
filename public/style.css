@@ -4,6 +4,11 @@
 
 body {
   height: 100%;
+  color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Schoolbell', cursive;
 }
 
 /*background images*/
@@ -22,14 +27,13 @@ body {
 .navbar-right, .navbar-text {
   margin-right: 15px;
   font-size: 3.5rem;
+  font-family: 'Schoolbell', cursive;
 }
 
 .login, .register {
   text-align: center;
-  font-size: 4rem;
-
-
-
+  font-size: 3.5rem;
+  font-family: 'Schoolbell', cursive;
 }
 
 li {
@@ -46,9 +50,43 @@ li {
 
 /*background images*/
 .main-img, .user-img, .plan-img {
+  content: ' ';
   width: 100%;
+  height: 100%;
   position: absolute;
-  left: 0;
-  top: 0;
   z-index: -1;
+  top: 0px;
+  left: 0px;
+  background-position: center center fixed no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+
+#heading {
+  background: transparent;
+  min-height: 100%;
+  position: relative;
+  padding-top: 3%;
+  padding-bottom: 1%
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  font-family: 'Schoolbell', cursive;
+  background-color: #262a31;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  padding: 1%;
+  padding-bottom: .30%;
+}
+
+footer span {
+  color: #1787b0;
 }
