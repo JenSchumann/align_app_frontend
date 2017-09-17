@@ -1,0 +1,15 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+
+  <!--  Logout Form -->
+  <a href="#forms" class="navbar-text navbar-right" ng-click="ctrl.logout()">Log Out</a>
+  <!-- Login Info -->
+  <a class="navbar-text navbar-right" ng-if='ctrl.loggedin'>Logged in as: {{ ctrl.userPass.username }} </a>
+  <!-- My Account Link -->
+  <a class="navbar-text navbar-right" ng-click="ctrl.showAccount()"><span class="glyphicon glyphicon-user"></span></a>
+    <!-- Login Form -->
+    <a href="#forms" class="navbar-text"  ng-click="ctrl.toggleLogin()">Log In</a>
+    <!-- Register Form -->
+    <a href="#forms" class="navbar-text"  ng-click="ctrl.toggleRegister()">Register</a>
+
+
+</nav>

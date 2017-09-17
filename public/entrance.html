@@ -1,6 +1,26 @@
+<!-- Register an Account -->
 
-<!-- user login -->
+<div class="register" ng-show="ctrl.registerModal">
+<h5>Register</h5>
+<form ng-submit="ctrl.CreateUser(userPass)">
+      <input type="text" ng-model="userPass.username" placeholder="Username"/>
+      <input type="password" ng-model="userPass.password" placeholder="Password"/>
 
+      <input type="integer" ng-model="userPass.grade" placeholder="Grade"/>
+      <input type="text" ng-model="userPass.interests" placeholder="Interests"/>
+      <input type="text" ng-model="userPass.strengths" placeholder="Strengths"/>
+      <input type="text" ng-model="userPass.aspirations" placeholder="Aspirations"/>
+      <input type="date" ng-model="userPass.date" placeholder="Date"/>
+
+      <input type="submit" ng-click="toggleRegister()"/>
+    </form>
+</div>
+
+
+
+
+
+<!-- User Login -->
 
 <form ng-submit="ctrl.login(userPass)">
       <input type="text" ng-model="userPass.username" placeholder="Username"/>

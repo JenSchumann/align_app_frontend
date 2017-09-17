@@ -8,19 +8,44 @@ const app = angular.module('align_app', []);
 app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
+    const controller = this;
+    this.url = 'http://localhost:3000';
+    this.user = {};
+    this.users = [];
+    this.userPass = {};
+    this.editDisplay = false;
+    this.token = {};
+    this.editUser = {};
+    this.updatedUser = {};
+
+    //pages hidden until toggled:
+    this.registerModal = false;
+    this.loginModal = false;
+    this.home = true;
+    this.userPage = false;
+    this.plans = false;
+    this.account = false;
+
+    this.closeForm = function(){
+    this.show = true;
+    }
+
+
+
+    //do i need this to toggle login?????
+    this.loggedin = false;
+
     this.login = function(userPass) {
       console.log(userPass);
     }
 
-    this.url = 'http://localhost:3000';
-    this.user = {};
 
     // register new user
   this.CreateUser = function(userPass) {
      $http({
        url: this.url + '/users',
        method: 'POST',
-       data: { user: { username: userPass.username, password: userPass.password }},
+       data: { user: { username: userPass.username, password: userPass.password, grade: userPass.grade, interests: userPass.interests, strengths: userPass.strengths, aspirations: userPass.aspirations, date: userPass.date }},
      }).then(function(response) {
        console.log(response);
        this.user = response.data.user;
@@ -46,7 +71,7 @@ app.controller('mainController', ['$http',
       console.log('user logged in? ', this.loggedin);
       console.log('the user is: ', this.user);
       console.log('the userPass username is: ', userPass.username);
-      console.log('the userPass password is: ', userPass.password);
+      // console.log('the userPass password is: ', userPass.password);
     }.bind(this));
   }
 
@@ -108,6 +133,32 @@ app.controller('mainController', ['$http',
       location.reload();
     }
 
+    //toggle for opening up registration form modal when "Create Account" clicked
+    this.toggleRegister = function(){
+    this.registerModal = !this.registerModal
+    if(this.loginModal === true){
+      this.loginModal = false;
+    }
+    this.closeForm();
+    }
+
+    //toggle for showing learner profile
+    this.showAccount = function(){
+    console.log('showAccount for learner please');
+    console.log('loggedin learner is now: ', this.loggedin);
+      if(this.loggedin === true){
+        console.log('loggedin is now: ', this.loggedin);
+        this.userPage = !this.userPage;
+        this.account = false;
+        this.home = false;
+        this.plans = false;
+        this.loginModal = false;
+        this.registerModal = false;
+        console.log("Learner Profile Page");
+      }
+
+    }
+
     //toggle for creating success plan
     this.showPlanForm = false;
 
@@ -115,7 +166,7 @@ app.controller('mainController', ['$http',
     //toggle create success plan modal to show
     this.createPlan = function(){
     this.showPlanForm = true;
-  }
+    }
     //create success plan
     this.addPlan = function(plan){
       $http({
@@ -131,22 +182,22 @@ app.controller('mainController', ['$http',
 
       }),
       this.showPlanForm = false;
-    }
+      }
 
-    //show success plan index
-    this.showPlans = function(){
-      $http({
-        url: this.url + '/users/' + this.user.id + '/plans',
-        method: 'GET',
-      }).then(function(response) {
-        console.log(response);
-        controller.planList = response.data;
-        console.log("--------------");
-        console.log("this is this.planList, which is response.data", controller.planList);
-        console.log("--------------");
+      //show success plan index
+      this.showPlans = function(){
+        $http({
+          url: this.url + '/users/' + this.user.id + '/plans',
+          method: 'GET',
+        }).then(function(response) {
+          console.log(response);
+          controller.planList = response.data;
+          console.log("--------------");
+          console.log("this is this.planList, which is response.data", controller.planList);
+          console.log("--------------");
 
-      })
-    }
+        })
+      }
 
 
 

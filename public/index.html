@@ -23,7 +23,10 @@
 
   <body ng-controller="mainController as ctrl">
 
+  <section id="nav" ng-include="'./nav.html'"></section>
 
+      <div ng-show="ctrl.home">
+        
       <h1 class="title">Align</h1>
 
       <img class="main-img img-responsive" src="./assets/pexels-photo-364495.jpeg"alt="..."/>
@@ -72,5 +75,5 @@
 
 
 
-  
+
 </html>
