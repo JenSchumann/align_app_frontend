@@ -1,26 +1,33 @@
 <!--   User Page ------------------------------------>
 
-
-<div class="user-page" ng-show="ctrl.userPage">
+<section id="user">
+<div class="user-page" ng-if='ctrl.loggedin'>
 <img class="main-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
 
+<!-- <div class="container"> -->
 
+
+<!-- <div class="jumbotron"> -->
   <div class="row" style="margin-bottom: 2rem" >
 
+
+
     <section class="col-xs-7">
-      <h2 class="subtitle">Hello, {{ctrl.userPass.username}}</h2>
+      <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
 
-      <h4>Current Grade: {{ctrl.userPass.grade}}</h4>
+      <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
 
-      <h4>My Interests: {{ctrl.userPass.interests}}</h4>
+      <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
 
-      <h4>My Strengths: {{ctrl.userPass.strengths}}</h4>
+      <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
 
-      <h4>My Aspirations: {{ctrl.userPass.aspirations}}</h4>
+      <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2>
     </section>
 
   </div>
 
+<!-- </div> close jumbotron tag--->
+ <!---close container tag--->
   <div class="row">
   <!--- Left Side  ---->
 
@@ -68,6 +75,7 @@
           </div>
 
   </body>
+</section>  <!---section id user close tag--->
 </html>
 
 

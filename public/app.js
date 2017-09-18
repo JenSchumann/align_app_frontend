@@ -67,7 +67,7 @@ app.controller('mainController', ['$http',
       this.user = response.data.user;
       localStorage.setItem('token', JSON.stringify(response.data.token));
       if (this.user === undefined){
-        this.loggedin = false
+        this.loggedin = false;
       } else {
         this.loggedin = true;
         this.loginModal = !this.loginModal;
@@ -149,19 +149,11 @@ app.controller('mainController', ['$http',
     //toggle for opening up login form modal after account created
     this.toggleLogin = function(){
       this.loginModal = !this.loginModal;
-      // this will allow me to log in, but modal stays and & logged in user does not go to their profile page
       if(this.login(user) === true){
         this.loginModal = false;
       }
       this.closeForm();
-      // !this.userPage = this.userPage;
-      // this.showAccount(user);
-
-  }
-
-
-
-
+    }
 
     //showing learner profile
     this.showAccount = function(){
@@ -169,8 +161,8 @@ app.controller('mainController', ['$http',
     console.log('loggedin learner is now: ', this.loggedin);
       if(this.loggedin === true){
         console.log('loggedin is now: ', this.loggedin);
-        this.userPage = !this.userPage;
-        this.account = false;
+        // this.userPage = !this.userPage;
+        // this.account = false;
         this.home = false;
         this.plans = false;
         this.loginModal = false;
