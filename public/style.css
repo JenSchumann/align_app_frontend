@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Schoolbell', cursive;
 }
 
-.login, .register, .addPlan {
+.login, .register, .plan-page {
   text-align: center;
   font-size: 3.5rem;
   font-family: 'Schoolbell', cursive;

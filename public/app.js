@@ -35,7 +35,7 @@ app.controller('mainController', ['$http',
     //do i need this to toggle login?????
     // this.loggedin = false;
 
-
+////////////////////////////////////////////   USER   /////////////////////
 
 
     // register new user
@@ -96,6 +96,28 @@ app.controller('mainController', ['$http',
         }
       }.bind(this));
     }
+
+    //to get 1 user need to build functionality for user to see their user profile page
+    this.showUser = function() {
+    $http({
+      url: this.url + '/users/' + this.user.id,
+      method: 'GET',
+      headers: {
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+    console.log(response);
+      if (response.data.status == 401) {
+        this.error = "Unauthorized";
+      } else {
+        this.user.id = response.data;
+      }
+    }.bind(this));
+  }
+
+
+
+
 
     this.editedUser = {};
 
@@ -169,29 +191,36 @@ app.controller('mainController', ['$http',
         this.registerModal = false;
         console.log("Learner Profile Page");
       }
-
     }
+
+////////////////////////////////////////////   SUCCESS PLAN  //////////////////
+
+    this.plan = {};
+    this.plans = [];
+    this.editedPlan = {};
+    this.currentPlan = {};
+    this.createPlanModal = false;
 
     //toggle for creating success plan
     this.showPlanForm = false;
 
-
     //toggle create success plan modal to show
-    this.createPlan = function(){
+    this.createPlanModal = function(){
     this.showPlanForm = true;
     }
-    //create success plan
-    this.addPlan = function(plan){
-      $http({
 
-        url: this.url + '/users/' + this.user.id + '/plans',
+    //create success plan
+    this.createPlan = function(plan) {
+      $http({
+        url: this.url + '/plans',
         method: 'POST',
         data: { plan: { affective_goal: plan.affective_goal, academic_goal: plan.academic_goal, task: plan.task, measure: plan.measure, actions: plan.actions, purpose: plan.purpose, deadline: plan.deadline, user_id: this.user.id }},
       }).then(function(response) {
         console.log(response);
-        this.book = response.data;
+        this.plan = response.data.plan;
         console.log("------------");
         console.log(this.plan);
+        console.log("this is this.plan, which is response.data", controller.plan);
 
       }),
       this.showPlanForm = false;
@@ -200,17 +229,69 @@ app.controller('mainController', ['$http',
       //show success plan index
       this.showPlans = function(){
         $http({
-          url: this.url + '/users/' + this.user.id + '/plans',
+          url: this.url + '/plans',
           method: 'GET',
         }).then(function(response) {
-          console.log(response);
+          console.log(response.data);
           controller.planList = response.data;
           console.log("--------------");
           console.log("this is this.planList, which is response.data", controller.planList);
           console.log("--------------");
-
         })
       }
+
+      // get request for edited plan
+      this.editPlan = function(id) {
+        $http({
+          method: 'GET',
+          url: this.url + '/plans/' + id
+        }).then(function(response){
+          controller.currentPlan = response.data;
+          console.log("--------------");
+          console.log("this is this.currentPlan, which is response.data", controller.currentPlan);
+          console.log("--------------");
+        }, function(error) {
+          console.log(error, 'editPlan error');
+        })
+      }
+
+      //post request for updated plan
+      this.updatedPlan = function(){
+        $http({
+          method: 'PUT',
+          url: this.url + '/plans/' + this.currentPlan.id,
+          data: this.currentPlan
+        }).then(function(response){
+          console.log(response);
+          controller.showPlans();
+          console.log("--------------");
+          console.log("this is this.updatedPlan, which is response", controller.showPlans());
+          console.log("--------------");
+      }, function(error) {
+        console.log(error, 'updatedPlan error');
+      })
+    }
+
+    // delete the selected success plan
+    this.deletePlan = function(id) {
+      $http({
+        method: 'DELETE',
+        url: this.url + '/plans/' + id
+      }).then(function(response) {
+        console.log(response);
+        console.log('this is deletePlan');
+      });
+    }
+
+
+
+
+
+
+
+    //next considerations:
+    //how to share the success plan?  another table?
+    //how to save success plan info before updating (push to an array?)
 
 
 

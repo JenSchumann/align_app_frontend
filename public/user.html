@@ -1,6 +1,9 @@
 <!--   User Page ------------------------------------>
 
 <section id="user">
+
+  <!-- does this need a ng-show? -->
+
 <div class="user-page" ng-if='ctrl.loggedin'>
 <img class="main-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
 
@@ -15,13 +18,43 @@
     <section class="col-xs-7">
       <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
 
-      <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
+      <!-- =========================================== -->
+
+      <!-- decide how to show user info as per wireframe: -->
+
+      <!-- <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
 
       <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
 
       <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
 
-      <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2>
+      <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2> -->
+
+      <!-- =========================================== -->
+
+      <br><br><br>
+
+
+
+      <!-- to create plan page -->
+      <h2 class="subtitle"> <a href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a> </h2> <br>
+
+      <!-- to user success plan index -->
+      <h2 class="subtitle"> <a href="#plans" ng-click="ctrl.showPlans()">Success Plan Index</a> </h2> <br>
+
+      <!-- to edit user profile page -->
+      <h2 class="subtitle"> <a href="#user" ng-click="ctrl.showUser()">Edit Profile</a> </h2> <br>
+
+      <!-- figure out how to add the little pencil image as the edit link like in wireframe? -->
+
+
+
+
+
+
+
+
+
     </section>
 
   </div>
@@ -32,26 +65,24 @@
   <!--- Left Side  ---->
 
   <!--- User Options  ---->
-  <section class="col-xs-4 col-xs-offset-4">
+  <!-- <section class="col-xs-4 col-xs-offset-4">
     <ul>
 
 
-        <!--- Create New Success Plan  ---->
-        <div class="addPlan" ng-show="ctrl.createPlanModal">
-        <li><button class="btn btn-default" ng-click="ctrl.createPlan()">Create New Success Plan</li>
+
           <form ng-if="ctrl.showPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addPlan(plan)">
             <!-- need to add column to table so that user can add a title to their plan? -->
-            <input type="text" ng-model="plan.affective_goal" placeholder="Affective Growth Focus"/>
-            <input type="text" ng-model="plan.academic_goal" placeholder="Academic Focus Area"/>
-            <input type="text" ng-model="plan.task" placeholder="What I Want To Do To Grow in Focus Area(s)"/>
-            <input type="text" ng-model="plan.measure" placeholder="How I'll Measure Progress"/>
-            <input type="text" ng-model="plan.actions" placeholder="Steps I'll Take"/>
-            <input type="text" ng-model="plan.purpose" placeholder="Why I Chose This Approach"/>
-            <input type="date" ng-model="plan.deadline" placeholder="Proposed Deadline"/>
+            <!-- <input type="text" ng-model="plan.affective_goal" placeholder="Affective Growth Focus"/> -->
+            <!-- <input type="text" ng-model="plan.academic_goal" placeholder="Academic Focus Area"/> -->
+            <!-- <input type="text" ng-model="plan.task" placeholder="What I Want To Do To Grow in Focus Area(s)"/> -->
+            <!-- <input type="text" ng-model="plan.measure" placeholder="How I'll Measure Progress"/> -->
+            <!-- <input type="text" ng-model="plan.actions" placeholder="Steps I'll Take"/> -->
+            <!-- <input type="text" ng-model="plan.purpose" placeholder="Why I Chose This Approach"/> -->
+            <!-- <input type="date" ng-model="plan.deadline" placeholder="Proposed Deadline"/> -->
 
-            <input type="submit"/>
-          </form>
-
+            <!-- <input type="submit"/>
+          </form> -->
+ <!-- -->
 
 
 
@@ -59,20 +90,20 @@
         <!--- Right Side  ---->
 
         <!--- User Options  ---->
-        <section class="col-xs-4">
+        <!-- <section class="col-xs-4">
           <ul>
 
             <!--- Show User Info  ---->
-            <li class="btn btn-default" ng-click="ctrl.getAccount()"><span class="glyphicon glyphicon-user"></span></li>
+            <!-- <li class="btn btn-default" ng-click="ctrl.getAccount()"><span class="glyphicon glyphicon-user"></span></li> -->
 
 
             <!--- Go to Success Plan Index  ---->
-            <li class="btn btn-default" ng-click="ctrl.savedPlans()"><span class="glyphicon glyphicon-list"></span></li>
+            <!-- <li class="btn btn-default" ng-click="ctrl.savedPlans()"><span class="glyphicon glyphicon-list"></span></li> -->
 
 
 
-          </section>
-          </div>
+          <!-- </section> -->
+          <!-- </div> -->
 
   </body>
 </section>  <!---section id user close tag--->

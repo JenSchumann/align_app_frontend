@@ -1,0 +1,28 @@
+<!-- Create New Success Plan -->
+
+<section id="plan">
+
+<div class="plan-page" ng-if='ctrl.createPlanModal'>
+<!-- <img class="main-img img-responsive" src="./assets/pexels-photo-287748.jpeg" alt="Lightbulb"/> -->
+
+<div class="row">
+  <section class="col-xs-4 col-xs-offset-4">
+
+<form class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan(plan)">
+<!-- ng-if="ctrl.showPlanForm"  -->
+  <!-- need to add column to table so that user can add a title to their plan? -->
+
+  <input type="text" ng-model="plan.affective_goal" placeholder="Affective Growth Focus"/></br>
+  <input type="text" ng-model="plan.academic_goal" placeholder="Academic Focus Area"/></br>
+  <input type="text" ng-model="plan.task" placeholder="What I Want To Do To Grow in Focus Area(s)"/></br>
+  <input type="text" ng-model="plan.measure" placeholder="How I'll Measure Progress"/></br>
+  <input type="text" ng-model="plan.actions" placeholder="Steps I'll Take"/></br>
+  <input type="text" ng-model="plan.purpose" placeholder="Why I Chose This Approach"/></br>
+  <input type="date" ng-model="plan.deadline" placeholder="Proposed Deadline"/></br>
+
+  <input type="submit"/></br>
+</form>
+
+</body>
+</section>  <!---section plan close tag--->
+</html>
