@@ -2,112 +2,95 @@
 
 <section id="user">
 
-  <!-- does this need a ng-show? -->
-
 <div class="user-page" ng-if='ctrl.loggedin'>
-<img class="main-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
+<img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
+    <!-- bootstrap option, need to decide on -->
+      <!-- <div class="container"> -->
+        <!-- <div class="row">
+          <section class="col-xs-7"> -->
 
-<!-- <div class="container"> -->
-
-
-<!-- <div class="jumbotron"> -->
-  <div class="row" style="margin-bottom: 2rem" >
-
-
-
-    <section class="col-xs-7">
-      <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
 
       <!-- =========================================== -->
 
       <!-- decide how to show user info as per wireframe: -->
+      <!--- User Options  ---->
 
-      <!-- <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
 
-      <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
+      <div class="container-account" ng-show="ctrl.account">
 
-      <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
+          <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
 
-      <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2> -->
+          <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
+
+          <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
+
+          <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
+
+          <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2>
+
+      </div>
 
       <!-- =========================================== -->
 
-      <br><br><br>
+      <!-- play with how this looks with user profile showing (& how... by modal, etc.?) -->
 
+      <div class="center-block">
 
+        <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
 
-      <!-- to create plan page -->
-      <h2 class="subtitle"> <a href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a> </h2> <br>
+            <!-- to create plan page -->
+            <h3> <a class="link" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3> <br>
 
-      <!-- to user success plan index -->
-      <h2 class="subtitle"> <a href="#plans" ng-click="ctrl.showPlans()">Success Plan Index</a> </h2> <br>
+            <!-- to user success plan index -->
+            <h3> <a class="link" href="#plans" ng-click="ctrl.showPlansModal()">Success Plan Index</a></h3> <br>
 
-      <!-- to edit user profile page -->
-      <h2 class="subtitle"> <a href="#user" ng-click="ctrl.showUser()">Edit Profile</a> </h2> <br>
+            <!-- it's already in the nav bar.... -->
+            <!-- <h3> <a class="link" href="#profile" ng-click="ctrl.showAccount()">Learner Profile</a> </h3> <br> -->
 
+            <!-- to edit user profile page -->
+            <h3> <a class="link" href="#user" ng-click="ctrl.editDiplay()">Edit Profile</a></h3> <br>
+
+      </div>
       <!-- figure out how to add the little pencil image as the edit link like in wireframe? -->
 
 
 
 
+      <!-- Edit Button ---->
+      <button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button>
 
+      <!-- Delete Button ---->
 
+      <form ng-submit="ctrl.deleteUser(userPass)" accept-charset="UTF-8" action="/users/1" class="delete_user" id="delete_user_1" method="delete">
+        <fieldset>
+              <input name="_method" type="hidden" value="destroy"/>
+              <button class="btn btn-default">Delete</button>
+        </fieldset>
+      </form>
 
+      <!-- Edit user Form -->
 
+      <div ng-if="ctrl.editDisplay">
+          <form id="userForm" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password)">
+             <fieldset>
+               <div class="form-group">
+                 Name
+                 <input class="form-control" type="text" placeholder="Username" ng-model="ctrl.updatedUser.username">
+                  </div>
 
-    </section>
+                  <div class="form-group">
+                 Password
+                 <input class="form-control" type="password" ng-model="ctrl.updatedUser.password" placeholder="Password"/>
+               </div>
 
-  </div>
+               <button type="submit">Confirm</button>
+             </fieldset>
+            </form>
+          </div>
 
-<!-- </div> close jumbotron tag--->
- <!---close container tag--->
-  <div class="row">
-  <!--- Left Side  ---->
-
-  <!--- User Options  ---->
-  <!-- <section class="col-xs-4 col-xs-offset-4">
-    <ul>
-
-
-
-          <form ng-if="ctrl.showPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-submit="ctrl.addPlan(plan)">
-            <!-- need to add column to table so that user can add a title to their plan? -->
-            <!-- <input type="text" ng-model="plan.affective_goal" placeholder="Affective Growth Focus"/> -->
-            <!-- <input type="text" ng-model="plan.academic_goal" placeholder="Academic Focus Area"/> -->
-            <!-- <input type="text" ng-model="plan.task" placeholder="What I Want To Do To Grow in Focus Area(s)"/> -->
-            <!-- <input type="text" ng-model="plan.measure" placeholder="How I'll Measure Progress"/> -->
-            <!-- <input type="text" ng-model="plan.actions" placeholder="Steps I'll Take"/> -->
-            <!-- <input type="text" ng-model="plan.purpose" placeholder="Why I Chose This Approach"/> -->
-            <!-- <input type="date" ng-model="plan.deadline" placeholder="Proposed Deadline"/> -->
-
-            <!-- <input type="submit"/>
-          </form> -->
- <!-- -->
-
-
-
-
-        <!--- Right Side  ---->
-
-        <!--- User Options  ---->
-        <!-- <section class="col-xs-4">
-          <ul>
-
-            <!--- Show User Info  ---->
-            <!-- <li class="btn btn-default" ng-click="ctrl.getAccount()"><span class="glyphicon glyphicon-user"></span></li> -->
-
-
-            <!--- Go to Success Plan Index  ---->
-            <!-- <li class="btn btn-default" ng-click="ctrl.savedPlans()"><span class="glyphicon glyphicon-list"></span></li> -->
-
-
-
-          <!-- </section> -->
-          <!-- </div> -->
-
-  </body>
+</div>
 </section>  <!---section id user close tag--->
-</html>
+
 
 
 

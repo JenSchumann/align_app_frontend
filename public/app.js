@@ -25,6 +25,7 @@ app.controller('mainController', ['$http',
     this.userPage = false;
     this.plans = false;
     this.account = false;
+    this.profilePage = false;
 
 
     this.closeForm = function(){
@@ -51,6 +52,7 @@ app.controller('mainController', ['$http',
             this.loggedin = true;
             this.registerModal = !this.registerModal;
             this.userPage = !this.userPage;
+
           }.bind(this));
         }
 
@@ -100,7 +102,8 @@ app.controller('mainController', ['$http',
     //to get 1 user need to build functionality for user to see their user profile page
     this.showUser = function() {
     $http({
-      url: this.url + '/users/' + this.user.id,
+      //how get the 1 user profile... by the last part?
+      url: this.url + '/users/' + this.user_id,
       method: 'GET',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
@@ -115,7 +118,14 @@ app.controller('mainController', ['$http',
     }.bind(this));
   }
 
+//////////////////////////////////////////FROM RAILS ROUTES////////////
 
+// user GET    /users/:id(.:format)                users#show
+//             PATCH  /users/:id(.:format)                users#update
+//             PUT    /users/:id(.:format)                users#update
+//             DELETE /users/:id(.:format)                users#destroy
+
+///////////////////////////////////////////////////////////////////////
 
 
 
@@ -183,14 +193,14 @@ app.controller('mainController', ['$http',
     console.log('loggedin learner is now: ', this.loggedin);
       if(this.loggedin === true){
         console.log('loggedin is now: ', this.loggedin);
-        // this.userPage = !this.userPage;
-        // this.account = false;
-        this.home = false;
-        this.plans = false;
-        this.loginModal = false;
-        this.registerModal = false;
+
+        console.log("---------------");
+        // this.profile = !this.profile;
+
+        console.log("---------------");
         console.log("Learner Profile Page");
       }
+      // this.closeForm();   ?
     }
 
 ////////////////////////////////////////////   SUCCESS PLAN  //////////////////
@@ -209,34 +219,71 @@ app.controller('mainController', ['$http',
     this.showPlanForm = true;
     }
 
+    this.showPlansModal = function(){
+      this.plans = true;
+      this.showPlansForm();
+    }
+
+    this.toggleModal = function(){
+      this.showPlanForm = !this.showPlanForm;
+    }
+
     //create success plan
-    this.createPlan = function(plan) {
+    this.createPlan = function(newPlan) {
       $http({
         url: this.url + '/plans',
         method: 'POST',
-        data: { plan: { affective_goal: plan.affective_goal, academic_goal: plan.academic_goal, task: plan.task, measure: plan.measure, actions: plan.actions, purpose: plan.purpose, deadline: plan.deadline, user_id: this.user.id }},
+        data: { plan: { affective_goal: newPlan.affective_goal, academic_goal: newPlan.academic_goal, task: newPlan.task, measure: newPlan.measure, actions: newPlan.actions, purpose: newPlan.purpose, deadline: newPlan.deadline, user_id: this.user.id, title: newPlan.title }},
+        //took id off of this.user at end of previous line b/c error TypeError: Cannot read property 'id' of undefined
       }).then(function(response) {
         console.log(response);
-        this.plan = response.data.plan;
+        this.plan = response.data.newPlan;
         console.log("------------");
-        console.log(this.plan);
-        console.log("this is this.plan, which is response.data", controller.plan);
+        console.log(this.newPlan);
+        console.log("this is this.plan, which is response.data", controller.newPlan);
 
       }),
       this.showPlanForm = false;
       }
 
-      //show success plan index
-      this.showPlans = function(){
+      //show success plan index.... to see all that plans that belong to multiple users
+      // for admin use when admin functionality is built:
+      // this.showPlans = function(){
+      //   $http({
+      //     url: this.url + '/plans',
+      //     method: 'GET',
+      //   }).then(function(response) {
+      //     console.log(response.data);
+      //     controller.planList = response.data;
+      //     console.log("--------------");
+      //     console.log("this is this.planList, which is response.data", controller.planList);
+      //     console.log("--------------");
+      //   })
+      // }
+
+//from rails routes:  user_plans GET    /users/:user_id/plans(.:format)     plans#index
+      // to show a plan index for the specific logged in user:
+      this.showPlans = function(userPass){
         $http({
+          // url: this.url + '/plans/' + this.plan_id,
+          //no error when I run this but I get all plans of all users:
+          // url: this.url + '/users/' + this.user + '/plans',
+          // no error on this, but I still get ALL plans of ALL users:
+
+          // how about adding this.userpass to end? of following line?
+          // url: this.url + '/users/:user_id/plans',
           url: this.url + '/plans',
           method: 'GET',
         }).then(function(response) {
           console.log(response.data);
-          controller.planList = response.data;
-          console.log("--------------");
-          console.log("this is this.planList, which is response.data", controller.planList);
-          console.log("--------------");
+
+
+
+          //consoling response.data is ALL plans of ALL users:
+          // controller.planList = response.data;
+          // console.log("--------------");
+          // console.log("this is this.planList, which is response.data", controller.planList);
+          // console.log("--------------");
         })
       }
 
