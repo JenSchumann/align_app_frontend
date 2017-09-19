@@ -42,7 +42,7 @@
             <h3> <a class="link" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3> <br>
 
             <!-- to user success plan index -->
-            <h3> <a class="link" href="#plans" ng-click="ctrl.showPlansModal()">Success Plan Index</a></h3> <br>
+            <h3> <a class="link" href="#plans" ng-click="ctrl.showPlans()">Success Plan Index</a></h3> <br>
 
             <!-- it's already in the nav bar.... -->
             <!-- <h3> <a class="link" href="#profile" ng-click="ctrl.showAccount()">Learner Profile</a> </h3> <br> -->
@@ -50,40 +50,66 @@
             <!-- to edit user profile page -->
             <h3> <a class="link" href="#user" ng-click="ctrl.editDiplay()">Edit Profile</a></h3> <br>
 
-      </div>
+
       <!-- figure out how to add the little pencil image as the edit link like in wireframe? -->
 
+      </div> <!--center-block close tag -->
 
 
 
-      <!-- Edit Button ---->
-      <button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button>
-
-      <!-- Delete Button ---->
-
-      <form ng-submit="ctrl.deleteUser(userPass)" accept-charset="UTF-8" action="/users/1" class="delete_user" id="delete_user_1" method="delete">
-        <fieldset>
-              <input name="_method" type="hidden" value="destroy"/>
-              <button class="btn btn-default">Delete</button>
-        </fieldset>
-      </form>
 
       <!-- Edit user Form -->
 
       <div ng-if="ctrl.editDisplay">
-          <form id="userForm" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password)">
+          <form id="userForm" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password, ctrl.updatedUser.grade, ctrl.updatedUser.interests, ctrl.updatedUser.strengths, ctrl.updatedUser.aspirations, ctrl.updatedUser.date)">
              <fieldset>
-               <div class="form-group">
-                 Name
-                 <input class="form-control" type="text" placeholder="Username" ng-model="ctrl.updatedUser.username">
-                  </div>
 
-                  <div class="form-group">
-                 Password
-                 <input class="form-control" type="password" ng-model="ctrl.updatedUser.password" placeholder="Password"/>
-               </div>
+                 <input type="text" placeholder="Username" ng-model="ctrl.updatedUser.username"></br> </br>
+
+
+
+                 <input type="password" ng-model="ctrl.updatedUser.password" placeholder="Password"/></br> </br>
+
+
+               <input type="integer" ng-model="ctrl.updatedUser.grade" placeholder="Grade"/> </br> </br>
+               <input type="text" ng-model="ctrl.updatedUser.interests" placeholder="Interests"/> </br> </br>
+               <input type="text" ng-model="ctrl.updatedUser.strengths" placeholder="Strengths"/> </br> </br>
+               <input type="text" ng-model="ctrl.updatedUser.aspirations" placeholder="Aspirations"/> </br> </br>
+               <input type="date" ng-model="ctrl.updatedUser.date" placeholder="Date"/> </br> </br>
+
+
+
+
+
+
+
+
+
+<!-- taking this out of updatedUser input form to see if i like the way it looks w/o:
+
+<div class="form-group">surrounding everything in each input</div>
+<input class="form-control" at the beginning of each input -->
+
+
+
+
+
+
+
 
                <button type="submit">Confirm</button>
+
+               <!-- Edit Button ---->
+               <button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button>
+
+               <!-- Delete Button ---->
+
+               <form ng-submit="ctrl.deleteUser(userPass)" accept-charset="UTF-8" action="/users/1" class="delete_user" id="delete_user_1" method="delete">
+                 <fieldset>
+                       <input name="_method" type="hidden" value="destroy"/>
+                       <button class="btn btn-default">Delete</button>
+                 </fieldset>
+               </form>
              </fieldset>
             </form>
           </div>

@@ -1,34 +1,47 @@
 <!-- use ng-repeat to show an index of all created plans for the user -->
 
 <!-- Success Plan Index Page -->
+<hr>
+<section id="plans" ng-if='ctrl.loggedin'>
+<!-- does it need to be a ng-show for ctrl.showPlansIndex instead? -->
+<!-- <div class="plans-index" ng-show="ctrl.showPlans()"> -->
 
-<section id="plans">
-
-<div class="plans-index" ng-show="ctrl.plans">
-
-<img class="main-img img-responsive" src="./assets/pexels-photo-340981 (1).jpeg" alt="Stairway"/>
+<!-- maybe create background image as a jumbotron background divider image for this section instead of markdown? -->
+<!-- this picture shows up right after a plan is created -->
+<!-- <img class="plans-img img-responsive" src="./assets/pexels-photo-340981 (1).jpeg" alt="Stairway"/> -->
 
 <h1 class="title">Success Plan Index</h1>
+<!-- allLits = userPlanIndex, class: lit-list = planList -->
 
-<div class="planList" ng-repeat="plan in ctrl.planList track by $index">
-  <!-- need to add colum for plan title to db -->
-  <!-- maybe plan title needs to be an <a> tag as modal for plan details to show up once clicked? -->
-      Plan Title:  {{plan.title}}
+<div class="row" id="display">
+    <ul id="planList">
+      <li ng-repeat="userPlanIndex in ctrl.userPlanIndex track by $index" ng-click="ctrl.setCurrentPlan(userPlanIndex.id)">
+
+        <div class="col-md-4" id="lit-item">
+          <button class="btn btn-default" id="plan-button"><a href="{{userPlanIndex.url}}" target="_blank" >{{userPlanIndex.title}}</a></button>
+      </li>
+
+    </ul>
+
+</div>
+
+
+      <!-- <h3>Plan Title:  {{plan.title}}</h3>
+      <br> -->
+      <!-- <h3>Affective Goal: {{plan.affective_goal}}</h3>
       <br>
-      Affective Goal: {{plan.affective_goal}}
+      <h3>Academic Goal: {{plan.academic_goal}}</h3>
       <br>
-      Academic Goal: {{plan.academic_goal}}
+      <h3>Current Growth Tasks: {{plan.task}}</h3>
       <br>
-      Current Growth Tasks: {{plan.task}}
+      <h3>How I'm Measuring Progress: {{plan.measure}}</h3>
       <br>
-      How I'm Measuring Progress: {{plan.measure}}
+      <h3>Steps I'll Take: {{plan.actions}}</h3>
       <br>
-      Steps I'll Take: {{plan.actions}}
+      <h3>Why I Chose This Approach: {{plan.purpose}}</h3>
       <br>
-      Why I Chose This Approach: {{plan.purpose}}
-      <br>
-      Proposed Deadline: {{plan.deadline}}
-      <br>
+      <h3>Proposed Deadline: {{plan.deadline}}</h3> -->
+      <!-- <br> -->
 
 
     </div>

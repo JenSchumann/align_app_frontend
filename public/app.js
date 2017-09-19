@@ -118,17 +118,6 @@ app.controller('mainController', ['$http',
     }.bind(this));
   }
 
-//////////////////////////////////////////FROM RAILS ROUTES////////////
-
-// user GET    /users/:id(.:format)                users#show
-//             PATCH  /users/:id(.:format)                users#update
-//             PUT    /users/:id(.:format)                users#update
-//             DELETE /users/:id(.:format)                users#destroy
-
-///////////////////////////////////////////////////////////////////////
-
-
-
     this.editedUser = {};
 
     this.updatedUser = function(username, password) {
@@ -195,7 +184,7 @@ app.controller('mainController', ['$http',
         console.log('loggedin is now: ', this.loggedin);
 
         console.log("---------------");
-        // this.profile = !this.profile;
+
 
         console.log("---------------");
         console.log("Learner Profile Page");
@@ -206,7 +195,7 @@ app.controller('mainController', ['$http',
 ////////////////////////////////////////////   SUCCESS PLAN  //////////////////
 
     this.plan = {};
-    this.plans = [];
+    this.userPlanIndex = [];
     this.editedPlan = {};
     this.currentPlan = {};
     this.createPlanModal = false;
@@ -219,9 +208,11 @@ app.controller('mainController', ['$http',
     this.showPlanForm = true;
     }
 
+    //dunno if it even makes since to keep these
+    //showing plans of one user should render on their page (not as a modal)
     this.showPlansModal = function(){
       this.plans = true;
-      this.showPlansForm();
+      this.showPlansIndex = true;
     }
 
     this.toggleModal = function(){
@@ -261,29 +252,18 @@ app.controller('mainController', ['$http',
       //   })
       // }
 
-//from rails routes:  user_plans GET    /users/:user_id/plans(.:format)     plans#index
-      // to show a plan index for the specific logged in user:
-      this.showPlans = function(userPass){
+//from rails routes:  user_plans GET    plan GET    /plans/:id(.:format)   plans#show
+      // to show ONE plan index for the specific logged in user:
+      this.setCurrentPlan = function(id){
         $http({
-          // url: this.url + '/plans/' + this.plan_id,
-          //no error when I run this but I get all plans of all users:
-          // url: this.url + '/users/' + this.user + '/plans',
-          // no error on this, but I still get ALL plans of ALL users:
-
-          // how about adding this.userpass to end? of following line?
-          // url: this.url + '/users/:user_id/plans',
-          url: this.url + '/plans',
+          url: this.url + '/plans/ + id',
           method: 'GET',
         }).then(function(response) {
           console.log(response.data);
-
-
-
-          //consoling response.data is ALL plans of ALL users:
-          // controller.planList = response.data;
-          // console.log("--------------");
-          // console.log("this is this.planList, which is response.data", controller.planList);
-          // console.log("--------------");
+          controller.currentPlan = response.data[0];
+          console.log("--------------");
+          console.log("this is controller.currentPlan, which is response.data", controller.currentPlan);
+          console.log("--------------");
         })
       }
 
