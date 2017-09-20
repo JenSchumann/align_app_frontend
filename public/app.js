@@ -102,7 +102,6 @@ app.controller('mainController', ['$http',
     //to get 1 user need to build functionality for user to see their user profile page
     this.showUser = function() {
     $http({
-      //how get the 1 user profile... by the last part?
       url: this.url + '/users/' + this.user_id,
       method: 'GET',
       headers: {
@@ -208,7 +207,7 @@ app.controller('mainController', ['$http',
     this.showPlanForm = true;
     }
 
-    //dunno if it even makes since to keep these
+    //dunno if it even makes since to keep these ... need to refactor code
     //showing plans of one user should render on their page (not as a modal)
     this.showPlansModal = function(){
       this.plans = true;
@@ -225,14 +224,10 @@ app.controller('mainController', ['$http',
         url: this.url + '/plans',
         method: 'POST',
         data: { plan: { affective_goal: newPlan.affective_goal, academic_goal: newPlan.academic_goal, task: newPlan.task, measure: newPlan.measure, actions: newPlan.actions, purpose: newPlan.purpose, deadline: newPlan.deadline, user_id: this.user.id, title: newPlan.title }},
-        //took id off of this.user at end of previous line b/c error TypeError: Cannot read property 'id' of undefined
       }).then(function(response) {
         console.log(response);
-        this.plan = response.data.newPlan;
-        console.log("------------");
-        console.log(this.newPlan);
-        console.log("this is this.plan, which is response.data", controller.newPlan);
-
+        // console.log("------------");
+        // console.log("response is: ", response);
       }),
       this.showPlanForm = false;
       }
@@ -251,6 +246,22 @@ app.controller('mainController', ['$http',
       //     console.log("--------------");
       //   })
       // }
+
+
+      //show success plan index.... for logged in user to see all THEIR success plans
+      // from rails routes:
+      this.showUserPlanIndex = function(){
+        $http({
+          url: this.url + '/plans',
+          method: 'GET',
+        }).then(function(response) {
+          console.log(response.data);
+          controller.planList = response.data;
+          console.log("--------------");
+          console.log("this is this.planList, which is response.data", controller.planList);
+          console.log("--------------");
+        })
+      }
 
 //from rails routes:  user_plans GET    plan GET    /plans/:id(.:format)   plans#show
       // to show ONE plan index for the specific logged in user:
