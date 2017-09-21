@@ -43,30 +43,27 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="nav navbar-nav navbar-right" href="#" style="color: #1787b0;">Align</a>
+      <a class="nav navbar-nav navbar-right" href="#about" style="color: #white;">Align</a>
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#profile" style="color: #1787b0;">Profile</a></li>
+          <li><a href="#user" style="color: #white;">Profile</a></li>
 
-          <li><a href="#plans" style="color: #1787b0;">Plans</a></li>
+          <li><a href="#plans" style="color: #white;">Plans</a></li>
 
           <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleLogin()">
-          <a href="#entrance" style="color: #1787b0;">Login</a></li>
+          <a href="#entrance" style="color: #white;">Login</a></li>
 
-          <li ng-if=ctrl.loggedin ng-click="ctrl.logout()"><a href="#entrance" style="color: #1787b0;">Log Out</a> </li>
+          <li ng-if=ctrl.loggedin ng-click="ctrl.logout()"><a href="#entrance" style="color: #white;">Log Out</a> </li>
 
-          <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleRegister()"><a href="#entrance" style="color: #1787b0;">Register</a></li>
+          <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleRegister()"><a href="#entrance" style="color: #white;">Register</a></li>
 
-          <li ng-if='ctrl.loggedin'><a href="#" style="color:##1787b0;">{{ ctrl.userPass.username }}</a></li>
+          <li ng-if='ctrl.loggedin'><a href="#" style="color:#ffffff;">{{ ctrl.userPass.username }}</a></li>
         </ul>
       </div>
     </div>
   </div>
 </nav>
-
-
-
 
 <!-- Header Section ---->
   <header>
@@ -79,34 +76,213 @@
     </div>
   </header>
 
+<!-- About Section ---->
+<section id="about" ng-include="'./about.html'"></section>
 
+<!-- Admin Section ---->
+<!-- need to create ng-if statement for admin access to all users -->
+<section id="admin" ng-include="'./admin.html'"></section>
 
 <!-- Account Creation/Login Form Section ---->
 <section id="entrance" ng-include="'./entrance.html'"></section>
 
 <!-- User Section ---->
+<!-- putting all of user here to see flow of page -->
+<!-- <section id="user" ng-include="'./user.html'"></section> -->
+
+<!--   User Page ------------------------------------>
+
+<!-- <section id="profile" ng-include="'./profile.html'"></section> -->
 <section id="user" ng-include="'./user.html'"></section>
 
+
+
+<!-- Start plan section -------------------------------->
+
 <!-- Success Plan Section (to create a plan) ---->
-<section id="plan" ng-include="'./plan.html'"></section>
+<!-- adding all plan info here to check the flow of the page -->
+<!-- <section id="plan" ng-include="'./plan.html'"></section> -->
+
+<!-- Create New Success Plan -->
+<div class="container" id="plan-container">
+<section id="plan">
+<!-- to toggle create plan form open  -->
+<div class="plan-page" ng-if='ctrl.createPlanModal'>
+<!-- <img class="main-img img-responsive" src="./assets/pexels-photo-287748.jpeg" alt="Lightbulb"/> -->
+
+<div class="row">
+  <section class="col-md-4 col-md-offset-4">
+
+<!-- create success plan form -->
+<form class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
+  <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
+
+    <fieldset>
+        <div class="form-group">
+                <input type="text" ng-model="ctrl.newPlan.title" placeholder="Plan Title"/></br>
+
+                <input type="text" ng-model="ctrl.newPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
+
+                <input type="text" ng-model="ctrl.newPlan.academic_goal" placeholder="Academic Focus Area"/></br>
+
+                <input type="text" ng-model="ctrl.newPlan.task" placeholder="Current Task to Grow"/></br>
+
+                <input type="text" ng-model="ctrl.newPlan.measure" placeholder="How I'll Measure"/></br>
+
+                <input type="text" ng-model="ctrl.newPlan.actions" placeholder="Steps I'll Take"/></br>
+
+                <input type="text" ng-model="ctrl.newPlan.purpose" placeholder="Why I Chose This"/></br>
+
+                <input type="date" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></br>
+
+
+            <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
+            <img src="./assets/icons8-Delete-50.png"></a></div>
+          </br>
+        </div>
+    </fieldset>
+</form>
+
+</div>
+</section>  <!---section plan close tag--->
+
+<!-- End plan section -------------------------------->
+
+<!-- Start plans section -------------------------------->
 
 <!-- Success Plan Index Section (for learner to see their index of plans... edit ability will be there) ---->
-<section id="plans" ng-include="'./plans.html'"></section>
+<!-- adding plan index info here to check the flow of the page -->
+<!-- <section id="plans" ng-include="'./plans.html'"></section> -->
+
+
+<!-- use ng-repeat to show an index of all created plans for the user -->
+
+<!-- Success Plan Index Page -->
+
+<section id="plans" ng-if='ctrl.loggedin'>
+<!-- does it need to be a ng-show for ctrl.showPlansIndex instead? -->
+<!-- <div class="plans-index" ng-show="ctrl.showPlans()"> -->
+
+<!-- maybe create background image as a jumbotron background divider image for this section instead of markdown? -->
+<!-- this picture shows up right after a plan is created -->
+<!-- <img class="plans-img img-responsive" src="./assets/pexels-photo-340981 (1).jpeg" alt="Stairway"/> -->
+  <!-- <div class="jumbotron" id="plan-jumbotron"> -->
+<!-- <h1 class="title">Success Plan Index</h1> -->
+<!-- allLits = userPlanIndex, class: lit-list = planList -->
+
+<!-- <div class="row" id="display">
+    <ul id="planList">
+      <li ng-repeat="userPlanIndex in ctrl.userPlanIndex track by $index" ng-click="ctrl.setCurrentPlan(userPlanIndex.id)">
+
+        <div class="col-md-4" id="lit-item">
+          <button class="btn btn-default" id="plan-button"><a href="{{userPlanIndex.url}}" target="_blank" >{{userPlanIndex.title}}</a></button>
+      </li>
+
+    </ul>
+
+</div> -->
+<!-- </div> end jumbotron -->
+
+      <!-- <h3>Plan Title:  {{plan.title}}</h3>
+      <br> -->
+      <!-- <h3>Affective Goal: {{plan.affective_goal}}</h3>
+      <br>
+      <h3>Academic Goal: {{plan.academic_goal}}</h3>
+      <br>
+      <h3>Current Growth Tasks: {{plan.task}}</h3>
+      <br>
+      <h3>How I'm Measuring Progress: {{plan.measure}}</h3>
+      <br>
+      <h3>Steps I'll Take: {{plan.actions}}</h3>
+      <br>
+      <h3>Why I Chose This Approach: {{plan.purpose}}</h3>
+      <br>
+      <h3>Proposed Deadline: {{plan.deadline}}</h3> -->
+      <!-- <br> -->
+
+
+    </div>
+
+</section>  <!---section plans index close tag--->
+
+<!-- END plans section -------------------------------->
 
 
 
-<!-- this may be useful for setting up admin access: -->
-
-      <!-- <p>Logged in username: {{ ctrl.user.username }}</p> -->
-      <h4 ng-click="ctrl.getUsers()">Click to see secret stuff</h4>
-      <div> {{ ctrl.error }} </div>
 
 
-      <div ng-repeat="user in ctrl.users">
-        <h1>{{ user.username }}</h1>
-      </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
 
 <!-- i don't have the right settings that make it stick to the bottom yet -->
   <!-- <footer class="footer">

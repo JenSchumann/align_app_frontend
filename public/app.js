@@ -9,7 +9,8 @@ app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
     const controller = this;
-    this.url = 'http://localhost:3000';
+    // this.url = 'http://localhost:3000';
+    this.url = 'https://alignapi.herokuapp.com/';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -219,11 +220,12 @@ app.controller('mainController', ['$http',
     }
 
     //create success plan
-    this.createPlan = function(newPlan) {
+    this.createPlan = function() {
       $http({
-        url: this.url + '/plans',
+        // this.user in middle not working
+        url: this.url + '/users/' + this.user.id + '/plans',
         method: 'POST',
-        data: { plan: { affective_goal: newPlan.affective_goal, academic_goal: newPlan.academic_goal, task: newPlan.task, measure: newPlan.measure, actions: newPlan.actions, purpose: newPlan.purpose, deadline: newPlan.deadline, user_id: this.user.id, title: newPlan.title }},
+        data: { plan: { affective_goal: this.newPlan.affective_goal, academic_goal: this.newPlan.academic_goal, task: this.newPlan.task, measure: this.newPlan.measure, actions: this.newPlan.actions, purpose: this.newPlan.purpose, deadline: this.newPlan.deadline, user_id: this.user.id, title: this.newPlan.title }},
       }).then(function(response) {
         console.log(response);
         // console.log("------------");

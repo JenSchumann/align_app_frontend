@@ -1,9 +1,11 @@
-/** {
-  border: 1px solid hotpink;
-}*/
+* {
+  /*border: 1px solid hotpink;*/
+  /*background-color: #39487f;*/
+}
 
 body {
   height: 100%;
+  background-color: white;
 }
 
 h3, h4, h5, h6 {
@@ -15,8 +17,15 @@ h3, h4, h5, h6 {
 .navbar {
   margin: 0;
   font-weight: bold;
-
 }
+
+/*navbar background color*/
+.navbar-default {
+  /*background-color:#9fdce9;*/
+  background-color: #273668;
+  background-image: none;
+  background-repeat: no-repeat;
+ }
 
 .navbar-right, .navbar-text {
   /*margin-right: 15px;*/
@@ -51,9 +60,11 @@ li {
   justify-content: center;
   text-align: center;
   display: block;
+  margin-top: 6rem;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 1rem;
+  padding-bottom: 3rem;
+  /*padding-top: 1rem;*/
   color: #052a4d;
 }
 
@@ -75,7 +86,7 @@ li {
   margin: auto 0;
   text-align: center;
   font-weight: bold;
-  padding-top: 6%;
+  padding-top: 3%;
   overflow: hidden;
   padding-bottom: 1.5%;
 
@@ -89,6 +100,7 @@ li {
   /*top: 60px;*/
   font-family: 'Schoolbell', cursive;
   overflow: hidden;
+  padding-top: 5%;
   padding-bottom: 1%;
 }
 
@@ -134,15 +146,51 @@ li {
   padding-bottom: 15%;
   margin: auto 0;
   align-items: center;
-
-
-
   top: 60px;
   z-index: 100;
   position: absolute;
 
   /*z-index: 100;*/
   overflow: hidden;
+}
+
+/*====================
+Success Plan Section
+====================*/
+
+#plan-container {
+	width: 100%;
+	padding-bottom: 5%;
+}
+
+#plan-jumbotron  {
+	background-color: white;
+  background: linear-gradient(to right, #06BEE0, #C704F6);
+	width: 100%;
+	text-align: center;
+	padding: 8%;
+}
+
+#plan-jumbotron h1 {
+	font-family: 'Schoolbell', cursive;
+	font-size: 7em;
+	color: white;
+}
+
+#plan-container {
+  margin-left: 2%;
+  margin-right: 2%;
+
+}
+
+#plan-container img {
+	height: 20em;
+	width: 30em;
+}
+
+div #plan-item {
+  margin-top: 4%;
+  margin-bottom: 1%;
 
 }
 

@@ -1,34 +1,33 @@
-<!--   User Page ------------------------------------>
+<body ng-controller="mainController as ctrl">
+
+<!-- User Page ------------------------------------>
 
 <section id="user">
-
 <div class="user-page" ng-if='ctrl.loggedin'>
 <img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
     <!-- bootstrap option, need to decide on -->
       <!-- <div class="container"> -->
         <!-- <div class="row">
           <section class="col-xs-7"> -->
-
-
       <!-- =========================================== -->
 
       <!-- decide how to show user info as per wireframe: -->
       <!--- User Options  ---->
 
-
-      <div class="container-account" ng-show="ctrl.account">
+<!-- this line of code below is throwing a loop: -->
+      <!-- <div class="container-account" ng-show="ctrl.showUser()"> -->
 
           <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
 
-          <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
+          <!-- <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
 
           <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
 
           <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
 
-          <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2>
+          <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2> -->
 
-      </div>
+      <!-- </div> -->
 
       <!-- =========================================== -->
 
@@ -56,8 +55,6 @@
       </div> <!--center-block close tag -->
 
 
-
-
       <!-- Edit user Form -->
 
       <div ng-if="ctrl.editDisplay">
@@ -66,35 +63,14 @@
 
                  <input type="text" placeholder="Username" ng-model="ctrl.updatedUser.username"></br> </br>
 
-
-
                  <input type="password" ng-model="ctrl.updatedUser.password" placeholder="Password"/></br> </br>
 
 
-               <input type="integer" ng-model="ctrl.updatedUser.grade" placeholder="Grade"/> </br> </br>
-               <input type="text" ng-model="ctrl.updatedUser.interests" placeholder="Interests"/> </br> </br>
-               <input type="text" ng-model="ctrl.updatedUser.strengths" placeholder="Strengths"/> </br> </br>
-               <input type="text" ng-model="ctrl.updatedUser.aspirations" placeholder="Aspirations"/> </br> </br>
-               <input type="date" ng-model="ctrl.updatedUser.date" placeholder="Date"/> </br> </br>
-
-
-
-
-
-
-
-
-
-<!-- taking this out of updatedUser input form to see if i like the way it looks w/o:
-
-<div class="form-group">surrounding everything in each input</div>
-<input class="form-control" at the beginning of each input -->
-
-
-
-
-
-
+                 <input type="integer" ng-model="ctrl.updatedUser.grade" placeholder="Grade"/> </br> </br>
+                 <input type="text" ng-model="ctrl.updatedUser.interests" placeholder="Interests"/> </br> </br>
+                 <input type="text" ng-model="ctrl.updatedUser.strengths" placeholder="Strengths"/> </br> </br>
+                 <input type="text" ng-model="ctrl.updatedUser.aspirations" placeholder="Aspirations"/> </br> </br>
+                 <input type="date" ng-model="ctrl.updatedUser.date" placeholder="Date"/> </br> </br>
 
 
                <button type="submit">Confirm</button>
@@ -120,4 +96,4 @@
 
 
 
-<!--  End User Page ------------------------------------>
+<!--  End User Page  -->
