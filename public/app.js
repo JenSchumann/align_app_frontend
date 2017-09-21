@@ -10,7 +10,7 @@ app.controller('mainController', ['$http',
     // this.test = "Align now with your future"
     const controller = this;
     // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com/';
+    this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
