@@ -18,6 +18,8 @@
       <script type="text/javascript" src="app.js"></script>
       <!-- Styles -->
 
+      <script src="https://use.fontawesome.com/8795c8a7ae.js"></script>
+
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
       <!-- Optional theme -->
@@ -30,7 +32,7 @@
 
 <!-- ========================================================= -->
 <!-- Background Image -->
-<img class="main-img img-responsive" src="./assets/pexels-photo-364495.jpeg"alt="Align"/>
+<!-- <img class="main-img img-responsive" src="./assets/pexels-photo-364495.jpeg"alt="Align"/> -->
 
 <!--   Navbar Section -->
   <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
@@ -86,11 +88,10 @@
 <!-- Account Creation/Login Form Section ---->
 <section id="entrance" ng-include="'./entrance.html'"></section>
 
-<!-- User Section ---->
-<!-- putting all of user here to see flow of page -->
-<!-- <section id="user" ng-include="'./user.html'"></section> -->
 
-<!--   User Page ------------------------------------>
+
+
+<!-- User Section ---->
 
 <!-- <section id="profile" ng-include="'./profile.html'"></section> -->
 <section id="user" ng-include="'./user.html'"></section>
@@ -99,111 +100,13 @@
 
 <!-- Start plan section -------------------------------->
 
-<!-- Success Plan Section (to create a plan) ---->
-<!-- adding all plan info here to check the flow of the page -->
-<!-- <section id="plan" ng-include="'./plan.html'"></section> -->
-
-<!-- Create New Success Plan -->
-<div class="container" id="plan-container">
-<section id="plan">
-<!-- to toggle create plan form open  -->
-<div class="plan-page" ng-if='ctrl.createPlanModal'>
-<!-- <img class="main-img img-responsive" src="./assets/pexels-photo-287748.jpeg" alt="Lightbulb"/> -->
-
-<div class="row">
-  <section class="col-md-4 col-md-offset-4">
-
-<!-- create success plan form -->
-<form class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
-  <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
-
-    <fieldset>
-        <div class="form-group">
-                <input type="text" ng-model="ctrl.newPlan.title" placeholder="Plan Title"/></br>
-
-                <input type="text" ng-model="ctrl.newPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
-
-                <input type="text" ng-model="ctrl.newPlan.academic_goal" placeholder="Academic Focus Area"/></br>
-
-                <input type="text" ng-model="ctrl.newPlan.task" placeholder="Current Task to Grow"/></br>
-
-                <input type="text" ng-model="ctrl.newPlan.measure" placeholder="How I'll Measure"/></br>
-
-                <input type="text" ng-model="ctrl.newPlan.actions" placeholder="Steps I'll Take"/></br>
-
-                <input type="text" ng-model="ctrl.newPlan.purpose" placeholder="Why I Chose This"/></br>
-
-                <input type="date" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></br>
+<section id="plan" ng-include="'./plan.html'"></section>
 
 
-            <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
-            <img src="./assets/icons8-Delete-50.png"></a></div>
-          </br>
-        </div>
-    </fieldset>
-</form>
 
-</div>
-</section>  <!---section plan close tag--->
 
-<!-- End plan section -------------------------------->
-
-<!-- Start plans section -------------------------------->
-
-<!-- Success Plan Index Section (for learner to see their index of plans... edit ability will be there) ---->
 <!-- adding plan index info here to check the flow of the page -->
-<!-- <section id="plans" ng-include="'./plans.html'"></section> -->
-
-
-<!-- use ng-repeat to show an index of all created plans for the user -->
-
-<!-- Success Plan Index Page -->
-
-<section id="plans" ng-if='ctrl.loggedin'>
-<!-- does it need to be a ng-show for ctrl.showPlansIndex instead? -->
-<!-- <div class="plans-index" ng-show="ctrl.showPlans()"> -->
-
-<!-- maybe create background image as a jumbotron background divider image for this section instead of markdown? -->
-<!-- this picture shows up right after a plan is created -->
-<!-- <img class="plans-img img-responsive" src="./assets/pexels-photo-340981 (1).jpeg" alt="Stairway"/> -->
-  <!-- <div class="jumbotron" id="plan-jumbotron"> -->
-<!-- <h1 class="title">Success Plan Index</h1> -->
-<!-- allLits = userPlanIndex, class: lit-list = planList -->
-
-<!-- <div class="row" id="display">
-    <ul id="planList">
-      <li ng-repeat="userPlanIndex in ctrl.userPlanIndex track by $index" ng-click="ctrl.setCurrentPlan(userPlanIndex.id)">
-
-        <div class="col-md-4" id="lit-item">
-          <button class="btn btn-default" id="plan-button"><a href="{{userPlanIndex.url}}" target="_blank" >{{userPlanIndex.title}}</a></button>
-      </li>
-
-    </ul>
-
-</div> -->
-<!-- </div> end jumbotron -->
-
-      <!-- <h3>Plan Title:  {{plan.title}}</h3>
-      <br> -->
-      <!-- <h3>Affective Goal: {{plan.affective_goal}}</h3>
-      <br>
-      <h3>Academic Goal: {{plan.academic_goal}}</h3>
-      <br>
-      <h3>Current Growth Tasks: {{plan.task}}</h3>
-      <br>
-      <h3>How I'm Measuring Progress: {{plan.measure}}</h3>
-      <br>
-      <h3>Steps I'll Take: {{plan.actions}}</h3>
-      <br>
-      <h3>Why I Chose This Approach: {{plan.purpose}}</h3>
-      <br>
-      <h3>Proposed Deadline: {{plan.deadline}}</h3> -->
-      <!-- <br> -->
-
-
-    </div>
-
-</section>  <!---section plans index close tag--->
+<section id="plans" ng-include="'./plans.html'"></section>
 
 <!-- END plans section -------------------------------->
 

@@ -1,42 +1,93 @@
 <body ng-controller="mainController as ctrl">
-<!-- Create New Success Plan -->
 
+<!-- Create New Success Plan -->
+<div class="container" id="plan-container">
 <section id="plan">
 <!-- to toggle create plan form open  -->
 <div class="plan-page" ng-if='ctrl.createPlanModal'>
-<!-- <img class="main-img img-responsive" src="./assets/pexels-photo-287748.jpeg" alt="Lightbulb"/> -->
 
 <div class="row">
-  <section class="col-md-4 col-md-offset-4">
+    <section class="col-md-4 col-md-offset-4">
+        <!-- create success plan form -->
+        <form class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
+          <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
 
-<!-- create success plan form -->
-<form class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan(plan)">
-  <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
+            <fieldset>
+                <div class="form-group">
+                        <input type="text" ng-model="ctrl.newPlan.title" placeholder="Plan Title"/></br>
 
-    <fieldset>
-        <div class="form-group">
-                <input type="text" ng-model="plan.title" placeholder="Plan Title"/></br>
+                        <input type="text" ng-model="ctrl.newPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
 
-                <input type="text" ng-model="plan.affective_goal" placeholder="Affective Growth Focus"/></br>
+                        <input type="text" ng-model="ctrl.newPlan.academic_goal" placeholder="Academic Focus Area"/></br>
 
-                <input type="text" ng-model="plan.academic_goal" placeholder="Academic Focus Area"/></br>
+                        <input type="text" ng-model="ctrl.newPlan.task" placeholder="Current Task to Grow"/></br>
 
-                <input type="text" ng-model="plan.task" placeholder="Current Task to Grow"/></br>
+                        <input type="text" ng-model="ctrl.newPlan.measure" placeholder="How I'll Measure"/></br>
 
-                <input type="text" ng-model="plan.measure" placeholder="How I'll Measure"/></br>
+                        <input type="text" ng-model="ctrl.newPlan.actions" placeholder="Steps I'll Take"/></br>
 
-                <input type="text" ng-model="plan.actions" placeholder="Steps I'll Take"/></br>
+                        <input type="text" ng-model="ctrl.newPlan.purpose" placeholder="Why I Chose This"/></br>
 
-                <input type="text" ng-model="plan.purpose" placeholder="Why I Chose This"/></br>
-
-                <input type="date" ng-model="plan.deadline" placeholder="Proposed Deadline"/></br>
+                        <input type="date" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></br>
 
 
-            <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
-            <img src="./assets/icons8-Delete-50.png"></a></div>
-          </br>
-        </div>
-    </fieldset>
-</form>
+                        <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
+                        <i class="fa fa-window-close extraClass" aria-hidden="true"></i></a>
+                </div>
+            </fieldset>
+        </form>
+    </section>  <!---col-md-4 col-md-offset-4--->
+</div>  <!---row--->
+
+
+
+
+<hr>
+
+<section id="createdPlan" ng-if="ctrl.loggedin" ng-show="ctrl.newPlan">
+
+  {{ ctrl.newPlan.title }}
+  {{ctrl.newPlan.affective_goal}}
+  {{ctrl.newPlan.academic_goal}}
+  {{ctrl.newPlan.task}}
+  {{ctrl.newPlan.measure}}
+  {{ctrl.newPlan.actions}}
+  {{ctrl.newPlan.purpose}}
+  {{ctrl.newPlan.deadline}}
+
+</section>  <!---createdPlan close tag--->
+
+
+<!-- Start plans section -------------------------------->
+
+<!-- Success Plan Index Section (for learner to see their index of plans... edit ability will be there) ---->
+
+<section id="plans" ng-if="ctrl.loggedin">
+
+<h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1>
+
+<ul id="planList">
+
+  <li>{{ctrl.currentPlan.title}}</li>
+
+
+  <!-- not working -->
+  <!-- <li ng-repeat="userPlanIndex in ctrl.userPlanIndex track by $index" ng-click="ctrl.setCurrentPlan(userPlanIndex.id)"> -->
+
+    <!-- <div class="col-md-4" id="lit-item">
+      <button class="btn btn-default" id="plan-button"><a href="{{userPlanIndex.url}}" target="_blank" >{{userPlanIndex.title}}</a></button>
+  </li> -->
+
+</ul>
+
+
+
+
+
+</section> <!---id plans---->
+
+
+
+</div>   <!---plan-page--->
 
 </section>  <!---section plan close tag--->

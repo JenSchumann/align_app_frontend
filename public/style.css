@@ -104,6 +104,13 @@ li {
   padding-bottom: 1%;
 }
 
+.indexTitle {
+  color: black;
+  /*font-weight: bold;*/
+  font-size: 5rem;
+  cursor: pointer;
+}
+
 
 
 /*background images*/
@@ -148,49 +155,35 @@ li {
   align-items: center;
   top: 60px;
   z-index: 100;
-  position: absolute;
+
 
   /*z-index: 100;*/
   overflow: hidden;
+}
+
+.user-page, .plan-page {
+    position: block;
+    padding-top: 5%;
 }
 
 /*====================
 Success Plan Section
 ====================*/
 
-#plan-container {
-	width: 100%;
-	padding-bottom: 5%;
+
+
+.extraClass {
+	font-size: 3rem;
+	color: #273668;
+	cursor: pointer;
+	/*margin: 0 auto;*/
 }
 
-#plan-jumbotron  {
-	background-color: white;
-  background: linear-gradient(to right, #06BEE0, #C704F6);
-	width: 100%;
-	text-align: center;
-	padding: 8%;
-}
-
-#plan-jumbotron h1 {
-	font-family: 'Schoolbell', cursive;
-	font-size: 7em;
-	color: white;
-}
-
-#plan-container {
-  margin-left: 2%;
-  margin-right: 2%;
-
-}
-
-#plan-container img {
-	height: 20em;
-	width: 30em;
-}
-
-div #plan-item {
-  margin-top: 4%;
-  margin-bottom: 1%;
+#createdPlan {
+  font-size: 8rem;
+  font-weight: bold;
+  color: black;
+  border: 1px solid hotpink;
 
 }
 
