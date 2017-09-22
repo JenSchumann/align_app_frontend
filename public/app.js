@@ -258,6 +258,7 @@ app.controller('mainController', ['$http',
         }).then(function(response) {
           console.log(response.data);
           controller.planList = response.data;
+          console.log('this is getting id of list of plans');
         })
       }
 

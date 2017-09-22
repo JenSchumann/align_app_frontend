@@ -63,27 +63,25 @@
 <!-- Success Plan Index Section (for learner to see their index of plans... edit ability will be there) ---->
 
 <section id="plans" ng-if="ctrl.loggedin">
-
+<div class="container">
 <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1>
 
-<ul id="planList">
+      <ul id="planListTitles">
 
-  <li>{{ctrl.currentPlan.title}}</li>
+        <li ng-repeat="planList in ctrl.planList track by $index" ng-click="ctrl.showUserPlanIndex(planList._id);">
+          {{ctrl.planList}}
+      
 
+        </li>
 
-  <!-- not working -->
-  <!-- <li ng-repeat="userPlanIndex in ctrl.userPlanIndex track by $index" ng-click="ctrl.setCurrentPlan(userPlanIndex.id)"> -->
-
-    <!-- <div class="col-md-4" id="lit-item">
-      <button class="btn btn-default" id="plan-button"><a href="{{userPlanIndex.url}}" target="_blank" >{{userPlanIndex.title}}</a></button>
-  </li> -->
-
-</ul>
+      </ul>
 
 
 
 
 
+
+</div>   <!---plans container--->
 </section> <!---id plans---->
 
 

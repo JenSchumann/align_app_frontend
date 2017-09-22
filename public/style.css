@@ -111,6 +111,13 @@ li {
   cursor: pointer;
 }
 
+#planListTitles {
+  color: black;
+  /*font-weight: bold;*/
+  font-size: 2rem;
+  cursor: pointer;
+}
+
 
 
 /*background images*/
