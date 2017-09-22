@@ -68,9 +68,17 @@
 
       <ul id="planListTitles">
 
-        <li ng-repeat="planList in ctrl.planList track by $index" ng-click="ctrl.showUserPlanIndex(planList._id);">
-          {{ctrl.planList}}
-      
+        <li ng-repeat="planList in ctrl.planList track by $index" >
+
+          <!-- ng-click=needs to have a click so that when plan title is clicked on all of the plan details show up on the page -->
+
+          <!-- gets the all of each entire plan on page for the user -->
+          <!-- {{ctrl.planList}} -->
+
+          <!-- prints list of plan titles -->
+          <!-- {{ planList.title }} -->
+
+          {{ planList.title }}
 
         </li>
 
