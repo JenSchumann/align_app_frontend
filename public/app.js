@@ -197,8 +197,10 @@ app.controller('mainController', ['$http',
     this.plan = {};
     this.userPlanIndex = [];
     this.editedPlan = {};
+    // what renders success plan index:
     this.currentPlan = {};
     this.createPlanModal = false;
+    // this.planList = false;
 
     //toggle for creating success plan
     this.showPlanForm = false;
@@ -208,12 +210,11 @@ app.controller('mainController', ['$http',
     this.showPlanForm = true;
     }
 
-    //dunno if it even makes since to keep these ... need to refactor code
     //showing plans of one user should render on their page (not as a modal)
-    this.showPlansModal = function(){
-      this.plans = true;
-      this.showPlansIndex = true;
-    }
+    // this.showPlansModal = function(){
+    //   this.plans = true;
+    //   this.showPlansIndex = true;
+    // }
 
     this.toggleModal = function(){
       this.showPlanForm = !this.showPlanForm;
@@ -262,15 +263,15 @@ app.controller('mainController', ['$http',
         })
       }
 
-//from rails routes:  user_plans GET    plan GET    /plans/:id(.:format)   plans#show
+// GET    /users/:user_id/plans/:id(.:format) plans#show
       // to show ONE plan index for the specific logged in user:
       this.setCurrentPlan = function(id){
         $http({
-          url: this.url + '/plans/ + id',
+          url: this.url + '/users/' + this.user.id + '/plans/' + id,
           method: 'GET',
         }).then(function(response) {
           console.log(response.data);
-          controller.currentPlan = response.data[0];
+          controller.currentPlan = response.data;
           console.log("--------------");
           console.log("this is controller.currentPlan, which is response.data", controller.currentPlan);
           console.log("--------------");

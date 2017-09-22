@@ -65,10 +65,12 @@
 <section id="plans" ng-if="ctrl.loggedin">
 <div class="container">
 <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1>
-
+<!-- ng-click="ctrl.showUserPlanIndex();" -->
       <ul id="planListTitles">
+        <!-- this works for rendering each plan title when success plan index h1 is clicked -->
+        <!-- <li ng-repeat="planList in ctrl.planList track by $index" > -->
 
-        <li ng-repeat="planList in ctrl.planList track by $index" >
+          <li ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
 
           <!-- ng-click=needs to have a click so that when plan title is clicked on all of the plan details show up on the page -->
 
@@ -78,7 +80,18 @@
           <!-- prints list of plan titles -->
           <!-- {{ planList.title }} -->
 
-          Plan Title: {{ planList.title }}
+         Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a>
+         <!-- <div ng-show="ctrl.currentPlan"> -->
+           <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
+           <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
+
+           <h4>{{ ctrl.currentPlan.task }}</h4>
+           <h4>{{ ctrl.currentPlan.measure }}</h4>
+           <h4>{{ ctrl.currentPlan.actions }}</h4>
+           <h4>{{ ctrl.currentPlan.purpose }}</h4>
+           <h4>{{ ctrl.currentPlan.deadline }}</h4>
+
+         </div>
 
         </li>
 
