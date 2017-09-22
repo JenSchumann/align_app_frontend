@@ -9,8 +9,8 @@ app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
     const controller = this;
-    // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com';
+    this.url = 'http://localhost:3000';
+    // this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -221,7 +221,7 @@ app.controller('mainController', ['$http',
     }
 
     //create success plan
-    this.createPlan = function() {
+    this.createPlan = function(newPlan) {
       $http({
         // this.user in middle not working
         url: this.url + '/users/' + this.user.id + '/plans',
