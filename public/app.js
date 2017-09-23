@@ -9,8 +9,8 @@ app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
     const controller = this;
-    // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com';
+    this.url = 'http://localhost:3000';
+    // this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -18,6 +18,7 @@ app.controller('mainController', ['$http',
     this.token = {};
     this.editUser = {};
     this.updatedUser = {};
+    this.editedUser = {};
 
     //pages hidden until toggled:
     this.registerModal = false;
@@ -32,10 +33,6 @@ app.controller('mainController', ['$http',
     this.closeForm = function(){
     this.show = true;
     }
-
-
-    //do i need this to toggle login?????
-    // this.loggedin = false;
 
 ////////////////////////////////////////////   USER   /////////////////////
 
@@ -74,7 +71,6 @@ app.controller('mainController', ['$http',
       } else {
         this.loggedin = true;
         this.loginModal = !this.loginModal;
-        this.userPage = !this.userPage;
       }
       console.log('user logged in? ', this.loggedin);
       console.log('the user is: ', this.user);
@@ -118,7 +114,6 @@ app.controller('mainController', ['$http',
     }.bind(this));
   }
 
-    this.editedUser = {};
 
     this.updatedUser = function(username, password) {
       // console.log(userPass);
@@ -176,6 +171,12 @@ app.controller('mainController', ['$http',
       this.closeForm();
     }
 
+    this.toggleEdit = function(){
+      console.log('frontend trying to edit by clicking edit button');
+      this.editDisplay = !this.editDisplay;
+      console.log('editDisplay  toggle works');
+    }
+
     //showing learner profile
     this.showAccount = function(){
     console.log('showAccount for learner please');
@@ -201,6 +202,7 @@ app.controller('mainController', ['$http',
     this.currentPlan = {};
     this.createPlanModal = false;
     // this.planList = false;
+    this.editPlanDisplay = false;
 
     //toggle for creating success plan
     this.showPlanForm = false;
@@ -259,7 +261,7 @@ app.controller('mainController', ['$http',
         }).then(function(response) {
           console.log(response.data);
           controller.planList = response.data;
-          console.log('this is getting id of list of plans');
+          console.log('this is plan index of current user');
         })
       }
 
@@ -278,11 +280,21 @@ app.controller('mainController', ['$http',
         })
       }
 
+      this.toggleEditPlan = function(){
+        console.log('frontend trying to edit by clicking edit plan button');
+        this.editPlanDisplay = !this.editPlanDisplay;
+        console.log('editPlanDisplay toggle works');
+      }
+
+      // user_plan
+      //            PATCH  /users/:user_id/plans/:id(.:format) plans#update
+      //            PUT    /users/:user_id/plans/:id(.:format) plans#update
+
       // get request for edited plan
       this.editPlan = function(id) {
         $http({
           method: 'GET',
-          url: this.url + '/plans/' + id
+          url: this.url + '/users/' + this.user.id + '/plans/' + id,
         }).then(function(response){
           controller.currentPlan = response.data;
           console.log("--------------");
@@ -310,16 +322,24 @@ app.controller('mainController', ['$http',
       })
     }
 
+// DELETE /users/:user_id/plans/:id(.:format) plans#destroy
+// from get one 1 plan:
+// url: this.url + '/users/' + this.user.id + '/plans/' + id,
     // delete the selected success plan
     this.deletePlan = function(id) {
       $http({
         method: 'DELETE',
-        url: this.url + '/plans/' + id
+        url: this.url + '/users/' + this.user.id + '/plans/' + id,
       }).then(function(response) {
         console.log(response);
         console.log('this is deletePlan');
-      });
-    }
+        //what can i call here to get back to the logged in user's show page?
+
+
+      }.bind(this),function(error) {
+        console.log(error);
+      })
+    };
 
 
 
