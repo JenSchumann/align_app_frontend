@@ -92,7 +92,7 @@
            <h4>{{ ctrl.currentPlan.deadline }}</h4>
 
            <!-- Edit Button ---->
-           <button class="btn btn-primary" ng-click="ctrl.toggleEditPlan()">Edit Plan</button>
+           <button class="btn btn-primary" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
 
            <!-- Delete Button ---->
 <!-- ng-hide={{ctrl.currentPlan.title}}  can this go somewhere so that when a plan is deleted the title disappears? -->
@@ -112,7 +112,10 @@
 <!-- Edit user Form -->
 
 <div ng-if="ctrl.editPlanDisplay">
-    <form id="editPlanForm" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+    <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+
+
+      <!-- (ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadlin -->
        <fieldset>
 <div class="form-group">
            <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
@@ -132,7 +135,7 @@
            <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
 
 
-         <button type="submit" ng-click="ctrl.editPlan(); ctrl.toggleEditPlan()">Confirm</button>
+         <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
 
 
 </div>
