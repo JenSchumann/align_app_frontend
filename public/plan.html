@@ -91,21 +91,64 @@
            <h4>{{ ctrl.currentPlan.purpose }}</h4>
            <h4>{{ ctrl.currentPlan.deadline }}</h4>
 
+           <!-- Edit Button ---->
+           <button class="btn btn-primary" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
+
+           <!-- Delete Button ---->
+<!-- ng-hide={{ctrl.currentPlan.title}}  can this go somewhere so that when a plan is deleted the title disappears? -->
+           <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
+            <input name="_method" type="hidden" value="destroy"/>
+                   <button class="btn btn-default">Delete</button>
+
          </div>
 
         </li>
 
       </ul>
 
-<!-- next have user able to click on the planList.title to then be able to see all of the data associated with that one planList
+
+<!-- then give user ability to edit/update that success plan -->
+
+<!-- Edit user Form -->
+
+<div ng-if="ctrl.editPlanDisplay">
+    <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+
+
+      <!-- (ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadlin -->
+       <fieldset>
+<div class="form-group">
+           <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
+
+           <input type="text" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
+
+           <input type="text" ng-model="ctrl.updatedPlan.academic_goal" placeholder="Academic Focus Area"/> </br>
+
+           <input type="text" ng-model="ctrl.updatedPlan.task" placeholder="Current Task to Grow"/> </br>
+
+           <input type="text" ng-model="ctrl.updatedPlan.measure" placeholder="How I'll Measure"/> </br>
+
+           <input type="text" ng-model="ctrl.updatedPlan.actions" placeholder="Steps I'll Take"/> </br>
+
+           <input type="text" ng-model="ctrl.updatedPlan.purpose" placeholder="Why I Chose This"/> </br>
+
+           <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
+
+
+         <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+
+
+</div>
+
+
+       </fieldset>
+      </form>
+    </div>
+
+</div>
 
 
 
-then give user ability to edit/update that success plan
-
-
-
-then give user the ability to delete that plan -->
 
 
 
