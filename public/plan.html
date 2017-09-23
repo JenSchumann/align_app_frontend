@@ -114,7 +114,7 @@
 <div ng-if="ctrl.editPlanDisplay">
     <form id="editPlanForm" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
        <fieldset>
-
+<div class="form-group">
            <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
 
            <input type="text" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
@@ -132,11 +132,12 @@
            <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
 
 
-         <button type="submit">Confirm</button>
+         <button type="submit" ng-click="ctrl.editPlan(); ctrl.toggleEditPlan()">Confirm</button>
 
 
-           </fieldset>
-         </form>
+</div>
+
+
        </fieldset>
       </form>
     </div>

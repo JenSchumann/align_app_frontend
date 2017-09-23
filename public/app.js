@@ -291,14 +291,14 @@ app.controller('mainController', ['$http',
       //            PUT    /users/:user_id/plans/:id(.:format) plans#update
 
       // get request for edited plan
-      this.editPlan = function(id) {
+      this.editPlan = function() {
         $http({
           method: 'GET',
-          url: this.url + '/users/' + this.user.id + '/plans/' + id,
+          url: this.url + '/users/' + this.user.id + '/plans/' + this.updatedPlan.id,
         }).then(function(response){
-          controller.currentPlan = response.data;
+          controller.updatedPlan = response.data;
           console.log("--------------");
-          console.log("this is this.currentPlan, which is response.data", controller.currentPlan);
+          console.log(response);
           console.log("--------------");
         }, function(error) {
           console.log(error, 'editPlan error');
@@ -306,10 +306,10 @@ app.controller('mainController', ['$http',
       }
 
       //post request for updated plan
-      this.updatedPlan = function(){
+      this.updatedPlan = function(title, affective_goal, academic_goal, task, measure, actions, purpose, deadline){
         $http({
           method: 'PUT',
-          url: this.url + '/plans/' + this.currentPlan.id,
+          url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
           data: this.currentPlan
         }).then(function(response){
           console.log(response);
