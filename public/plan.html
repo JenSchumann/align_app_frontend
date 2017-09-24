@@ -1,5 +1,5 @@
 <body ng-controller="mainController as ctrl">
-
+<a id=#plans></a>
 <!-- Create New Success Plan -->
 <div class="container" id="plan-container">
 <section id="plan">
@@ -9,7 +9,7 @@
 <div class="row">
     <section class="col-md-4 col-md-offset-4">
         <!-- create success plan form -->
-        <form class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
+        <form name="form.createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
           <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
 
             <fieldset>
@@ -81,24 +81,45 @@
           <!-- {{ planList.title }} -->
 
          Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a>
-         <!-- <div ng-show="ctrl.currentPlan"> -->
-           <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
-           <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
 
-           <h4>{{ ctrl.currentPlan.task }} </h4>
-           <h4>{{ ctrl.currentPlan.measure }}</h4>
-           <h4>{{ ctrl.currentPlan.actions }}</h4>
-           <h4>{{ ctrl.currentPlan.purpose }}</h4>
-           <h4>{{ ctrl.currentPlan.deadline }}</h4>
+         <!-- set a toggle for instead of this (like the ctrl.toggleEditPlan() below):"ctrl.showCurrentPlan = !ctrl.showCurrentPlan;" which Todd helped me create and was working in the ng-click above -->
+
+         <!-- took out this from ng-click "ctrl.setCurrentPlan(planList.id);" -->
+         <!-- <div ng-show="ctrl.showCurrentPlan"> -->
+           <!-- <div ng-show="ctrl.currentPlan"> -->
+           <!-- ctrl.setCurrentPlan(planList.id);" -->
+           <!-- <h4>{{ planList.title }}</h4>
+           <h4>{{ planList.affective_goal }}</h4>
+           <h4>{{ planList.academic_goal }}</h4>
+
+           <h4>{{ planList.task }}</h4>
+           <h4>{{ planList.measure }}</h4>
+           <h4>{{ planList.actions }}</h4>
+           <h4>{{ planList.purpose }}</h4>
+           <h4>{{ planList.deadline }}</h4>
+         </div> -->
+
+         <h4>{{ ctrl.currentPlan.title }}</h4>
+         <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
+         <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
+
+         <h4>{{ ctrl.currentPlan.task }}</h4>
+         <h4>{{ ctrl.currentPlan.measure }}</h4>
+         <h4>{{ ctrl.currentPlan.actions }}</h4>
+         <h4>{{ ctrl.currentPlan.purpose }}</h4>
+         <h4>{{ ctrl.currentPlan.deadline }}</h4>
 
            <!-- Edit Button ---->
-           <button class="btn btn-primary" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
+           <button class="btn btn-default" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
+           <!-- took this outof the ng click above: -->
+<!--  ctrl.editPlan(currentPlan.id);" --->
+
 
            <!-- Delete Button ---->
 <!-- ng-hide={{ctrl.currentPlan.title}}  can this go somewhere so that when a plan is deleted the title disappears? -->
            <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
             <input name="_method" type="hidden" value="destroy"/>
-                   <button class="btn btn-default">Delete</button>
+            <button class="btn btn-default">Delete</button>
 
          </div>
 
@@ -111,11 +132,11 @@
 
 <!-- Edit user Form -->
 
-<div ng-if="ctrl.editPlanDisplay">
+<div ng-if="ctrl.editPlanDisplay;">
     <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
 
 
-      <!-- (ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadlin -->
+
        <fieldset>
 <div class="form-group">
            <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
@@ -136,6 +157,9 @@
 
 
          <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+<!-- adding this to the confirm to try to get for edit
+ctrl.setCurrentPlan(planList.id); -->
+
 
 
 </div>

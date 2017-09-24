@@ -50,9 +50,10 @@ app.controller('mainController', ['$http',
             this.loggedin = true;
             this.registerModal = !this.registerModal;
             this.userPage = !this.userPage;
-
-          }.bind(this));
-        }
+          }.bind(this),function(error){
+            console.log(error);
+          })
+        };
 
 
    // login user
@@ -75,8 +76,10 @@ app.controller('mainController', ['$http',
       console.log('user logged in? ', this.loggedin);
       console.log('the user is: ', this.user);
       console.log('the userPass username is: ', userPass.username);
-    }.bind(this));
-  }
+    }.bind(this),function(error){
+      console.log(error);
+    })
+  };
 
     //get users  -- comment out if admin functionality is not built in 1st version of app
     this.getUsers = function() {
@@ -93,8 +96,10 @@ app.controller('mainController', ['$http',
         } else {
           this.users = response.data
         }
-      }.bind(this));
-    }
+      }.bind(this),function(error){
+        console.log(error);
+      })
+    };
 
     //to get 1 user need to build functionality for user to see their user profile page
     this.showUser = function() {
@@ -111,8 +116,10 @@ app.controller('mainController', ['$http',
       } else {
         this.user.id = response.data;
       }
-    }.bind(this));
-  }
+    }.bind(this),function(error){
+      console.log(error);
+    })
+  };
 
 
     this.updatedUser = function(username, password) {
@@ -132,8 +139,10 @@ app.controller('mainController', ['$http',
         console.log(response.data);
         this.user = response.data;
         this.showAccount();
-      }.bind(this));
-    }
+      }.bind(this),function(error){
+        console.log(error);
+      })
+    };
 
     //delete user
     this.deleteUser = function(userPass) {
@@ -144,8 +153,10 @@ app.controller('mainController', ['$http',
       }).then(function(response) {
         console.log(response);
         this.logout();
-      }.bind(this));
-    }
+      }.bind(this),function(error){
+        console.log(error);
+      })
+    };
 
     //logout
     this.logout = function() {
@@ -178,20 +189,20 @@ app.controller('mainController', ['$http',
     }
 
     //showing learner profile
-    this.showAccount = function(){
-    console.log('showAccount for learner please');
-    console.log('loggedin learner is now: ', this.loggedin);
-      if(this.loggedin === true){
-        console.log('loggedin is now: ', this.loggedin);
-
-        console.log("---------------");
-
-
-        console.log("---------------");
-        console.log("Learner Profile Page");
-      }
-      // this.closeForm();   ?
-    }
+    // this.showAccount = function(){
+    // console.log('showAccount for learner please');
+    // console.log('loggedin learner is now: ', this.loggedin);
+    //   if(this.loggedin === true){
+    //     console.log('loggedin is now: ', this.loggedin);
+    //
+    //     console.log("---------------");
+    //
+    //
+    //     console.log("---------------");
+    //     console.log("Learner Profile Page");
+    //   }
+    //   // this.closeForm();   ?
+    // }
 
 ////////////////////////////////////////////   SUCCESS PLAN  //////////////////
 
@@ -206,6 +217,7 @@ app.controller('mainController', ['$http',
 
     //toggle for creating success plan
     this.showPlanForm = false;
+    this.showCurrentPlan = false;
 
     //toggle create success plan modal to show
     this.createPlanModal = function(){
@@ -222,6 +234,10 @@ app.controller('mainController', ['$http',
       this.showPlanForm = !this.showPlanForm;
     }
 
+    this.clearForm = function(){
+        this.formData = '';
+      }
+
     //create success plan
     this.createPlan = function(newPlan) {
       $http({
@@ -232,9 +248,14 @@ app.controller('mainController', ['$http',
         console.log(response);
         // console.log("------------");
         // console.log("response is: ", response);
-      }),
       this.showPlanForm = false;
-      }
+      }.bind(this),function(error){
+        console.log(error);
+      })
+      controller.clearForm();
+    };
+
+
 
       //show success plan index.... to see all that plans that belong to multiple users
       // for admin use when admin functionality is built:
@@ -259,10 +280,12 @@ app.controller('mainController', ['$http',
           method: 'GET',
         }).then(function(response) {
           console.log(response.data);
-          controller.planList = response.data;
+          this.planList = response.data;
           console.log('this is plan index of current user');
+        }.bind(this),function(error){
+          console.log(error);
         })
-      }
+      };
 
 // GET    /users/:user_id/plans/:id(.:format) plans#show
       // to show ONE plan index for the specific logged in user:
@@ -276,57 +299,94 @@ app.controller('mainController', ['$http',
           console.log("--------------");
           console.log("this is controller.currentPlan, which is response.data", controller.currentPlan);
           console.log("--------------");
+        }.bind(this),function(error){
+          console.log(error);
         })
-      }
+      };
 
       this.toggleEditPlan = function(){
-        console.log('frontend trying to edit by clicking edit plan button');
         this.editPlanDisplay = !this.editPlanDisplay;
         console.log('editPlanDisplay toggle works');
       }
 
-      // user_plan
-      //            PATCH  /users/:user_id/plans/:id(.:format) plans#update
-      //            PUT    /users/:user_id/plans/:id(.:format) plans#update
+      //////////////////////////////////////////////////////////
+      //2.0: Experiment w/Todd's idea about pushing current plan info into an
+      //array prior to edit function so that prior plan data is saved
+      /////////////////////////////////////////////////////////
+
+
+      /////////////////////////////////////////////////////////
+      // PLAYING WITH THE DEVIL: GONNA TRY TO GET IT RUNNING AGAIN LIKE I DID THIS MORN
+
+      ///////////////////////////////////////////////////////
 
       // get request for edited plan
-      this.editPlan = function(currentPlan) {
-        $http({
-          method: 'GET',
-          url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
-        }).then(function(response){
-          controller.currentPlan = response.data;
-          console.log("--------------");
-          console.log("this is editPlan trying to get ahold of the selected plan which is controller.currentPlan, which is response", controller.currentPlan);
-          console.log("--------------");
-        }, function(error) {
-          console.log(error, 'editPlan error');
-        })
-      }
+           this.editPlan = function(currentPlan) {
+             $http({
+               method: 'GET',
+               url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
+             }).then(function(response){
+               controller.currentPlan = response.data;
+               console.log("--------------");
+               console.log("this is editPlan trying to get ahold of the selected plan which is controller.currentPlan, which is response", controller.currentPlan);
+               console.log("--------------");
+             }, function(error) {
+               console.log(error, 'editPlan error');
+             })
+           }
 
-      //post request for updated plan
-      this.updatedPlan = function(affective_goal, academic_goal, task, measure, actions, purpose, deadline, title){
-        console.log("trying to update the success plan");
+           //post request for updated plan
+           this.updatedPlan = function(affective_goal, academic_goal, task, measure, actions, purpose, deadline, title){
+             console.log("trying to update the success plan");
 
-        // title, affective_goal, academic_goal, task, measure, actions, purpose, deadline
-        $http({
-          method: 'PUT',
-          // url: this.url + '/users/' + this.user.id + '/plans/' + id,
-          url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
-          data: { plan: { affective_goal: this.updatedPlan.affective_goal, academic_goal: this.updatedPlan.academic_goal, task: this.updatedPlan.task, measure: this.updatedPlan.measure, actions: this.updatedPlan.actions, purpose: this.updatedPlan.purpose, deadline: this.updatedPlan.deadline, title: this.updatedPlan.title}}
-        }).then(function(response){
-          console.log(response);
-          console.log("--------------");
-          controller.currentPlan = response.data;
-          console.log("this is controller.currentPlan which should be the updated plan, which is response", controller.currentPlan);
-          console.log("--------------");
-      }.bind(this));
-    }
+             // title, affective_goal, academic_goal, task, measure, actions, purpose, deadline
+             $http({
+               method: 'PUT',
+               // url: this.url + '/users/' + this.user.id + '/plans/' + id,
+               url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
+               data: { plan: { affective_goal: this.updatedPlan.affective_goal, academic_goal: this.updatedPlan.academic_goal, task: this.updatedPlan.task, measure: this.updatedPlan.measure, actions: this.updatedPlan.actions, purpose: this.updatedPlan.purpose, deadline: this.updatedPlan.deadline, title: this.updatedPlan.title}}
+             }).then(function(response){
+               console.log(response);
+               console.log("--------------");
+               controller.currentPlan = response.data;
+               console.log("this is controller.currentPlan which should be the updated plan, which is response", controller.currentPlan);
+               console.log("--------------");
+           }.bind(this));
+         }
 
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
+
+
+
+      //post request for updated plan  this function gives error that the plan id in url line is undefined
+      // this.updatedPlan = function(affective_goal, academic_goal, task, measure, actions, purpose, deadline, user_id, title){
+      //   console.log("trying to update the success plan");
+      //   $http({
+      //     method: 'PUT',
+      //     url: this.url + '/users/' + this.user.id + '/plans/' + this.plan.id,
+      //     data: { plan: { affective_goal: affective_goal, academic_goal: academic_goal, task: task, measure: measure, actions: actions, purpose: purpose, deadline: deadline, user_id: this.user.id, title: title}}
+      //   }).then(function(response){
+      //     console.log(response);
+      //     console.log("--------------");
+      //     controller.updatedPlan = response.data;
+      //     console.log("this is controller.updatedPlan which should be the updated plan, which is response", controller.updatedPlan);
+      //     console.log("--------------");
+      //   }.bind(this),function(error){
+      //     console.log(error);
+      //   })
+      //   controller.clearForm();
+      // };
+
+///////////////////////////////////////////////////////////
 // DELETE /users/:user_id/plans/:id(.:format) plans#destroy
-// from get one 1 plan:
-// url: this.url + '/users/' + this.user.id + '/plans/' + id,
+
     // delete the selected success plan
+///////////////////////////////////////////////////////////
     this.deletePlan = function(id) {
       $http({
         method: 'DELETE',
@@ -334,13 +394,14 @@ app.controller('mainController', ['$http',
       }).then(function(response) {
         console.log(response);
         console.log('this is deletePlan');
-        //what can i call here to get back to the logged in user's show page?
-
-
-      }.bind(this),function(error) {
+        controller.showUserPlanIndex();
+      }.bind(this),function(error){
         console.log(error);
       })
     };
+
+
+
 
 
 
