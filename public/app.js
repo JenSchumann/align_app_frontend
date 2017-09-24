@@ -239,7 +239,7 @@ app.controller('mainController', ['$http',
       }
 
     //create success plan
-    this.createPlan = function() {
+    this.createPlan = function(newPlan) {
       $http({
         url: this.url + '/users/' + this.user.id + '/plans',
         method: 'POST',
