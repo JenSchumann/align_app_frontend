@@ -315,11 +315,6 @@ app.controller('mainController', ['$http',
       /////////////////////////////////////////////////////////
 
 
-      /////////////////////////////////////////////////////////
-      // PLAYING WITH THE DEVIL: GONNA TRY TO GET IT RUNNING AGAIN LIKE I DID THIS MORN
-
-      ///////////////////////////////////////////////////////
-
       // get request for edited plan
            this.editPlan = function(currentPlan) {
              $http({
@@ -348,42 +343,13 @@ app.controller('mainController', ['$http',
              }).then(function(response){
                console.log(response);
                console.log("--------------");
-              controller.currentPlan = response.data;
+               controller.currentPlan = response.data;
 
                console.log("this is controller.currentPlan which should be the updated plan, which is response", controller.currentPlan);
                console.log("--------------");
            }.bind(this));
          }
 
-
-
-
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-///////////////////////////////////////////////////////
-
-
-
-
-
-      //post request for updated plan  this function gives error that the plan id in url line is undefined
-      // this.updatedPlan = function(affective_goal, academic_goal, task, measure, actions, purpose, deadline, user_id, title){
-      //   console.log("trying to update the success plan");
-      //   $http({
-      //     method: 'PUT',
-      //     url: this.url + '/users/' + this.user.id + '/plans/' + this.plan.id,
-      //     data: { plan: { affective_goal: affective_goal, academic_goal: academic_goal, task: task, measure: measure, actions: actions, purpose: purpose, deadline: deadline, user_id: this.user.id, title: title}}
-      //   }).then(function(response){
-      //     console.log(response);
-      //     console.log("--------------");
-      //     controller.updatedPlan = response.data;
-      //     console.log("this is controller.updatedPlan which should be the updated plan, which is response", controller.updatedPlan);
-      //     console.log("--------------");
-      //   }.bind(this),function(error){
-      //     console.log(error);
-      //   })
-      //   controller.clearForm();
-      // };
 
 ///////////////////////////////////////////////////////////
 // DELETE /users/:user_id/plans/:id(.:format) plans#destroy
@@ -406,13 +372,9 @@ app.controller('mainController', ['$http',
 
 
 
-
-
-
-
-
-
-
+    ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
     //next considerations:
     //how to share the success plan?  another table?

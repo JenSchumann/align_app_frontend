@@ -3,10 +3,10 @@
   /*background-color: #39487f;*/
 }
 
-body {
+/*body {
   height: 100%;
   background-color: white;
-}
+}*/
 
 h3, h4, h5, h6 {
   font-family: 'Schoolbell', cursive;
@@ -53,12 +53,12 @@ fieldset {
 }
 
  .user-page {
-  margin-top: 0;
+  /*margin-top: 0;
   padding-top: 0;
   top: 0;
   text-align: center;
   font-size: 3.5rem;
-  font-family: 'Schoolbell', cursive;
+  font-family: 'Schoolbell', cursive;*/
 }
 
 .plan-page {
@@ -69,11 +69,11 @@ fieldset {
   width: 100%;
   z-index: 100;
   overflow: hidden;
-  backface-visibility: hidden;
+  /*backface-visibility: hidden;*/
    /*for browsers that don't support viewport units (they also won't support CSS 3D transforms AFAIK) */
-  height: 100%;
+  /*height: 100%;*/
   /* for browsers that do support viewport units */
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
 .login, .register {
@@ -100,52 +100,23 @@ li {
 header {
   padding-top: 0;
   margin-top: 0;
-}
-
-.center-block {
-  width: 35%;
-  height: 65%;
-  overflow: hidden;
-  opacity: 0.4;
-  background-color: white;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  text-align: center;
-  display: block;
-  margin-top: 0;
-  margin-right: auto;
-  margin-left: auto;
-  padding-bottom: 3rem;
-  /*padding-top: 1rem;*/
-  color: #052a4d;
-  padding-top: 0;
-  position: relative;
-  /*display: inline-block;*/
-}
-
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: center;
-  vertical-align: middle;
-  float:none;
-  flex-direction: column;
+  height: inherit;
+  width: inherit;
 }
 
 a.ontop {
-  /*how can i get the links to move up in the div?*/
-  /*color: white;*/
+  color: white;
   font-weight: bold;
   font-size: 4rem;
-  margin:inherit;
-  padding-bottom: 10%;
+  margin-left: 30%;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 55%;
+  padding-bottom: 1.5%;
+  display: inline-block;
+  position: absolute;
   font-family: 'Schoolbell', cursive;
-  /*opacity: 0;*/
-  z-index: 1000;
-  /*position: relative;*/
-  top: 20em;
+  z-index: 100;
 }
 
 .title {
@@ -225,13 +196,13 @@ About Section
 /*background images*/
 .main-img, .user-img, .plan-img, .plans-img {
   /*content: ' ';*/
-  /*width: 100%;
-  height: 100%;*/
+  width: 100%;
+  height: 100%;
   position: absolute;
   z-index: -5;
-  /*top: 0px;
+  top: 0px;
   left: 0px;
-  background-position: center center fixed no-repeat;
+  /*background-position: center center fixed no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;*/
@@ -264,9 +235,6 @@ About Section
   align-items: center;
   top: 60px;
   z-index: 100;
-
-
-  /*z-index: 100;*/
   overflow: hidden;
 }
 
@@ -278,8 +246,6 @@ About Section
 /*====================
 Success Plan Section
 ====================*/
-
-
 
 .extraClass {
 	font-size: 3rem;
