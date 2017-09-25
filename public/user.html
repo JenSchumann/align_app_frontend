@@ -1,4 +1,3 @@
-<body ng-controller="mainController as ctrl">
 
 <!-- User Page ------------------------------------>
 <a id="user"></a>
@@ -33,31 +32,33 @@
 
       <!-- play with how this looks with user profile showing (& how... by modal, etc.?) -->
 
-      <!-- Header Section ---->
-  <header>
-    <!-- <div class="jumbotron text-center" id="heading"> -->
-      <!-- <div class="container intro-text"> -->
 
-      <div class="center-block vertical-center">
-
-            <!-- to create plan page -->
-            <h3><a class="ontop" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3> <br>
-
-            <!-- to user success plan index -->
-            <h3><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</a></h3> <br>
-
-
-            <!-- to edit user profile page -->
-            <h3><a class="ontop" href="#user" ng-click="ctrl.editDisplay()">Edit Profile</a></h3> <br>
+      <div class="row">
 
 
 
-      </div> <!--center-block close tag -->
-    <!-- </div> -->
-  <!-- </div> -->
-</header>
 
-<section id="profile" ng-include="'./profile.html'"></section>
+  <div class="col-md-6">
+              <!-- to create plan page -->
+              <h3 class="menu"><a class="ontop" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3>
+  </div>
+
+  <div class="col-md-6">
+              <!-- to user success plan index -->
+              <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">  Success Plan Index   </a></h3>
+
+
+              <!-- for Align 2.0 version -->
+              <!-- to edit user profile page -->
+              <!-- <h3><a class="ontop" href="#user" ng-click="ctrl.editDisplay()">Edit Profile</a></h3> <br> -->
+  </div>
+
+  <!-- </div>  <!jumbotron-->
+   </div>
+
+
+
+  <section id="profile" ng-include="'./profile.html'"></section>
 
 
 
@@ -82,8 +83,9 @@
 
                <button type="submit">Confirm</button>
 
+               <!-- Use this for Align version 2.0 code for full user CRUD commented out in  -->
                <!-- Edit Button ---->
-               <button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button>
+               <!-- <button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button> -->
 
                <!-- Delete Button ---->
 
@@ -97,7 +99,7 @@
             </form>
           </div>
 
-<!-- </div> -->
+<!-- </div> user-page -->
 </section>  <!---section id user close tag--->
 
 
