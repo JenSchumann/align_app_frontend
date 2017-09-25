@@ -80,7 +80,7 @@
 <!-- Start plans section -------------------------------->
 
 <!-- Success Plan Index Section (for learner to see their index of plans... edit ability will be there) ---->
-<a id="plans">
+<a id="plans"></a>
 <section id="plans" ng-if="ctrl.loggedin">
 <div class="container-fluid">
 <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1>
@@ -107,7 +107,7 @@
          <!-- <div ng-show="ctrl.showCurrentPlan"> -->
            <!-- <div ng-show="ctrl.currentPlan"> -->
            <!-- ctrl.setCurrentPlan(planList.id);" -->
-           <!-- <h4>{{ planList.title }}</h4>
+           <h4>{{ planList.title }}</h4>
            <h4>{{ planList.affective_goal }}</h4>
            <h4>{{ planList.academic_goal }}</h4>
 
@@ -116,9 +116,9 @@
            <h4>{{ planList.actions }}</h4>
            <h4>{{ planList.purpose }}</h4>
            <h4>{{ planList.deadline }}</h4>
-         </div> -->
+         </div>
 
-         <h4>{{ ctrl.currentPlan.title }}</h4>
+         <!-- <h4>{{ ctrl.currentPlan.title }}</h4>
          <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
          <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
 
@@ -126,7 +126,7 @@
          <h4>{{ ctrl.currentPlan.measure }}</h4>
          <h4>{{ ctrl.currentPlan.actions }}</h4>
          <h4>{{ ctrl.currentPlan.purpose }}</h4>
-         <h4>{{ ctrl.currentPlan.deadline }}</h4>
+         <h4>{{ ctrl.currentPlan.deadline }}</h4> -->
 
            <!-- Edit Button ---->
            <button class="btn btn-default" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
@@ -198,4 +198,4 @@ ctrl.setCurrentPlan(planList.id); -->
 
 
 
-<!-- </div>   <!-plan-page---> 
+<!-- </div>   <!-plan-page--->
