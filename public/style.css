@@ -12,9 +12,12 @@ h3, h4, h5, h6 {
   font-family: 'Schoolbell', cursive;
 }
 
+#plans {
+  /*success plan index*/
+  margin: 0 auto;
+}
 
-
-.container-fluid {
+.container {
 padding: 0;
 margin: 0 auto;
 
@@ -49,16 +52,16 @@ fieldset {
   margin: 0 auto;
 }
 
-/*.plan-page, .user-page {
+ .user-page {
   margin-top: 0;
   padding-top: 0;
   top: 0;
   text-align: center;
   font-size: 3.5rem;
   font-family: 'Schoolbell', cursive;
-}*/
+}
 
-.create-plan-modal {
+.plan-page {
   text-align: center;
   font-size: 3.5rem;
   font-family: 'Schoolbell', cursive;
@@ -71,7 +74,6 @@ fieldset {
   height: 100%;
   /* for browsers that do support viewport units */
   height: 100vh;
-
 }
 
 .login, .register {
@@ -171,8 +173,6 @@ a.ontop {
   padding-bottom: 1%;
 }
 
-/*  Background Image */
-
 hr.type_8 {
 border: 0;
 height: 4rem;
@@ -181,7 +181,6 @@ margin: auto 0;
 align-self: center;
 background-image: url("/assets/type_8.png");
 background-position: center center fixed no-repeat;
-
 }
 
 /*=============
@@ -211,6 +210,7 @@ About Section
   /*font-weight: bold;*/
   font-size: 5rem;
   cursor: pointer;
+  margin: inherit;
 }
 
 #planListTitles {
