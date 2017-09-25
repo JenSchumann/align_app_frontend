@@ -1,5 +1,5 @@
 
-<body ng-controller="mainController as ctrl">
+
   <a id=#plans></a>
   <!-- Create New Success Plan -->
   <div class="container" id="plan-container">
@@ -10,7 +10,7 @@
         <div class="row">
           <section class="col-md-4 col-md-offset-4">
             <!-- create success plan form -->
-            <form name="form.createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
+            <form name="createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
               <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
 
               <fieldset>
@@ -32,7 +32,7 @@
                   <input type="date" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></br>
 
 
-                  <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
+                  <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal();"><a href="">
                     <i class="fa fa-window-close extraClass" aria-hidden="true"></i></a>
                   </div>
                 </fieldset>
@@ -43,7 +43,7 @@
 
 
 
-
+          <!-- for testing purposes
           <section id="createdPlan" ng-if="ctrl.loggedin" ng-show="ctrl.newPlan">
             {{ ctrl.newPlan.title }}
             {{ctrl.newPlan.affective_goal}}
@@ -53,9 +53,9 @@
             {{ctrl.newPlan.actions}}
             {{ctrl.newPlan.purpose}}
             {{ctrl.newPlan.deadline}}
-          </section>  <!---createdPlan close tag--->
+          </section>  <!-createdPlan close tag--->
 
-          
+
           <!-- Start plans section -------------------------------->
 
 
@@ -63,7 +63,7 @@
           <section id="plans" ng-if="ctrl.loggedin">
             <div class="container">
               <!-- row instead of row -->
-              <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1>
+              <!-- <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1> -->
 
               <ul id="planListTitles">
 
@@ -97,9 +97,8 @@
               </ul>
 
 
-              <!-- then give user ability to edit/update that success plan -->
 
-              <!-- Edit user Form -->
+              <!-- Edit Plan Form -->
 
               <div ng-if="ctrl.editPlanDisplay;">
                 <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">

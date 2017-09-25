@@ -30,9 +30,6 @@ app.controller('mainController', ['$http',
     this.profilePage = false;
 
 
-    this.closeForm = function(){
-    this.show = true;
-    }
 
 ////////////////////////////////////////////   USER   /////////////////////
 
@@ -170,7 +167,6 @@ app.controller('mainController', ['$http',
     if(this.login(user) === true){
       this.registerModal = false;
     }
-    this.closeForm();
     }
 
     //toggle for opening up login form modal after account created
@@ -179,7 +175,6 @@ app.controller('mainController', ['$http',
       if(this.login(user) === true){
         this.loginModal = false;
       }
-      this.closeForm();
     }
 
     this.toggleEdit = function(){
@@ -234,9 +229,7 @@ app.controller('mainController', ['$http',
       this.showPlanForm = !this.showPlanForm;
     }
 
-    this.clearForm = function(){
-        this.formData = '';
-      }
+    
 
     //create success plan
     this.createPlan = function(newPlan) {
@@ -246,13 +239,15 @@ app.controller('mainController', ['$http',
         data: { plan: { affective_goal: this.newPlan.affective_goal, academic_goal: this.newPlan.academic_goal, task: this.newPlan.task, measure: this.newPlan.measure, actions: this.newPlan.actions, purpose: this.newPlan.purpose, deadline: this.newPlan.deadline, user_id: this.user.id, title: this.newPlan.title }},
       }).then(function(response) {
         console.log(response);
-        // console.log("------------");
+        console.log("------------");
+
+        console.log('just tried to clear the form');
         // console.log("response is: ", response);
       this.showPlanForm = false;
       }.bind(this),function(error){
         console.log(error);
       })
-      controller.clearForm();
+      // this.createPlanForm = { " " };
     };
 
 
