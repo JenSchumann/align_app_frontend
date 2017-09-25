@@ -279,47 +279,52 @@ app.controller('mainController', ['$http',
       }
 
       // get request for edited plan
-      this.editPlan = function(id) {
-        $http({
-          method: 'GET',
-          url: this.url + '/plans/' + id
-        }).then(function(response){
-          controller.currentPlan = response.data;
-          console.log("--------------");
-          console.log("this is this.currentPlan, which is response.data", controller.currentPlan);
-          console.log("--------------");
-        }, function(error) {
-          console.log(error, 'editPlan error');
-        })
-      }
+           this.editPlan = function(currentPlan) {
+             $http({
+               method: 'GET',
+              url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
+             }).then(function(response){
+               controller.currentPlan = response.data;
+               console.log("--------------");
+               console.log("this is editPlan trying to get ahold of the selected plan which is controller.currentPlan, which is response", controller.currentPlan);
+               console.log("--------------");
+             }, function(error) {
+              console.log(error, 'editPlan error');
+             })
+           }
 
-      //post request for updated plan
-      this.updatedPlan = function(){
-        $http({
-          method: 'PUT',
-          url: this.url + '/plans/' + this.currentPlan.id,
-          data: this.currentPlan
-        }).then(function(response){
-          console.log(response);
-          controller.showPlans();
-          console.log("--------------");
-          console.log("this is this.updatedPlan, which is response", controller.showPlans());
-          console.log("--------------");
-      }, function(error) {
-        console.log(error, 'updatedPlan error');
-      })
-    }
+           //post request for updated plan
+          this.updatedPlan = function(affective_goal, academic_goal, task, measure, actions, purpose, deadline, title){
+             console.log("trying to update the success plan");
+
+             // title, affective_goal, academic_goal, task, measure, actions, purpose, deadline
+             $http({
+               method: 'PUT',
+               // url: this.url + '/users/' + this.user.id + '/plans/' + id,
+               url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
+               data: { plan: { affective_goal: this.updatedPlan.affective_goal, academic_goal: this.updatedPlan.academic_goal, task: this.updatedPlan.task, measure: this.updatedPlan.measure, actions: this.updatedPlan.actions, purpose: this.updatedPlan.purpose, deadline: this.updatedPlan.deadline, title: this.updatedPlan.title}}
+             }).then(function(response){
+               console.log(response);
+               console.log("--------------");
+              controller.currentPlan = response.data;
+               console.log("this is controller.currentPlan which should be the updated plan, which is response", controller.currentPlan);
+               console.log("--------------");
+           }.bind(this));
+         }
 
     // delete the selected success plan
     this.deletePlan = function(id) {
-      $http({
-        method: 'DELETE',
-        url: this.url + '/plans/' + id
-      }).then(function(response) {
-        console.log(response);
-        console.log('this is deletePlan');
-      });
-    }
+        $http({
+          method: 'DELETE',
+          url: this.url + '/users/' + this.user.id + '/plans/' + id,
+        }).then(function(response) {
+          console.log(response);
+          console.log('this is deletePlan');
+          controller.showUserPlanIndex();
+       }.bind(this),function(error){
+          console.log(error);
+        })
+      };
 
 
 
