@@ -3,8 +3,8 @@
 
 <a id="plan"></a>
 <!-- Create New Success Plan -->
-<div class="container" id="plan-container" ng-if="ctrl.loggedin">
-<section id="plan">
+<!-- <div class="container" id="plan-container" ng-if="ctrl.loggedin"> -->
+<section id="plan" ng-if="ctrl.loggedin">
 
 
 <!-- to toggle create plan form open  -->
@@ -46,10 +46,10 @@
             </fieldset>
         </form>
     </section>  <!---col-md-4 col-md-offset-4--->
+</div>  <!---form group--->
+
 </div>  <!---row--->
-
-
-
+</div> <!--create plan modal-->
 
 
 
@@ -73,7 +73,7 @@
 <br>
 
 
-
+</section>  <!---section plan close tag--->
 
 
 
@@ -82,7 +82,7 @@
 <!-- Success Plan Index Section (for learner to see their index of plans... edit ability will be there) ---->
 <a id="plans">
 <section id="plans" ng-if="ctrl.loggedin">
-<div class="container">
+<div class="container-fluid">
 <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1>
 <!-- ng-click="ctrl.showUserPlanIndex();" -->
       <ul id="planListTitles">
@@ -139,13 +139,9 @@
            <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
             <input name="_method" type="hidden" value="destroy"/>
             <button class="btn btn-default">Delete</button>
-
-         </div>
-
         </li>
-
       </ul>
-
+</div>  <!--container-fluid -->
 
 <!-- then give user ability to edit/update that success plan -->
 
@@ -179,16 +175,10 @@
 <!-- adding this to the confirm to try to get for edit
 ctrl.setCurrentPlan(planList.id); -->
 
-
-
-</div>
-
-
-       </fieldset>
-      </form>
-    </div>
-
-</div>
+</div> <!--form group-->
+</fieldset>  <!--for edit form-->
+      </form> <!--for edit plan form-->
+    </div> <!--edit plan display-->
 
 
 
@@ -199,13 +189,13 @@ ctrl.setCurrentPlan(planList.id); -->
 
 
 
-</div>   <!---plans container--->
+
+
+<!-- </div>   <!-plans container--->
 </section> <!---id plans---->
 
 
 
 
 
-</div>   <!---plan-page--->
-
-</section>  <!---section plan close tag--->
+<!-- </div>   <!-plan-page---> 

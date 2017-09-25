@@ -16,6 +16,7 @@ h3, h4, h5, h6 {
 
 .container-fluid {
 padding: 0;
+margin: 0 auto;
 
 }
 .navbar {
@@ -48,14 +49,14 @@ fieldset {
   margin: 0 auto;
 }
 
-.plan-page, .user-page {
+/*.plan-page, .user-page {
   margin-top: 0;
   padding-top: 0;
   top: 0;
   text-align: center;
   font-size: 3.5rem;
   font-family: 'Schoolbell', cursive;
-}
+}*/
 
 .create-plan-modal {
   text-align: center;
@@ -223,17 +224,17 @@ About Section
 
 /*background images*/
 .main-img, .user-img, .plan-img, .plans-img {
-  content: ' ';
-  width: 100%;
-  height: 100%;
+  /*content: ' ';*/
+  /*width: 100%;
+  height: 100%;*/
   position: absolute;
   z-index: -5;
-  top: 0px;
+  /*top: 0px;
   left: 0px;
   background-position: center center fixed no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
-  -moz-background-size: cover;
+  -moz-background-size: cover;*/
 }
 
 #heading {
