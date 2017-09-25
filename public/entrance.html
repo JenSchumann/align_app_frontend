@@ -1,5 +1,5 @@
 <body ng-controller="mainController as ctrl">
-
+<a id="entrance"></a>
 <!-- Register an Account -->
 <!-- <header ng-if='ctrl.loggedin' ng-hide=true></header> -->
 <div class="register" ng-show="ctrl.registerModal">
@@ -12,7 +12,7 @@
       <input type="text" ng-model="userPass.interests" placeholder="Interests"/> </br>
       <input type="text" ng-model="userPass.strengths" placeholder="Strengths"/> </br>
       <input type="text" ng-model="userPass.aspirations" placeholder="Aspirations"/> </br>
-      <input type="date" ng-model="userPass.date" placeholder="Date"/> </br> 
+      <input type="date" ng-model="userPass.date" placeholder="Date"/> </br>
 
       <input type="submit" ng-click="toggleRegister()"/>
       </fieldset>
