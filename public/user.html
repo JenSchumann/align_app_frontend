@@ -2,8 +2,8 @@
 
 <!-- User Page ------------------------------------>
 <a id="user"></a>
-<section id="user">
-<div class="user-page" ng-if='ctrl.loggedin'>
+<section id="user" >
+<div class="user-page" ng-if="ctrl.loggedin">
 <img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
     <!-- bootstrap option, need to decide on -->
       <!-- <div class="container"> -->
@@ -33,27 +33,36 @@
 
       <!-- play with how this looks with user profile showing (& how... by modal, etc.?) -->
 
-      <div class="center-block">
+      <!-- Header Section ---->
+  <header>
+    <!-- <div class="jumbotron text-center" id="heading"> -->
+      <!-- <div class="container intro-text"> -->
 
-        <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2>
+      <div class="center-block vertical-center">
 
             <!-- to create plan page -->
-            <h3> <a class="link" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3> <br>
+            <h3><a class="ontop" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3> <br>
 
             <!-- to user success plan index -->
-            <h3> <a class="link" href="#plans" ng-click="ctrl.showPlans()">Success Plan Index</a></h3> <br>
+            <h3><a class="ontop" href="#plans" ng-click="ctrl.showPlans()">Success Plan Index</a></h3> <br>
 
 
             <!-- to edit user profile page -->
-            <h3> <a class="link" href="#user" ng-click="ctrl.editDiplay()">Edit Profile</a></h3> <br>
+            <h3><a class="ontop" href="#user" ng-click="ctrl.editDisplay()">Edit Profile</a></h3> <br>
 
 
-      <!-- figure out how to add the little pencil image as the edit link like in wireframe? -->
 
       </div> <!--center-block close tag -->
+    <!-- </div> -->
+  <!-- </div> -->
+</header>
+
+<section id="profile" ng-include="'./profile.html'"></section>
 
 
-      <!-- Edit user Form -->
+
+
+<!-- Edit user Form -->
 
       <div ng-if="ctrl.editDisplay">
           <form id="userForm" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password, ctrl.updatedUser.grade, ctrl.updatedUser.interests, ctrl.updatedUser.strengths, ctrl.updatedUser.aspirations, ctrl.updatedUser.date)">

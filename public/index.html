@@ -2,6 +2,8 @@
 <html ng-app="align_app">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Align</title>
 
       <!--Favicon -->
@@ -14,12 +16,20 @@
       <!-- scripts -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <!-- jquery -->
+      <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous"></script>
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
       <script type="text/javascript" src="app.js"></script>
       <!-- Styles -->
 
       <script src="https://use.fontawesome.com/8795c8a7ae.js"></script>
 
+      <!-- BOOTSTRAP: Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
       <!-- Optional theme -->
@@ -35,7 +45,7 @@
 <img class="main-img img-responsive" src="./assets/pexels-photo-364495.jpeg"alt="Align"/>
 
 <!--   Navbar Section -->
-  <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-static-top">
   <div class="container-fluid">
     <div class="site-nav">
     <div class="navbar-header">
@@ -45,22 +55,24 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="nav navbar-nav navbar-right" href="#about" style="color: #white;">Align</a>
+
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#user" style="color: #white;">Profile</a></li>
 
-          <li><a href="#plans" style="color: #white;">Plans</a></li>
+          <li><a class="nav navbar-nav navbar-left" href="#about" style="color: #white;">Align</a></li>
+          <li><a href="#profile" class="nav navbar-nav navbar-right" style="color: #white;">Profile</a></li>
+
+          <li><a href="#plans" class="nav navbar-nav navbar-right" style="color: #white;">Plans</a></li>
 
           <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleLogin()">
-          <a href="#entrance" style="color: #white;">Login</a></li>
+          <a href="#entrance" class="nav navbar-nav navbar-right" style="color: #white;">Login</a></li>
 
-          <li ng-if=ctrl.loggedin ng-click="ctrl.logout()"><a href="#entrance" style="color: #white;">Log Out</a> </li>
+          <li ng-if=ctrl.loggedin ng-click="ctrl.logout()"><a href="#entrance" class="nav navbar-nav navbar-right" style="color: #white;">Log Out</a> </li>
 
-          <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleRegister()"><a href="#entrance" style="color: #white;">Register</a></li>
+          <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleRegister()"><a href="#entrance" class="nav navbar-nav navbar-right" style="color: #white;">Register</a> </li>
 
-          <li ng-if='ctrl.loggedin'><a href="#" style="color:#ffffff;">{{ ctrl.userPass.username }}</a></li>
+          <li ng-if='ctrl.loggedin'><a href="#" class="nav navbar-nav navbar-right" style="color:#ffffff;">{{ ctrl.userPass.username }}</a> </li>
         </ul>
       </div>
     </div>
@@ -68,12 +80,12 @@
 </nav>
 
 <!-- Header Section ---->
-  <header>
-    <div class="jumbotron text-center" id="heading">
-      <div class="container intro-text">
-        <h1 class="title">Align</h1>
-        <hr>
-        <h2 class="subtitle">Create the World YOU Live in</h2>
+  <header ng-if=!ctrl.loggedin>
+    <div ng-if=!ctrl.loggedin class="jumbotron text-center" id="heading">
+      <div class="container intro-text" ng-if=!ctrl.loggedin>
+        <h1 class="title" ng-if=!ctrl.loggedin>Align</h1>
+        <hr ng-if=!ctrl.loggedin>
+        <h2 class="subtitle" ng-if=!ctrl.loggedin>Create the World YOU Live in</h2>
       </div>
     </div>
   </header>
@@ -83,7 +95,7 @@
 
 <!-- Admin Section ---->
 <!-- need to create ng-if statement for admin access to all users -->
-<section id="admin" ng-include="'./admin.html'"></section>
+<!-- <section id="admin" ng-include="'./admin.html'"></section> -->
 
 <!-- Account Creation/Login Form Section ---->
 <section id="entrance" ng-include="'./entrance.html'"></section>
@@ -93,9 +105,9 @@
 
 <!-- User Section ---->
 
-<!-- <section id="profile" ng-include="'./profile.html'"></section> -->
 <section id="user" ng-include="'./user.html'"></section>
 
+<section id="profile" ng-include="'./profile.html'"></section>
 
 
 <!-- Start plan section -------------------------------->
@@ -106,7 +118,7 @@
 
 
 <!-- adding plan index info here to check the flow of the page -->
-<section id="plans" ng-include="'./plans.html'"></section>
+<!-- <section id="plans" ng-include="'./plans.html'"></section> -->
 
 <!-- END plans section -------------------------------->
 
