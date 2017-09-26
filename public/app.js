@@ -5,12 +5,12 @@ const app = angular.module('align_app', []);
 
 
 //main controller
-app.controller('mainController', ['$http',
-  function($http){
+app.controller('mainController', ['$http', '$scope',
+  function($http, $scope){
     // this.test = "Align now with your future"
     const controller = this;
-    this.url = 'http://localhost:3000';
-    // this.url = 'https://alignapi.herokuapp.com';
+    // this.url = 'http://localhost:3000';
+    this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -383,55 +383,9 @@ app.controller('mainController', ['$http',
     //how to save success plan info before updating (push to an array?)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $scope.resetForm = function() {
+      $scope.form.$setPristine();
+    };
 
 
 
