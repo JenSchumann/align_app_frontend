@@ -396,33 +396,9 @@ Success Plan Section
   border-radius: 25px;
 }
 
-/*#gifmodal .modal-body {
-  max-height: 100%;
-  overflow: auto;
-
-}
-
-#musicmodal .modal-body {
-  max-height: 100%;
-  overflow: auto;
-}
-
-#litmodal .modal-body {
-  max-height: 100%;
-  overflow: auto;
-}*/
-
 .modal-header {
 	background: linear-gradient(to left, #273668, #546578);
 	color: #144c85;
-}
-
-/*#modal-title {
-  display: inline-block;
-}*/
-
-/*#closebutton {
-	float:right;*/
 }
 
 /*.profile {
