@@ -5,107 +5,34 @@
 
 <img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
 
+    <div class="row">
 
-          <!-- <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2> -->
+          <div class="col-md-6">
+                      <!-- to create plan page -->
+                      <h3 class="menu" ng-click="ctrl.createPlanModal();"><a class="ontop" data-toggle="modal" data-target="#createPlan">Create New Success Plan</a></h3>
+          </div>
 
-          <!-- <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
+          <div class="col-md-6">
+                      <!-- to user success plan index -->
+                      <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex(); ctrl.hidePlanList = !ctrl.hidePlanList" ng-show="ctrl.currentPlan">  Success Plan Index  </a></h3>
 
-          <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
+                      <ul id=planGroup>
+                            <li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
 
-          <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
+                              <h3 ng-click="ctrl.setCurrentPlan(planList.id);">Plan Title:
+                              <a data-toggle="modal" data-target="#planShowPage">{{ planList.title }}</a></h3>
 
-          <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2> -->
-
-      <!-- </div> -->
-
-      <!-- =========================================== -->
-
-
-      <div class="row">
-
-
-
-
-  <div class="col-md-6">
-              <!-- to create plan page -->
-              <h3 class="menu" ng-click="ctrl.createPlanModal();"><a class="ontop" data-toggle="modal" data-target="#createPlan">Create New Success Plan</a></h3>
-  </div>
-
-  <div class="col-md-6">
-              <!-- to user success plan index -->
-              <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex(); ctrl.hidePlanList = !ctrl.hidePlanList" ng-show="ctrl.currentPlan">  Success Plan Index  </a></h3>
-
-              <ul id=planGroup>
-                    <li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
-
-                      <h3 ng-click="ctrl.setCurrentPlan(planList.id);">Plan Title:
-                      <a data-toggle="modal" data-target="#planShowPage">{{ planList.title }}</a></h3>
-
-                    </li>
-              </ul>
-  </div>
-
-
-
-
-
+                            </li>
+                      </ul>
+          </div>
 
 
               <!-- for Align 2.0 version -->
               <!-- to edit user profile page -->
               <!-- <h3><a class="ontop" href="#user" ng-click="ctrl.editDisplay()">Edit Profile</a></h3> <br> -->
-  </div>
-
-
-   </div>
-
-
-
-  <section id="profile" ng-include="'./profile.html'"></section>
-
-
-
-
-<!-- Edit user Form -->
-
-      <div ng-if="ctrl.editDisplay">
-          <form id="userForm" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password, ctrl.updatedUser.grade, ctrl.updatedUser.interests, ctrl.updatedUser.strengths, ctrl.updatedUser.aspirations, ctrl.updatedUser.date)">
-             <fieldset>
-
-                 <input type="text" placeholder="Username" ng-model="ctrl.updatedUser.username"></br> </br>
-
-                 <input type="password" ng-model="ctrl.updatedUser.password" placeholder="Password"/></br> </br>
-
-
-                 <input type="integer" ng-model="ctrl.updatedUser.grade" placeholder="Grade"/> </br> </br>
-                 <input type="text" ng-model="ctrl.updatedUser.interests" placeholder="Interests"/> </br> </br>
-                 <input type="text" ng-model="ctrl.updatedUser.strengths" placeholder="Strengths"/> </br> </br>
-                 <input type="text" ng-model="ctrl.updatedUser.aspirations" placeholder="Aspirations"/> </br> </br>
-                 <input type="date" ng-model="ctrl.updatedUser.date" placeholder="Date"/> </br> </br>
-
-
-               <button type="submit">Confirm</button>
-
-               <!-- Use this for Align version 2.0 code for full user CRUD commented out in  -->
-               <!-- Edit Button ---->
-               <!-- <button class="btn btn-primary" ng-click="ctrl.toggleEdit()">Edit Profile</button> -->
-
-               <!-- Delete Button ---->
-
-               <form ng-submit="ctrl.deleteUser(userPass)" accept-charset="UTF-8" action="/users/1" class="delete_user" id="delete_user_1" method="delete">
-                 <fieldset>
-                       <input name="_method" type="hidden" value="destroy"/>
-                       <button class="btn btn-default">Delete</button>
-                 </fieldset>
-               </form>
-             </fieldset>
-            </form>
-          </div>
-
+              <!-- <section id="profile" ng-include="'./profile.html'"></section> may not use this line-->
+    </div>  <!--class row -->
 
 </section>  <!---section id user close tag--->
-
-
-
 
 <!--  End User Page  -->

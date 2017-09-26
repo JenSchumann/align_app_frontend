@@ -8,26 +8,28 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <h4 class="planDetails">{{ctrl.currentPlan.title}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.affective_goal}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.academic_goal}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.task}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.measure}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.actions}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.purpose}}</h4><br>
-        <h4 class="planDetails">{{ctrl.planList.deadline}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.affective_goal}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.academic_goal}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.task}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.measure}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.actions}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.purpose}}</h4><br>
+        <h4 class="planDetails">{{ctrl.currentPlan.deadline}}</h4><br>
 
 
 
           <button class="btn btn-default"ng-click="ctrl.toggleEditPlan();ctrl.editPlan(currentPlan.id);">Update</button>
 
-          <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
+          <form ng-submit="ctrl.deletePlan(currentPlan.id)" accept-charset="UTF-8" method="delete">
                     <input name="_method" type="hidden" value="destroy"/>
                     <button class="btn btn-default">Delete</button></form>
 
-          <!-- <form ng-submit="ctrl.deletePlan(planList.id);" accept-charset="UTF-8" method="delete"><input name="_method" type="hidden" value="destroy"/> <button class="btn btn-default">Delete</button></h4></form> -->
+          <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
+          </div>
+          </div>
+          </div>
 
-          <button type="button" name="button" data-dismiss="modal">X</button>
-
+          </section>
 
 
 
@@ -56,12 +58,13 @@
 
 
         <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+        <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
         <!-- adding this to the confirm to try to get for edit
         ctrl.setCurrentPlan(planList.id); -->
 
-        <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
+        <!-- <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
           <input name="_method" type="hidden" value="destroy"/>
-          <button class="btn btn-default">Delete</button></h4></form>
+          <button class="btn btn-default">Delete</button></h4></form> -->
       </div>
     </fieldset>
   </form>
@@ -69,11 +72,7 @@
 
 
 
-</div>
-</div>
-</div>
 
-</section>
 
 <!--  End Plans Page ------------------------------------>
 <!-- Start plans section -------------------------------->
@@ -150,14 +149,3 @@
 
 </section>  -->
 <!---id plans---->
-
-
-        <!-- <h4>{{ ctrl.currentPlan.title }}</h4>
-        <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
-        <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
-
-        <h4>{{ ctrl.currentPlan.task }}</h4>
-        <h4>{{ ctrl.currentPlan.measure }}</h4>
-        <h4>{{ ctrl.currentPlan.actions }}</h4>
-        <h4>{{ ctrl.currentPlan.purpose }}</h4>
-        <h4>{{ ctrl.currentPlan.deadline }}</h4> -->

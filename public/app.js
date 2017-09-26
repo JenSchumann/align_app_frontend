@@ -9,8 +9,8 @@ app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
     const controller = this;
-    // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com';
+    this.url = 'http://localhost:3000';
+    // this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -359,10 +359,10 @@ app.controller('mainController', ['$http',
 
     // delete the selected success plan
 ///////////////////////////////////////////////////////////
-    this.deletePlan = function(id) {
+    this.deletePlan = function(currentPlan) {
       $http({
         method: 'DELETE',
-        url: this.url + '/users/' + this.user.id + '/plans/' + id,
+        url: this.url + '/users/' + this.user.id + '/plans/' + this.currentPlan.id,
       }).then(function(response) {
         console.log(response);
         console.log('this is deletePlan');
