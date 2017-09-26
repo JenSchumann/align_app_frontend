@@ -28,13 +28,25 @@
 
   <div class="col-md-6">
               <!-- to create plan page -->
-              <h3 class="menu"><a class="ontop" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3>
+              <h3 class="menu" ng-click="ctrl.createPlanModal();"><a class="ontop" data-toggle="modal" data-target="#createPlan">Create New Success Plan</a></h3>
   </div>
 
   <div class="col-md-6">
               <!-- to user success plan index -->
               <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex(); ctrl.hidePlanList = !ctrl.hidePlanList" ng-show="ctrl.currentPlan">  Success Plan Index  </a></h3>
-              <ul id=planGroup><li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList"><button class="btn btn-default"ng-click="ctrl.toggleEditPlan();ctrl.editPlan(currentPlan.id);">Update</button> Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a><form ng-submit="ctrl.deletePlan(planList.id);" accept-charset="UTF-8" method="delete"><input name="_method" type="hidden" value="destroy" /> <button class="btn btn-default">Delete</button></h4></form></li></ul>
+
+              <ul id=planGroup>
+                    <li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
+
+                      <h3 ng-click="ctrl.setCurrentPlan(planList.id);">Plan Title:
+                      <a data-toggle="modal" data-target="#planShowPage">{{ planList.title }}</a></h3>
+
+                    </li>
+              </ul>
+  </div>
+
+
+
 
 
 

@@ -253,10 +253,7 @@ app.controller('mainController', ['$http',
       }.bind(this),function(error){
         console.log(error);
       })
-      // controller.showUserPlanIndex();
     };
-
-
 
       //show success plan index.... to see all that plans that belong to multiple users
       // for admin use when admin functionality is built:

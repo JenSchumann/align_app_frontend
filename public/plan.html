@@ -1,23 +1,13 @@
+<section id="plan" ng-if="ctrl.loggedin" ng-hide="!ctrl.loggedin">
 
 
-  <a id=#plan></a>
+  <!-- Create New Success Plan --> <!-- Large modal -->
+  <div id="createPlan" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
 
 
-  <!-- Create New Success Plan -->
-  <div class="container" id="plan-container">
-    <section id="plan" ng-if="ctrl.loggedin">
-
-      <img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
-      <!-- to toggle create plan form open  -->
-      <div class="plan-page" ng-if='ctrl.createPlanModal'>
-
-        <div class="row">
-          <!-- <section class="col-md-12 col-md-offset-3"> -->
-            <!-- create success plan form -->
             <form name="form.createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
-              <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
-
-              <fieldset class="createPlan">
 
 
                 <div class="form-group">
@@ -52,153 +42,15 @@
                   <input type="date" class="form-control" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></div>
 
 
-
-                    <input type="submit" class="submitButton"/>
+                  <input type="submit" class="submitButton"/>
                   <div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
                     <i class="fa fa-window-close extraClass" aria-hidden="true"></i></a>
                   </div>
 
 
-                </fieldset>
-              </form>
-            <!-- </section>  <!-col-md-4 col-md-offset-4--->
-          </div>  <!---row--->
 
-
-<!-- <input type="submit"/> -->
-
-          <!-- for testing purposes
-          <section id="createdPlan" ng-if="ctrl.loggedin" ng-show="ctrl.newPlan">
-            {{ ctrl.newPlan.title }}
-            {{ctrl.newPlan.affective_goal}}
-            {{ctrl.newPlan.academic_goal}}
-            {{ctrl.newPlan.task}}
-            {{ctrl.newPlan.measure}}
-            {{ctrl.newPlan.actions}}
-            {{ctrl.newPlan.purpose}}
-            {{ctrl.newPlan.deadline}}
-          </section>  <!-createdPlan close tag--->
-
-
-          <!-- Start plans section -------------------------------->
-
-
-
-          <!-- <section id="plans" ng-if="ctrl.loggedin">
-            <div class="container-fluid"> -->
-
-              <!-- <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1> -->
-
-              <!-- <ul id="planListTitles">
-
-                <li class = "eachPlan" ng-repeat="plan in ctrl.plan track by $index" ng-show="ctrl.plan">
-
-                  <h3 class="planTitles"><a href="#" ng-click="ctrl.showPlanList = !ctrl.showPlanList; showPlanModal = !showPlanModal">Plan Title: {{ planList.title }}</a></h3>
-
-                   <div ng-show="showPlanModal" class="ng-modal-overlay ng-modal-plan">
-                  <div ng-repeat="currentPlan in ctrl.currentPlan track by $index">
-                    <h4>{{currentPlan.title}}</h4><br>
-                    <h4>{{currentPlan.affective_goal}}</h4><br> <h4>{{currentPlan.academic_goal}}</h4><br>
-                    <h4>{{currentPlan.task}}</h4><br>
-                    <h4>{{currentPlan.measure}}</h4><br>
-                    <h4>{{currentPlan.actions}}</h4><br>
-                    <h4>{{currentPlan.purpose}}</h4><br>
-                    <h4>{{currentPlan.deadline}}</h4><br>
-                  </div>
-
-                  <button type="button" class="submitButton" data-dismiss="modal" ng-click="showPlanModal = !showPlanModal">Close</button>
-
-
-                  <button class="submitButton" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button> -->
-
-
-
-                  <!-- Edit Plan Form -->
-
-                  <!-- <div ng-if="ctrl.editPlanDisplay;">
-                    <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
-                      <fieldset class="editPlan">
-                        <div class="form-group">
-                          <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
-
-                          <input type="text" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
-
-                          <input type="text" ng-model="ctrl.updatedPlan.academic_goal" placeholder="Academic Focus Area"/> </br>
-
-                          <input type="text" ng-model="ctrl.updatedPlan.task" placeholder="Current Task to Grow"/> </br>
-
-                          <input type="text" ng-model="ctrl.updatedPlan.measure" placeholder="How I'll Measure"/> </br>
-
-                          <input type="text" ng-model="ctrl.updatedPlan.actions" placeholder="Steps I'll Take"/> </br>
-
-                          <input type="text" ng-model="ctrl.updatedPlan.purpose" placeholder="Why I Chose This"/> </br>
-
-                          <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
-
-
-                          <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
-                          <! adding this to the confirm to try to get for edit
-                          ctrl.setCurrentPlan(planList.id); -->
-                        <!-- </div>
-                      </fieldset>
-                    </form>
-                  </div>
-
-                  <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
-                    <input name="_method" type="hidden" value="destroy"/>
-                    <button class="submitButton">Delete</button></h4></form> -->
-
-<!-- </li>
-</ul>
-</div>
-
-</section>  -->
-<!---id plans---->
-
-
-                  <!-- <h4>{{ ctrl.currentPlan.title }}</h4>
-                  <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
-                  <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
-
-                  <h4>{{ ctrl.currentPlan.task }}</h4>
-                  <h4>{{ ctrl.currentPlan.measure }}</h4>
-                  <h4>{{ ctrl.currentPlan.actions }}</h4>
-                  <h4>{{ ctrl.currentPlan.purpose }}</h4>
-                  <h4>{{ ctrl.currentPlan.deadline }}</h4> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>   <!--plan-page-->
-    </section>  <!---section plan close tag--->
-    </div>   <!--- container--->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
