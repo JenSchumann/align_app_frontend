@@ -8,40 +8,60 @@
       <div class="plan-page" ng-if='ctrl.createPlanModal'>
 
         <div class="row">
-          <section class="col-md-4 col-md-offset-4">
+          <!-- <section class="col-md-12 col-md-offset-3"> -->
             <!-- create success plan form -->
             <form name="form.createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
               <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
 
-              <fieldset>
+              <fieldset class="createPlan">
+
+
                 <div class="form-group">
-                  <input type="text" ng-model="ctrl.newPlan.title" placeholder="Plan Title"/></br>
-
-                  <input type="text" ng-model="ctrl.newPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
-
-                  <input type="text" ng-model="ctrl.newPlan.academic_goal" placeholder="Academic Focus Area"/></br>
-
-                  <input type="text" ng-model="ctrl.newPlan.task" placeholder="Current Task to Grow"/></br>
-
-                  <input type="text" ng-model="ctrl.newPlan.measure" placeholder="How I'll Measure"/></br>
-
-                  <input type="text" ng-model="ctrl.newPlan.actions" placeholder="Steps I'll Take"/></br>
-
-                  <input type="text" ng-model="ctrl.newPlan.purpose" placeholder="Why I Chose This"/></br>
-
-                  <input type="date" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></br>
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.title" placeholder="Plan Title"/></div>
 
 
-                  <input type="submit"/><div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.affective_goal" placeholder="Affective Growth Focus"/></div>
+
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.academic_goal" placeholder="Academic Focus Area"/></div>
+
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.task" placeholder="Current Task to Grow"/></div>
+
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.measure" placeholder="How I'll Measure"/></div>
+
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.actions" placeholder="Steps I'll Take"/></div>
+
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.newPlan.purpose" placeholder="Why I Chose This"/></div>
+
+
+                <div class="form-group">
+                  <input type="date" class="form-control" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></div>
+
+
+
+                    <input type="submit" class="submitButton"/>
+                  <div class="closeModal" ng-click="ctrl.toggleModal()"><a href="">
                     <i class="fa fa-window-close extraClass" aria-hidden="true"></i></a>
                   </div>
+
+
                 </fieldset>
               </form>
-            </section>  <!---col-md-4 col-md-offset-4--->
+            <!-- </section>  <!-col-md-4 col-md-offset-4--->
           </div>  <!---row--->
 
 
-
+<!-- <input type="submit"/> -->
 
           <!-- for testing purposes
           <section id="createdPlan" ng-if="ctrl.loggedin" ng-show="ctrl.newPlan">
@@ -153,5 +173,5 @@
 
 
 
-      </div>   <!---plan-page--->
+      </div>   <!--plan-page-->
     </section>  <!---section plan close tag--->
