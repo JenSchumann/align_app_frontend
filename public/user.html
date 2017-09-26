@@ -19,8 +19,8 @@
                       <ul id=planGroup>
                             <li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
 
-                              <h3 ng-click="ctrl.setCurrentPlan(planList.id);">Plan Title:
-                              <a data-toggle="modal" data-target="#planShowPage">{{ planList.title }}</a></h3>
+                              <center><h3 ng-click="ctrl.setCurrentPlan(planList.id);">Plan Title:
+                              <a data-toggle="modal" data-target="#planShowPage">{{ planList.title }}</a></h3></center>
 
                             </li>
                       </ul>

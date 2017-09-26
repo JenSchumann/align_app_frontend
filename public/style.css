@@ -388,17 +388,18 @@ Success Plan Section
 #planShowPage, #createPlan {
   font-size: 3rem;
 	color: white;
-  position: absolute;
+  /*position: absolute;*/
   text-align: center;
   width: 100%;
-  z-index: 100;
-  overflow: hidden;
-  border-radius: 25px;
+  height: 100%;
+  /*z-index: 100;*/
+  /*overflow: hidden;*/
+  border-radius: 50px;
 }
 
 .modal-header {
-	background: linear-gradient(to left, #273668, #546578);
-	color: #144c85;
+	background: linear-gradient(to left, #8caac0, #45667d);
+	/*color: #144c85;*/
 }
 
 /*.profile {
