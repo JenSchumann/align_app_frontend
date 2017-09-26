@@ -249,10 +249,11 @@ app.controller('mainController', ['$http',
         // console.log("------------");
         // console.log("response is: ", response);
       this.showPlanForm = false;
+      controller.showUserPlanIndex();
       }.bind(this),function(error){
         console.log(error);
       })
-      controller.showUserPlanIndex();
+      // controller.showUserPlanIndex();
     };
 
 
@@ -283,7 +284,7 @@ app.controller('mainController', ['$http',
           this.planList = response.data;
           controller.hidePlanList = !controller.hidePlanList;
           controller.showPlanList = !controller.showPlanList;
-          
+
           console.log('this is plan index of current user');
         }.bind(this),function(error){
           console.log(error);

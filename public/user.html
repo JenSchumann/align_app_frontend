@@ -2,16 +2,8 @@
 <!-- User Page ------------------------------------>
 <a id="user"></a>
 <section id="user" ng-if="ctrl.loggedin">
-<!-- <div class="user-page" ng-if="ctrl.loggedin"> -->
-<img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
-    <!-- bootstrap option, need to decide on -->
-      <!-- <div class="container"> -->
-        <!-- <div class="row">
-          <section class="col-xs-7"> -->
-      <!-- =========================================== -->
 
-      <!-- decide how to show user info as per wireframe: -->
-      <!--- User Options  ---->
+<img class="user-img img-responsive" src="./assets/pexels-photo-207153.jpeg" alt="Potential"/>
 
 
           <!-- <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2> -->
@@ -42,11 +34,7 @@
   <div class="col-md-6">
               <!-- to user success plan index -->
               <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex(); ctrl.hidePlanList = !ctrl.hidePlanList" ng-show="ctrl.currentPlan">  Success Plan Index  </a></h3>
-              <ul id=planGroup>
-              <li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
-                Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a></li>
-
-              </ul>
+              <ul id=planGroup><li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList"><button class="btn btn-default"ng-click="ctrl.toggleEditPlan();ctrl.editPlan(currentPlan.id);">Update</button> Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a><form ng-submit="ctrl.deletePlan(planList.id);" accept-charset="UTF-8" method="delete"><input name="_method" type="hidden" value="destroy" /> <button class="btn btn-default">Delete</button></h4></form></li></ul>
 
 
 
@@ -56,7 +44,7 @@
               <!-- <h3><a class="ontop" href="#user" ng-click="ctrl.editDisplay()">Edit Profile</a></h3> <br> -->
   </div>
 
-  <!-- </div>  <!jumbotron-->
+
    </div>
 
 
@@ -102,7 +90,7 @@
             </form>
           </div>
 
-<!-- </div> user-page -->
+
 </section>  <!---section id user close tag--->
 
 
