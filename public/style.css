@@ -52,6 +52,10 @@ fieldset {
   margin: 0 auto;
 }
 
+.user-page, .plan-page {
+    position: block;
+    padding-top: 1%;
+}
  .user-page {
   /*margin-top: 0;
   padding-top: 0;
@@ -81,19 +85,69 @@ fieldset {
   /*height: 100vh;*/
 }
 
+.plans {
+  text-align: center;
+  font-size: 3.5rem;
+  font-family: 'Schoolbell', cursive;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: #273668;
+  margin-top: 65%;
+  padding-top: 80%;
+  /*backface-visibility: hidden;*/
+   /*for browsers that don't support viewport units (they also won't support CSS 3D transforms AFAIK) */
+  /*height: 100%;*/
+  /* for browsers that do support viewport units */
+  /*height: 100vh;*/
+}
+
 fieldset.createPlan {
   margin-left: auto;
-  margin-right: 40%;
+  margin-right: 37%;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 1rem;
   border-radius: 15px;
+  backface-visibility: hidden;
+   /*for browsers that don't support viewport units (they also won't support CSS 3D transforms AFAIK) */
+  /*height: 100%;*/
+  /* for browsers that do support viewport units */
+  /*height: 100vh;*/
+  position: inherit;
+  display: block;
+  font-size: 2.5rem;
+  color: #39487f;
 }
+
+.ng-modal-plan {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position:relative;
+  width: 400px; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  opacity: 1;
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+  padding: 10px 20px 20px 20px;
+}
+
 
 input {
   text-align: center;
   font-size: 3.5rem;
   font-family: 'Schoolbell', cursive;
-
 }
 
 .login, .register {
@@ -173,6 +227,39 @@ a.ontop {
   padding-bottom: 1%;
 }
 
+.planDetails {
+  font-size: 3rem;
+  margin: auto 0;
+  width: 100%
+  text-align: center;
+  font-family: 'Schoolbell', cursive;
+  color: #273668;
+  font-weight: bold;
+  align-items: center;
+}
+
+.planTitles {
+  /*font-weight: bold;*/
+  font-size: 3rem;
+  margin: auto 0;
+  width: 100%
+  /*top: 25%*/
+  /*margin-top: 20%;*/
+  text-align: center;
+  /*top: 60px;*/
+  font-family: 'Schoolbell', cursive;
+  /*overflow: hidden;*/
+  /*padding-top: 5%;
+  padding-bottom: 1%;*/
+  color: white;
+  font-weight: bold;
+  align-items: center;
+}
+
+#planGroup {
+  margin-top: 70%
+}
+
 hr.type_8 {
 border: 0;
 height: 4rem;
@@ -223,7 +310,7 @@ About Section
 
 
 /*background images*/
-.main-img, .user-img, .plan-img, .plans-img {
+.main-img  {
   /*content: ' ';*/
   width: 100%;
   height: 100%;
@@ -231,10 +318,21 @@ About Section
   z-index: -5;
   top: 0px;
   left: 0px;
-  /*background-position: center center fixed no-repeat;
+  background-position: center center fixed no-repeat;
   background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;*/
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+}
+
+.user-img, .plan-img, .plans-img {
+width: 100%;
+height: 100%;
+position: absolute;
+z-index: -5;
+top: 0px;
+left: 0px;
+background-position: center center fixed repeat;
+/*background-size: cover;*/
 }
 
 #heading {
@@ -267,10 +365,7 @@ About Section
   overflow: hidden;
 }
 
-.user-page, .plan-page {
-    position: block;
-    padding-top: 1%;
-}
+
 
 /*====================
 Success Plan Section

@@ -9,8 +9,8 @@ app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
     const controller = this;
-    // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com';
+    this.url = 'http://localhost:3000';
+    // this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -249,13 +249,11 @@ app.controller('mainController', ['$http',
         // console.log("------------");
         // console.log("response is: ", response);
       this.showPlanForm = false;
+      controller.showUserPlanIndex();
       }.bind(this),function(error){
         console.log(error);
       })
-      controller.clearForm();
     };
-
-
 
       //show success plan index.... to see all that plans that belong to multiple users
       // for admin use when admin functionality is built:
@@ -281,6 +279,9 @@ app.controller('mainController', ['$http',
         }).then(function(response) {
           console.log(response.data);
           this.planList = response.data;
+          controller.hidePlanList = !controller.hidePlanList;
+          controller.showPlanList = !controller.showPlanList;
+
           console.log('this is plan index of current user');
         }.bind(this),function(error){
           console.log(error);
@@ -347,6 +348,7 @@ app.controller('mainController', ['$http',
 
                console.log("this is controller.currentPlan which should be the updated plan, which is response", controller.currentPlan);
                console.log("--------------");
+               controller.showUserPlanIndex();
            }.bind(this));
          }
 
