@@ -81,17 +81,77 @@
 
 
           <section id="plans" ng-if="ctrl.loggedin">
-            <div class="container">
-              <!-- row instead of row -->
+            <div class="container-fluid">
+
               <!-- <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1> -->
 
               <ul id="planListTitles">
 
-                <li ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
-<!-- column -->
-                  Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a>
+                <li class = "eachPlan" ng-repeat="plan in ctrl.plan track by $index" ng-show="ctrl.plan">
 
-                  <h4>{{ ctrl.currentPlan.title }}</h4>
+                  <h3 class="planTitles"><a href="#" ng-click="ctrl.showPlanList = !ctrl.showPlanList; showPlanModal = !showPlanModal">Plan Title: {{ planList.title }}</a></h3>
+
+                   <div ng-show="showPlanModal" class="ng-modal-overlay ng-modal-plan">
+                  <div ng-repeat="currentPlan in ctrl.currentPlan track by $index">
+                    <h4>{{currentPlan.title}}</h4><br>
+                    <h4>{{currentPlan.affective_goal}}</h4><br> <h4>{{currentPlan.academic_goal}}</h4><br>
+                    <h4>{{currentPlan.task}}</h4><br>
+                    <h4>{{currentPlan.measure}}</h4><br>
+                    <h4>{{currentPlan.actions}}</h4><br>
+                    <h4>{{currentPlan.purpose}}</h4><br>
+                    <h4>{{currentPlan.deadline}}</h4><br>
+                  </div>
+
+                  <button type="button" class="submitButton" data-dismiss="modal" ng-click="showPlanModal = !showPlanModal">Close</button>
+
+
+                  <button class="submitButton" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
+
+
+
+                  <!-- Edit Plan Form -->
+
+                  <div ng-if="ctrl.editPlanDisplay;">
+                    <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+                      <fieldset class="editPlan">
+                        <div class="form-group">
+                          <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
+
+                          <input type="text" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
+
+                          <input type="text" ng-model="ctrl.updatedPlan.academic_goal" placeholder="Academic Focus Area"/> </br>
+
+                          <input type="text" ng-model="ctrl.updatedPlan.task" placeholder="Current Task to Grow"/> </br>
+
+                          <input type="text" ng-model="ctrl.updatedPlan.measure" placeholder="How I'll Measure"/> </br>
+
+                          <input type="text" ng-model="ctrl.updatedPlan.actions" placeholder="Steps I'll Take"/> </br>
+
+                          <input type="text" ng-model="ctrl.updatedPlan.purpose" placeholder="Why I Chose This"/> </br>
+
+                          <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
+
+
+                          <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+                          <!-- adding this to the confirm to try to get for edit
+                          ctrl.setCurrentPlan(planList.id); -->
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+
+                  <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
+                    <input name="_method" type="hidden" value="destroy"/>
+                    <button class="submitButton">Delete</button></h4>
+
+</li>
+</ul>
+</div>
+
+</section> <!---id plans---->
+
+
+                  <!-- <h4>{{ ctrl.currentPlan.title }}</h4>
                   <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
                   <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
 
@@ -99,65 +159,7 @@
                   <h4>{{ ctrl.currentPlan.measure }}</h4>
                   <h4>{{ ctrl.currentPlan.actions }}</h4>
                   <h4>{{ ctrl.currentPlan.purpose }}</h4>
-                  <h4>{{ ctrl.currentPlan.deadline }}</h4>
-
-                  <!-- Edit Button ---->
-                  <button class="btn btn-default" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
-
-                  <!-- Delete Button ---->
-
-                  <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
-                    <input name="_method" type="hidden" value="destroy"/>
-                    <button class="btn btn-default">Delete</button>
-
-                  </div>
-
-                </li>
-
-              </ul>
-
-
-
-              <!-- Edit Plan Form -->
-
-              <div ng-if="ctrl.editPlanDisplay;">
-                <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
-
-
-
-                  <fieldset>
-                    <div class="form-group">
-                      <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
-
-                      <input type="text" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
-
-                      <input type="text" ng-model="ctrl.updatedPlan.academic_goal" placeholder="Academic Focus Area"/> </br>
-
-                      <input type="text" ng-model="ctrl.updatedPlan.task" placeholder="Current Task to Grow"/> </br>
-
-                      <input type="text" ng-model="ctrl.updatedPlan.measure" placeholder="How I'll Measure"/> </br>
-
-                      <input type="text" ng-model="ctrl.updatedPlan.actions" placeholder="Steps I'll Take"/> </br>
-
-                      <input type="text" ng-model="ctrl.updatedPlan.purpose" placeholder="Why I Chose This"/> </br>
-
-                      <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
-
-
-                      <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
-                      <!-- adding this to the confirm to try to get for edit
-                      ctrl.setCurrentPlan(planList.id); -->
-
-
-
-                    </div>
-
-
-                  </fieldset>
-                </form>
-              </div>
-
-            </div>
+                  <h4>{{ ctrl.currentPlan.deadline }}</h4> -->
 
 
 
@@ -168,10 +170,30 @@
 
 
 
-          </div>   <!---plans container--->
-        </section> <!---id plans---->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
       </div>   <!--plan-page-->
     </section>  <!---section plan close tag--->
+    </div>   <!--- container--->

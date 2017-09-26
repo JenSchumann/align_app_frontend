@@ -13,6 +13,7 @@
       <!-- decide how to show user info as per wireframe: -->
       <!--- User Options  ---->
 
+
           <!-- <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2> -->
 
           <!-- <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
@@ -27,8 +28,6 @@
 
       <!-- =========================================== -->
 
-      <!-- play with how this looks with user profile showing (& how... by modal, etc.?) -->
-
 
       <div class="row">
 
@@ -42,7 +41,14 @@
 
   <div class="col-md-6">
               <!-- to user success plan index -->
-              <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">  Success Plan Index   </a></h3>
+              <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex(); ctrl.hidePlanList = !ctrl.hidePlanList" ng-show="ctrl.currentPlan">  Success Plan Index  </a></h3>
+              <ul id=planGroup>
+              <li class="planTitles" ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
+                Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a></li>
+
+              </ul>
+
+
 
 
               <!-- for Align 2.0 version -->

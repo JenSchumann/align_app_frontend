@@ -9,8 +9,8 @@ app.controller('mainController', ['$http',
   function($http){
     // this.test = "Align now with your future"
     const controller = this;
-    // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com';
+    this.url = 'http://localhost:3000';
+    // this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -252,7 +252,7 @@ app.controller('mainController', ['$http',
       }.bind(this),function(error){
         console.log(error);
       })
-      controller.clearForm();
+      controller.showUserPlanIndex();
     };
 
 
@@ -281,6 +281,9 @@ app.controller('mainController', ['$http',
         }).then(function(response) {
           console.log(response.data);
           this.planList = response.data;
+          controller.hidePlanList = !controller.hidePlanList;
+          controller.showPlanList = !controller.showPlanList;
+          
           console.log('this is plan index of current user');
         }.bind(this),function(error){
           console.log(error);
@@ -347,6 +350,7 @@ app.controller('mainController', ['$http',
 
                console.log("this is controller.currentPlan which should be the updated plan, which is response", controller.currentPlan);
                console.log("--------------");
+               controller.showUserPlanIndex();
            }.bind(this));
          }
 
