@@ -61,9 +61,9 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li><a class="nav navbar-nav navbar-left" href="#about" style="color: #white;">Align</a></li>
-          <li><a href="#profile" class="nav navbar-nav navbar-right" style="color: #white;">Profile</a></li>
+          <li ng-if=ctrl.loggedin><a href="#profile" class="nav navbar-nav navbar-right" style="color: #white;">Profile</a></li>
 
-          <li><a href="#plans" class="nav navbar-nav navbar-right" style="color: #white;">Plans</a></li>
+          <li ng-if=ctrl.loggedin><a href="#plans" class="nav navbar-nav navbar-right" style="color: #white;">Plans</a></li>
 
           <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleLogin()">
           <a href="#entrance" class="nav navbar-nav navbar-right" style="color: #white;">Login</a></li>
@@ -114,10 +114,6 @@
 
 
 <section id="plans" ng-include="'./plans.html'"></section>
-
-
-
-
 
 
 <!-- Footer -->
