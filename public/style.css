@@ -104,19 +104,35 @@ header {
   width: inherit;
 }
 
-a.ontop {
+button#ontop1, #ontop2 {
   color: white;
   font-weight: bold;
   font-size: 4rem;
   margin-left: 30%;
+  margin-top: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
   text-align: center;
   font-weight: bold;
-  padding-top: 55%;
-  padding-bottom: 1.5%;
+  /*padding-top: 55%;*/
+  /*padding-bottom: 1.5%;*/
   display: inline-block;
   position: absolute;
   font-family: 'Schoolbell', cursive;
   z-index: 100;
+}
+
+.div.form-group {
+  /*width: 25%;
+  height: 25%;*/
+  font-family: 'Schoolbell', cursive;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+
 }
 
 .title {

@@ -1,4 +1,7 @@
-
+<!-- <button ng-click='toggleModal()'>Open Modal Dialog</button>
+    <modal-dialog show='modalShown' width='400px' height='60%'>
+      <p>Modal Content Goes here<p>
+    </modal-dialog> -->
 
   <a id=#plans></a>
   <!-- Create New Success Plan -->
@@ -10,8 +13,8 @@
         <div class="row">
           <section class="col-md-4 col-md-offset-4">
             <!-- create success plan form -->
-            <form name="createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
-              <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
+            <!-- <form name="createPlanForm" class="ng-modal-overlay ng-modal-dialog" ng-if="ctrl.showPlanForm" ng-submit="ctrl.createPlan()">
+
 
               <fieldset>
                 <div class="form-group">
@@ -36,7 +39,7 @@
                     <i class="fa fa-window-close extraClass" aria-hidden="true"></i></a>
                   </div>
                 </fieldset>
-              </form>
+              </form> -->
             </section>  <!---col-md-4 col-md-offset-4--->
           </div>  <!---row--->
 
@@ -64,12 +67,12 @@
             <div class="container">
               <!-- row instead of row -->
               <!-- <h1 class="indexTitle" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">Success Plan Index</h1> -->
-
-              <ul id="planListTitles">
+<!-- - -->
+              <!-- <ul id="planListTitles">
 
                 <li ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
-<!-- column -->
-                  Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a>
+<! column -->
+                  <!-- Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a>
 
                   <h4>{{ ctrl.currentPlan.title }}</h4>
                   <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
@@ -81,26 +84,26 @@
                   <h4>{{ ctrl.currentPlan.purpose }}</h4>
                   <h4>{{ ctrl.currentPlan.deadline }}</h4>
 
-                  <!-- Edit Button ---->
-                  <button class="btn btn-default" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
+                  <!Edit Button ---->
+                  <!-- <button class="btn btn-default" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button> -->
 
                   <!-- Delete Button ---->
 
-                  <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
+                  <!-- <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
                     <input name="_method" type="hidden" value="destroy"/>
                     <button class="btn btn-default">Delete</button>
 
                   </div>
 
-                </li>
+                </li> -->
 
-              </ul>
+              <!-- </ul>  -->
 
 
 
               <!-- Edit Plan Form -->
 
-              <div ng-if="ctrl.editPlanDisplay;">
+              <!-- <div ng-if="ctrl.editPlanDisplay;">
                 <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
 
 
@@ -124,18 +127,18 @@
                       <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
 
 
-                      <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+                      <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button> -->
                       <!-- adding this to the confirm to try to get for edit
                       ctrl.setCurrentPlan(planList.id); -->
 
 
 
-                    </div>
+                    <!-- </div>
 
 
                   </fieldset>
                 </form>
-              </div>
+              </div> -->
 
             </div>
 

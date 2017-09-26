@@ -30,31 +30,193 @@
 
       <!-- =========================================== -->
 
-      <!-- play with how this looks with user profile showing (& how... by modal, etc.?) -->
+      <!-- to try to use modal styling so that upon submit inputs clear -->
 
 
-      <div class="row">
+      <!-- <button ng-click='toggleModal()'>Open Modal Dialog</button>
+          <modal-dialog show='modalShown' width='400px' height='60%'>
+            <p>Modal Content Goes here<p>
+          </modal-dialog> -->
 
+          <!-- =========================================== -->
+<!-- took href="#plan" and made it blank below in the ontop class -->
+  <div class="row">
 
-
-
-  <div class="col-md-6">
+          <div class="col-md-6">
               <!-- to create plan page -->
-              <h3 class="menu"><a class="ontop" href="#plan" ng-click="ctrl.createPlanModal()">Create New Success Plan</a></h3>
-  </div>
+              <h3 class="menu"><button id="ontop1" ng-click="toggleModal()">Create Plan</button></h3>
+              <modal-dialog show='modalShown' width='400px' height='60%'>
 
-  <div class="col-md-6">
+
+                <form ng-submit="ctrl.createPlan();">
+                  <!-- does plan need to be passed in as a params in ctrl.createPlan? -->
+                  <!-- ng-if="ctrl.showPlanForm" -->
+
+                  <fieldset>
+                    <div class="form-group">
+                      <input type="text" ng-model="ctrl.newPlan.title" placeholder="Plan Title"/></br>
+
+                      <input type="text" ng-model="ctrl.newPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
+
+                      <input type="text" ng-model="ctrl.newPlan.academic_goal" placeholder="Academic Focus Area"/></br>
+
+                      <input type="text" ng-model="ctrl.newPlan.task" placeholder="Current Task to Grow"/></br>
+
+                      <input type="text" ng-model="ctrl.newPlan.measure" placeholder="How I'll Measure"/></br>
+
+                      <input type="text" ng-model="ctrl.newPlan.actions" placeholder="Steps I'll Take"/></br>
+
+                      <input type="text" ng-model="ctrl.newPlan.purpose" placeholder="Why I Chose This"/></br>
+
+                      <input type="date" ng-model="ctrl.newPlan.deadline" placeholder="Proposed Deadline"/></br>
+
+
+                      <input type="submit"/><div class="closeModal" ng-click="toggleModal();"><a href="">
+                        <i class="fa fa-window-close extraClass" aria-hidden="true"></i></a>
+                      </div>
+                    </fieldset>
+                  </form>
+                  </modal-dialog>
+
+          </div>
+
+
+
+
+
+
+<!-- =========================================== -->
+<!-- what I took out from the link code! -->
+<!-- ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">  Success Plan Index   </a></h3> -->
+
+
+          <div class="col-md-6">
               <!-- to user success plan index -->
-              <h3 class="menu"><a class="ontop" href="#plans" ng-click="ctrl.showUserPlanIndex();" ng-show="ctrl.currentPlan">  Success Plan Index   </a></h3>
+              <h3 class="menu"><button id="ontop2"  ng-click="toggleModal1()">Plan Index</button></h3>
+              <modal-dialog show='modalShown1' width='400px' height='60%'>
+                <div class="planIndex" ng-show="ctrl.currentPlan;">
+
+
+
+                <ul id="planListTitles">
+
+                  <li ng-repeat="planList in ctrl.planList track by $index" ng-show="ctrl.planList">
+          <!-- column -->
+                    Plan Title: <a href="#" ng-click="ctrl.setCurrentPlan(planList.id);">{{ planList.title }}</a>
+
+                    <h4>{{ ctrl.currentPlan.title }}</h4>
+                    <h4>{{ ctrl.currentPlan.affective_goal }}</h4>
+                    <h4>{{ ctrl.currentPlan.academic_goal }}</h4>
+
+                    <h4>{{ ctrl.currentPlan.task }}</h4>
+                    <h4>{{ ctrl.currentPlan.measure }}</h4>
+                    <h4>{{ ctrl.currentPlan.actions }}</h4>
+                    <h4>{{ ctrl.currentPlan.purpose }}</h4>
+                    <h4>{{ ctrl.currentPlan.deadline }}</h4>
+
+                    <!-- Edit Button ---->
+                    <button class="btn btn-default" ng-click="ctrl.toggleEditPlan(); ctrl.editPlan(currentPlan.id);">Edit Plan</button>
+
+                    <!-- Delete Button ---->
+
+                    <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
+                      <input name="_method" type="hidden" value="destroy"/>
+                      <button class="btn btn-default">Delete</button>
+
+                    </div>
+
+                  </li>
+
+                </ul>
+
+
+
+                <!-- Edit Plan Form -->
+
+                <div ng-if="ctrl.editPlanDisplay;">
+                  <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+
+
+
+                    <fieldset>
+                      <div class="form-group">
+                        <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
+
+                        <input type="text" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
+
+                        <input type="text" ng-model="ctrl.updatedPlan.academic_goal" placeholder="Academic Focus Area"/> </br>
+
+                        <input type="text" ng-model="ctrl.updatedPlan.task" placeholder="Current Task to Grow"/> </br>
+
+                        <input type="text" ng-model="ctrl.updatedPlan.measure" placeholder="How I'll Measure"/> </br>
+
+                        <input type="text" ng-model="ctrl.updatedPlan.actions" placeholder="Steps I'll Take"/> </br>
+
+                        <input type="text" ng-model="ctrl.updatedPlan.purpose" placeholder="Why I Chose This"/> </br>
+
+                        <input type="date" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
+
+
+                        <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+                        <!-- adding this to the confirm to try to get for edit
+                        ctrl.setCurrentPlan(planList.id); -->
+
+
+
+                      </div>
+
+
+                    </fieldset>
+                  </form>
+                </div>
+
+</div>  <!--plan index-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </modal-dialog>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
               <!-- for Align 2.0 version -->
               <!-- to edit user profile page -->
               <!-- <h3><a class="ontop" href="#user" ng-click="ctrl.editDisplay()">Edit Profile</a></h3> <br> -->
-  </div>
 
-  <!-- </div>  <!jumbotron-->
-   </div>
+  </div>
 
 
 

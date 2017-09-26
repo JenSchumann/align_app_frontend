@@ -4,13 +4,14 @@ const app = angular.module('align_app', []);
 
 
 
+
 //main controller
-app.controller('mainController', ['$http',
-  function($http){
+app.controller('mainController', ['$http', '$scope',
+  function($http, $scope){
     // this.test = "Align now with your future"
     const controller = this;
-    // this.url = 'http://localhost:3000';
-    this.url = 'https://alignapi.herokuapp.com';
+    this.url = 'http://localhost:3000';
+    // this.url = 'https://alignapi.herokuapp.com';
     this.user = {};
     this.users = [];
     this.userPass = {};
@@ -28,6 +29,16 @@ app.controller('mainController', ['$http',
     this.plans = false;
     this.account = false;
     this.profilePage = false;
+
+
+    $scope.modalShown = false;
+    $scope.toggleModal = function() {
+        $scope.modalShown = !$scope.modalShown;
+    };
+
+    $scope.toggleModal1 = function() {
+        $scope.modalShown1 = !$scope.modalShown1;
+    }
 
 
 
@@ -215,9 +226,10 @@ app.controller('mainController', ['$http',
     this.showCurrentPlan = false;
 
     //toggle create success plan modal to show
-    this.createPlanModal = function(){
-    this.showPlanForm = true;
-    }
+    // this.createPlanModal = function(){
+      //made this boolean instead of false;
+    // this.showPlanForm = !this.showPlanForm;
+    // }
 
     //showing plans of one user should render on their page (not as a modal)
     // this.showPlansModal = function(){
@@ -225,11 +237,11 @@ app.controller('mainController', ['$http',
     //   this.showPlansIndex = true;
     // }
 
-    this.toggleModal = function(){
-      this.showPlanForm = !this.showPlanForm;
-    }
+    // this.toggleModal = function(){
+    //   this.showPlanForm = !this.showPlanForm;
+    // }
 
-    
+
 
     //create success plan
     this.createPlan = function(newPlan) {
@@ -243,7 +255,7 @@ app.controller('mainController', ['$http',
 
         console.log('just tried to clear the form');
         // console.log("response is: ", response);
-      this.showPlanForm = false;
+      // this.showPlanForm = false;
       }.bind(this),function(error){
         console.log(error);
       })
@@ -376,58 +388,27 @@ app.controller('mainController', ['$http',
     //how to save success plan info before updating (push to an array?)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /////////////////////////////////////////
 }]); //end mainController
+
+app.directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+      scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+      scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
+  };
+});
