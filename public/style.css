@@ -375,7 +375,7 @@ Success Plan Section
 	font-size: 3rem;
 	color: #273668;
 	cursor: pointer;
-	/*margin: 0 auto;*/
+	margin: 0 auto;
 }
 
 #createdPlan {
@@ -383,7 +383,46 @@ Success Plan Section
   font-weight: bold;
   color: black;
   border: 1px solid hotpink;
+}
 
+#planShowPage, #createPlan {
+  font-size: 3rem;
+	color: white;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+/*#gifmodal .modal-body {
+  max-height: 100%;
+  overflow: auto;
+
+}
+
+#musicmodal .modal-body {
+  max-height: 100%;
+  overflow: auto;
+}
+
+#litmodal .modal-body {
+  max-height: 100%;
+  overflow: auto;
+}*/
+
+.modal-header {
+	background: linear-gradient(to left, #273668, #546578);
+	color: #144c85;
+}
+
+/*#modal-title {
+  display: inline-block;
+}*/
+
+/*#closebutton {
+	float:right;*/
 }
 
 /*.profile {

@@ -2,43 +2,117 @@
 
 
 <!-- Large modal -->
-
-
   <div id="planShowPage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <h4 class="planDetails">{{ctrl.currentPlan.title}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.affective_goal}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.academic_goal}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.task}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.measure}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.actions}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.purpose}}</h4><br>
-        <h4 class="planDetails">{{ctrl.currentPlan.deadline}}</h4><br>
+<!-- added this: -->
+        <div class="modal-header">
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link-active" href="#planGlance" data-toggle="tab" role="tab">View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#planUpdate" data-toggle="tab" role="tab">Update</a>
+              </li>
+        </ul>
+
+        <div class="tab-content">
+
+        <!-- Tab 1 Content -->
+
+        <div class="tab-pane fade in show active" id="planGlance" role="tabpanel">
+
+            <h3>Current Plan</h3>
+
+                  <h4 class="planDetails">Title: {{ctrl.currentPlan.title}}</h4><br>
+                  <h4 class="planDetails">Affective Goal: {{ctrl.currentPlan.affective_goal}}</h4><br>
+                  <h4 class="planDetails">Academic Goal: {{ctrl.currentPlan.academic_goal}}</h4><br>
+                  <h4 class="planDetails">Task List: {{ctrl.currentPlan.task}}</h4><br>
+                  <h4 class="planDetails">How I'll Measure Progress: {{ctrl.currentPlan.measure}}</h4><br>
+                  <h4 class="planDetails">Action Steps: {{ctrl.currentPlan.actions}}</h4><br>
+                  <h4 class="planDetails">Why I Chose This: {{ctrl.currentPlan.purpose}}</h4><br>
+                  <h4 class="planDetails">My Proposed DL:{{ctrl.currentPlan.deadline}}</h4><br>
 
 
 
-          <button class="btn btn-default"ng-click="ctrl.toggleEditPlan();ctrl.editPlan(currentPlan.id);">Update</button>
+                  <button class="btn btn-default"ng-click="ctrl.toggleEditPlan();ctrl.editPlan(currentPlan.id);" data-target="#editPlanModal">Update</button>
 
-          <form ng-submit="ctrl.deletePlan(currentPlan.id)" accept-charset="UTF-8" method="delete">
-                    <input name="_method" type="hidden" value="destroy"/>
-                    <button class="btn btn-default">Delete</button></form>
+                  <form ng-submit="ctrl.deletePlan(currentPlan.id)" accept-charset="UTF-8" method="delete">
+                  <input name="_method" type="hidden" value="destroy"/>
+                  <button class="btn btn-default">Delete</button></form>
 
-          <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
-          </div>
-          </div>
-          </div>
+                  <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
 
-          </section>
+          </div>  <!--Tab 1 planGlance-->
 
+
+          <!-- Tab 2 Content -->
+
+          <div class="tab-pane fade" id="planUpdate" role="tabpanel">
+
+          <h3>Want to Update Your Plan?</h3>
+
+          <!-- Edit Plan Form -->
+
+            <form method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.updatedPlan.affective_goal" placeholder="Affective Growth Focus"/></br>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.updatedPlan.academic_goal" placeholder="Academic Focus Area"/> </br>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.updatedPlan.task" placeholder="Current Task to Grow"/> </br>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.updatedPlan.measure" placeholder="How I'll Measure"/> </br>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.updatedPlan.actions" placeholder="Steps I'll Take"/> </br>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" ng-model="ctrl.updatedPlan.purpose" placeholder="Why I Chose This"/> </br>
+                </div>
+
+                <div class="form-group">
+                  <input type="date" class="form-control" ng-model="ctrl.updatedPlan.deadline" placeholder="Proposed Deadline"/> </br>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="form-control" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+                  <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
+                </div>
+              </form>
+            </div>  <!-- tab 2 planUpdate -->
+          </div>  <!--Tab-content-->
+        </div>   <!--modal-header-->
+      </div> <!--modal-content-->
+    </div>   <!--modal-dialog modal-lg-->
+  </div> <!--planShowPage-->
+</section>  <!--Plans id-->
 
 
 
 <!-- Edit Plan Form -->
+<!-- <div ng-if="ctrl.editPlanDisplay;" id="editPlanModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content"> -->
 
-<div ng-if="ctrl.editPlanDisplay;">
-  <form id="editPlanForm" method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
-    <fieldset class="editPlan">
+<!-- <div ng-if="ctrl.editPlanDisplay;"> -->
+  <!-- <form method="update" ng-submit="ctrl.updatedPlan(ctrl.updatedPlan.title, ctrl.updatedPlan.affective_goal, ctrl.updatedPlan.academic_goal, ctrl.updatedPlan.task, ctrl.updatedPlan.measure, ctrl.updatedPlan.actions, ctrl.updatedPlan.purpose, ctrl.updatedPlan.deadline)">
+
       <div class="form-group">
         <input type="text" placeholder="Plan Title" ng-model="ctrl.updatedPlan.title"></br>
 
@@ -58,18 +132,16 @@
 
 
         <button type="submit" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
-        <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
+        <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button> -->
         <!-- adding this to the confirm to try to get for edit
         ctrl.setCurrentPlan(planList.id); -->
 
         <!-- <form ng-submit="ctrl.deletePlan(planList.id)" accept-charset="UTF-8" method="delete">
           <input name="_method" type="hidden" value="destroy"/>
           <button class="btn btn-default">Delete</button></h4></form> -->
-      </div>
-    </fieldset>
-  </form>
-</div>
+      <!-- </div> -->
 
+  <!-- </form> -->
 
 
 
