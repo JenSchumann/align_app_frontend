@@ -383,9 +383,9 @@ app.controller('mainController', ['$http', '$scope',
     //how to save success plan info before updating (push to an array?)
 
 
-    $scope.resetForm = function() {
-      $scope.form.$setPristine();
-    };
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+      });
 
 
 
