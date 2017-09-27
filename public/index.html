@@ -55,13 +55,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
+<!-- <ng-show="ctrl.currentUser;" -->
+<!-- href="#profilePage" -->
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
 
           <li><a class="nav navbar-nav navbar-left" href="#about" style="color: #white;">Align</a></li>
-          <li ng-if=ctrl.loggedin><a href="#profile" class="nav navbar-nav navbar-right" style="color: #white;">Profile</a></li>
+
+<!-- when clicked user id shows up in console with no error but user is not directed towards the modal in profile.html -->
+          <!-- <li ng-if=ctrl.loggedin><a data-toggle="modal" data-target="#profilePage" ng-click="ctrl.showUser(userPass);" class="nav navbar-nav navbar-right" style="color: #white;">Profile</a></li> -->
 
           <li ng-if=!ctrl.loggedin ng-click="ctrl.toggleLogin()">
           <a href="#entrance" class="nav navbar-nav navbar-right" style="color: #white;">Login</a></li>
@@ -102,8 +105,9 @@
 <!-- User Section ---->
 <section id="user" ng-include="'./user.html'"></section>
 
+<!-- User Profile Section -->
 
-<!-- <section id="profile" ng-include="'./profile.html'"></section> -->
+<!-- <section id="profilePage" ng-include="'./profile.html'"></section> -->
 
 
 <!-- Start plan section -------------------------------->

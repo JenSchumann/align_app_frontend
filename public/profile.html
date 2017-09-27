@@ -1,42 +1,111 @@
+<!-- Profile Page ------------------------------------>
+<!-- <a id="profilePage"></a> -->
+<!-- <section id="profilePage" ng-if="ctrl.loggedin"> -->
+
+<!-- About Me Section -->
+
+<!-- Large modal -->
+  <!-- <div id="profilePage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header"> -->
+
+          <!-- Tabs -->
+          <!-- <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link-active" href="#myProfile" data-toggle="tab" role="tab">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#profileUpdate" data-toggle="tab" role="tab">Update</a>
+                </li>
+          </ul>
+
+          <div class="tab-content"> -->
+
+          <!-- Tab 1 Content -->
+
+          <!-- <div class="tab-pane fade in show active" id="myProfile" role="tabpanel">
+
+            <h3>This is Me!</h3> -->
+
+                  <!-- <h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2> -->
+
+                  <!-- <h2 class="profileDetails">Current Grade: {{ctrl.userPass.grade}}</h2>
+
+                  <h2 class="profileDetails">My Interests: {{ctrl.userPass.interests}}</h2>
+
+                  <h2 class="profileDetails">My Strengths: {{ctrl.userPass.strengths}}</h2>
+
+                  <h2 class="profileDetails">My Aspirations: {{ctrl.userPass.aspirations}}</h2> -->
+
+          <!-- </div> Tab 1 myProfile-->
 
 
-  <!-- About Me Section -->
-  <!-- <a id="profile">
-  <div class="container" id="about-container" ng-if="ctrl.loggedin">
 
-  <!<h2 class="subtitle" ng-model="userPass.username">Hello, {{ctrl.userPass.username}}</h2> -->
+  <!-- Tab 2 Content -->
 
-  <!-- <h2 class="subtitle" ng-model="userPass.grade">Current Grade: {{ctrl.userPass.grade}}</h2>
+  <!-- <div class="tab-pane fade" id="profileUpdate" role="tabpanel">
 
-  <h2 class="subtitle" ng-model="userPass.interests">My Interests: {{ctrl.userPass.interests}}</h2>
-
-  <h2 class="subtitle" ng-model="userPass.strengths">My Strengths: {{ctrl.userPass.strengths}}</h2>
-
-  <h2 class="subtitle" ng-model="userPass.aspirations">My Aspirations: {{ctrl.userPass.aspirations}}</h2> -->
-
-  <!-- </div> -->
-
-  <!-- =========================================== -->
-
-
+  <h3>Want to Update Your Profile?</h3> -->
 
 
   <!-- Edit user Form -->
 
-        <!-- <div ng-if="ctrl.editDisplay">
-            <form id="userForm" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password, ctrl.updatedUser.grade, ctrl.updatedUser.interests, ctrl.updatedUser.strengths, ctrl.updatedUser.aspirations, ctrl.updatedUser.date)">
-               <fieldset>
+         <!-- <div ng-if="ctrl.editDisplay">
+            <form method="update" name="form" ng-submit="ctrl.updatedUser(ctrl.updatedUser.username, ctrl.updatedUser.password, ctrl.updatedUser.grade, ctrl.updatedUser.interests, ctrl.updatedUser.strengths, ctrl.updatedUser.aspirations, ctrl.updatedUser.date)">
 
-                   <input type="text" placeholder="Username" ng-model="ctrl.updatedUser.username"></br> </br>
+                <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Username" ng-model="ctrl.updatedUser.username"></br>
+                </div>
 
-                   <input type="password" ng-model="ctrl.updatedUser.password" placeholder="Password"/></br> </br>
+
+                <div class="form-group">
+                   <input type="password" class="form-control" ng-model="ctrl.updatedUser.password" placeholder="Password"/></br>
+                </div>
 
 
-                   <input type="integer" ng-model="ctrl.updatedUser.grade" placeholder="Grade"/> </br> </br>
-                   <input type="text" ng-model="ctrl.updatedUser.interests" placeholder="Interests"/> </br> </br>
-                   <input type="text" ng-model="ctrl.updatedUser.strengths" placeholder="Strengths"/> </br> </br>
-                   <input type="text" ng-model="ctrl.updatedUser.aspirations" placeholder="Aspirations"/> </br> </br>
-                   <input type="date" ng-model="ctrl.updatedUser.date" placeholder="Date"/> </br> </br> -->
+                <div class="form-group">
+                   <input type="integer" class="form-control" ng-model="ctrl.updatedUser.grade" placeholder="Grade"/> </br>
+                </div>
+
+
+                <div class="form-group">
+                   <input type="text" class="form-control" ng-model="ctrl.updatedUser.interests" placeholder="Interests"/> </br>
+                </div>
+
+
+              <div class="form-group">
+                   <input type="text" class="form-control" ng-model="ctrl.updatedUser.strengths" placeholder="Strengths"/> </br>
+              </div>
+
+
+              <div class="form-group">
+                   <input type="text" class="form-control" ng-model="ctrl.updatedUser.aspirations" placeholder="Aspirations"/> </br>
+              </div>
+
+
+              <div class="form-group">
+                   <input type="date" class="form-control" ng-model="ctrl.updatedUser.date" placeholder="Date"/> </br>
+              </div>
+
+
+              <div class="form-group">
+                <button type="submit" class="form-control" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
+                <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button> -->
+
+              <!-- </div>
+            </form> -->
+          <!-- </div>  <!tab 2 profileUpdate -->
+        <!-- </div>  <!Tab-content-->
+      <!-- </div>   <!modal-header-->
+    <!-- </div> <!modal-content-->
+  <!-- </div>   <!modal-dialog modal-lg-->
+<!-- </div> -->
+<!-- </div> <!profilePage-->
+<!-- </section>  <!profile id-->
+
+
+<!--  End Profile Page ------------------------------------>
 
 
                  <!-- <button type="submit">Confirm</button> -->
@@ -56,60 +125,3 @@
                </fieldset>
               </form>
             </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="row">
-
-    <div class="jumbotron" id="about-jumbotron">
-
-        <h1 id="title" style="font-family: 'Loved by the King'; font-size: 6rem; color: #4f3112; font-weight: bold;">My Profile</h1>
-
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-      </div>
-    </div>
-  </div>
-  <! <hr class="style17"> -->
-  <!-- </a>  -->
