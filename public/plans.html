@@ -90,9 +90,11 @@
                 <div class="form-group">
                   <button type="submit" class="form-control" ng-click="ctrl.updatedPlan(); ctrl.toggleEditPlan();">Confirm</button>
                   <button type="button" name="button" data-dismiss="modal"><i class="fa fa-window-close extraClass" aria-hidden="true"></i></button>
-                  <form ng-submit="ctrl.deletePlan(currentPlan.id)" accept-charset="UTF-8" method="delete">
-                  <input name="_method" type="hidden" value="destroy"/>
-                  <button class="btn btn-default">Delete</button></form>
+
+                  <!-- <form ng-submit="ctrl.deletePlan(currentPlan.id)" accept-charset="UTF-8" method="delete"> -->
+                  <!-- <input name="_method" type="hidden" value="destroy"/> -->
+                  <button ng-click="ctrl.deletePlan(currentPlan.id)" class="btn btn-default">Delete</button>
+                <!-- </form> -->
 
                 </div>
               </form>
