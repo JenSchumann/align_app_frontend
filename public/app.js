@@ -102,19 +102,24 @@ app.controller('mainController', ['$http', '$scope',
     };
 
     //to get 1 user need to build functionality for user to see their user profile page
-    this.showUser = function() {
+    this.showUser = function(id) {
+      console.log('trying to get this user');
     $http({
-      url: this.url + '/users/' + this.user_id,
+      url: this.url + '/users/' + this.user.id,
       method: 'GET',
       headers: {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }
     }).then(function(response) {
     console.log(response);
+    console.log('can i have the user');
       if (response.data.status == 401) {
         this.error = "Unauthorized";
       } else {
-        this.user.id = response.data;
+        controller.currentUser = response.data;
+        console.log("this is controller.currentUser, which is response.data", controller.currentUser);
+        console.log("--------------");
+        console.log('i must have the user');
       }
     }.bind(this),function(error){
       console.log(error);
